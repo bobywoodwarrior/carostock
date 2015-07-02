@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    font-family: "Trebuchet MS", Verdana, sans-serif;
+    text-align: center;
+    font-size: 90%;
+    background-color: #333333;
+}
+
+h1 {
+    font-size: 200%;
+    margin: 10px;
+    color: white;
+}
+
+a {
+    color: dodgerblue;
+}
