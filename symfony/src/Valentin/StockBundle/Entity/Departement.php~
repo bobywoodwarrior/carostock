@@ -1,0 +1,259 @@
+<?php
+
+namespace Ovinz\DevisBundle\Entity;
+
+use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * Departement
+ *
+ * @ORM\Table(name="departement")
+ * @ORM\Entity(repositoryClass="Ovinz\DevisBundle\Entity\Repository\DepartementRepository")
+ */
+class Departement
+{
+    /**
+     * @var string
+     * @ORM\Id
+     * @ORM\Column(name="departement_code", type="string", length=3)
+     */
+    protected $departementCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="chef_lieu", type="string", length=5, nullable=TRUE)
+     */
+    protected $chefLieu;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_clean", type="string", length=255)
+     */
+    protected $nameClean;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"name","departementCode"})
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    protected $slug;
+
+    /**
+     * @var Region
+     *
+     * @ORM\ManyToOne(targetEntity="Ovinz\DevisBundle\Entity\Region", inversedBy="departements")
+     * @ORM\JoinColumn(name="region_code", referencedColumnName="region_code", nullable=false)
+     */
+    protected $region;
+
+    /**
+     * @ORM\OneToMany(targetEntity="City", cascade={"persist"}, mappedBy="departement")
+     */
+    protected $cities;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="context", type="string", length=10)
+     */
+    protected $context;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->cities = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set departementCode
+     *
+     * @param string $departementCode
+     * @return Departement
+     */
+    public function setDepartementCode($departementCode)
+    {
+        $this->departementCode = $departementCode;
+
+        return $this;
+    }
+
+    /**
+     * Get departementCode
+     *
+     * @return string
+     */
+    public function getDepartementCode()
+    {
+        return $this->departementCode;
+    }
+
+    /**
+     * Set chefLieu
+     *
+     * @param string $chefLieu
+     * @return Departement
+     */
+    public function setChefLieu($chefLieu)
+    {
+        $this->chefLieu = $chefLieu;
+
+        return $this;
+    }
+
+    /**
+     * Get chefLieu
+     *
+     * @return string
+     */
+    public function getChefLieu()
+    {
+        return $this->chefLieu;
+    }
+
+    /**
+     * Set nameClean
+     *
+     * @param string $nameClean
+     * @return Departement
+     */
+    public function setNameClean($nameClean)
+    {
+        $this->nameClean = $nameClean;
+
+        return $this;
+    }
+
+    /**
+     * Get nameClean
+     *
+     * @return string
+     */
+    public function getNameClean()
+    {
+        return $this->nameClean;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Departement
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set region
+     *
+     * @param \Ovinz\DevisBundle\Entity\Region $region
+     * @return Departement
+     */
+    public function setRegion(\Ovinz\DevisBundle\Entity\Region $region)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \Ovinz\DevisBundle\Entity\Region
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * Add cities
+     *
+     * @param \Ovinz\DevisBundle\Entity\City $cities
+     * @return Departement
+     */
+    public function addCity(\Ovinz\DevisBundle\Entity\City $cities)
+    {
+        $this->cities[] = $cities;
+
+        return $this;
+    }
+
+    /**
+     * Remove cities
+     *
+     * @param \Ovinz\DevisBundle\Entity\City $cities
+     */
+    public function removeCity(\Ovinz\DevisBundle\Entity\City $cities)
+    {
+        $this->cities->removeElement($cities);
+    }
+
+    /**
+     * Get cities
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCities()
+    {
+        return $this->cities;
+    }
+
+    /**
+     * Set context
+     *
+     * @param string $context
+     * @return Departement
+     */
+    public function setContext($context)
+    {
+        $this->context = $context;
+
+        return $this;
+    }
+
+    /**
+     * Get context
+     *
+     * @return string
+     */
+    public function getContext()
+    {
+        return $this->context;
+    }
+
+    /**
+     * Get context
+     *
+     * @return string
+     */
+    public function getContextFull()
+    {
+        return $this->getContext() . ' ' . $this->getName();
+    }
+}

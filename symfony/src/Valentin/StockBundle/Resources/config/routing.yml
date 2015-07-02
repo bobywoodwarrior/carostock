@@ -1,0 +1,3 @@
+valentinstock_front_controller:
+    resource: "@ValentinStockBundle/Controller"
+    type: annotation

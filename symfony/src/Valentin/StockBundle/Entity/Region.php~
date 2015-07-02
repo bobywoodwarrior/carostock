@@ -1,0 +1,168 @@
+<?php
+
+namespace Ovinz\DevisBundle\Entity;
+
+use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Region
+ *
+ * @ORM\Table(name="region")
+ * @ORM\Entity(repositoryClass="Ovinz\DevisBundle\Entity\Repository\RegionRepository")
+ */
+class Region
+{
+
+    /**
+     * @var string
+     * @ORM\Id
+     * @ORM\Column(name="region_code", type="string", length=2)
+     */
+    protected $regionCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_clean", type="string", length=255)
+     */
+    protected $nameClean;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255)
+     */
+    protected $name;
+
+    /**
+     * @var string
+     *
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    protected $slug;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Departement", cascade={"persist"}, mappedBy="region")
+     */
+    protected $departements;
+
+
+    /**
+     * @var string
+     *
+     * Language contexte
+     */
+    protected $context = "en";
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->departements = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set regionCode
+     *
+     * @param string $regionCode
+     * @return Region
+     */
+    public function setRegionCode($regionCode)
+    {
+        $this->regionCode = $regionCode;
+
+        return $this;
+    }
+
+    /**
+     * Get regionCode
+     *
+     * @return string
+     */
+    public function getRegionCode()
+    {
+        return $this->regionCode;
+    }
+
+    /**
+     * Set nameClean
+     *
+     * @param string $nameClean
+     * @return Region
+     */
+    public function setNameClean($nameClean)
+    {
+        $this->nameClean = $nameClean;
+
+        return $this;
+    }
+
+    /**
+     * Get nameClean
+     *
+     * @return string
+     */
+    public function getNameClean()
+    {
+        return $this->nameClean;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return Region
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Add departements
+     *
+     * @param \Ovinz\DevisBundle\Entity\Departement $departements
+     * @return Region
+     */
+    public function addDepartement(\Ovinz\DevisBundle\Entity\Departement $departements)
+    {
+        $this->departements[] = $departements;
+
+        return $this;
+    }
+
+    /**
+     * Remove departements
+     *
+     * @param \Ovinz\DevisBundle\Entity\Departement $departements
+     */
+    public function removeDepartement(\Ovinz\DevisBundle\Entity\Departement $departements)
+    {
+        $this->departements->removeElement($departements);
+    }
+
+    /**
+     * Get departements
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDepartements()
+    {
+        return $this->departements;
+    }
+}
