@@ -1,0 +1,85 @@
+# @see https://docs.docker.com/compose/#compose-documentation
+
+# Central PHP+Apache container
+www: &www
+    # Base image: debian:wheezy
+    build: ./docker/www
+    ports:
+        - 15080:80 # Apache
+    volumes:
+        # Our app folder:
+        - .:/var/www
+        # It's easier to work with shared Apache logs:
+        - ./docker/www/shared/logs/apache2:/var/log/apache2
+        # Let's give our own "sites-enabled" config files to Apache:
+        - ./docker/www/shared/sites-enabled:/etc/apache2/sites-enabled
+        # Allows NPM usage with the Docker "root" user:
+        - ./docker/nodejs/shared/.npmrc:/root/.npmrc
+        # Composer is damn slow. Let's allow it to have a cache dir, or it will be paiiiinfully slow:
+        - ./docker/www/shared/composer-home:/composer-home
+    working_dir: /var/www
+    env_file: ./docker/www/www.env
+    environment:
+        # Composer shared home:
+        - COMPOSER_HOME=/composer-home
+    links:
+        - mysql
+        - smtpdev
+composer:
+    <<: *www
+    entrypoint: composer
+
+# MySQL container
+mysql:
+    # Base image: debian:wheezy
+    image: mysql:5.5
+    #image: balinea_mysql_test:latest
+    ports:
+        - 15306:3306
+    environment:
+        MYSQL_ALLOW_EMPTY_PASSWORD: yes
+    volumes:
+        - ./docker/mysql/shared/mysql-data:/var/lib/mysql
+
+# SMTP dev server
+smtpdev:
+    # Base image: node:0.10 (root image: debian:wheezy)
+    build: ./docker/smtpdev
+    ports:
+        - 15085:1080 # Web GUI
+        - 15025:1025 # SMTP server
+
+# Adminer container
+adminer:
+    # Don't forget to use that container with the "--no-deps" Docker Compose flag, or another instance of MySQL will
+    # be started and you will have conflicts between that MySQL instance and your main "www" MySQL instance
+    # Base image: debian:wheezy
+    build: ./docker/adminer
+    ports:
+        - 15081:80 # Apache
+    volumes:
+        # Let's give our own "sites-enabled" config files to Apache:
+        - ./docker/adminer/shared/sites-enabled:/etc/apache2/sites-enabled
+    links:
+        - mysql
+
+# Official Dockers images:
+# @see https://registry.hub.docker.com/repos/library/
+
+# Docker cache problems? Try:
+# > docker-compose kill && docker-compose rm && sudo service docker restart
+
+# Running out of disk space because of Docker containers? (/var/lib/docker/aufs/diff)
+# a) Delete stopped containers
+# > docker rm -v `docker ps -a -q -f status=exited`
+# b) Remove images as possible that has no name/tag
+# > docker images -a | grep '^<none>' | tr -s ' '|cut -d' ' -f 3 | xargs docker rmi
+# c) Or remove old containers:
+# > docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs docker rm
+# d) Delete all images
+# > docker rmi $(docker images -q)
+# e) Or remove *all* Docker containers layers content with:
+# > docker images --no-trunc | grep none | awk '{print $3}' | xargs -r docker rmi
+#
+# @see https://github.com/wsargent/docker-cheat-sheet
+# @see https://meta.discourse.org/t/low-on-disk-space-cleaning-up-old-docker-containers/15792/16
