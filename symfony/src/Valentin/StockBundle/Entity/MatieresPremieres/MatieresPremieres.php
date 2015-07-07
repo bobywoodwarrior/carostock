@@ -13,12 +13,35 @@ use Doctrine\ORM\Mapping as ORM;
 class MatieresPremieres
 {
     /**
+     * @ORM\OneToMany(targetEntity="Tissus", mappedBy="MatieresPremieres")
+     */
+    protected $Tissus;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Zip", mappedBy="MatieresPremieres")
+     */
+    protected $Zip;
+    /**
+     * @ORM\OneToMany(targetEntity="Boutons", mappedBy="MatieresPremieres")
+     */
+    protected $Boutons;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
+
+    public function __construct()
+    {
+        $this->Tissus = new ArrayCollection();
+        $this->Zip = new ArrayCollection();
+        $this->Boutons = new ArrayCollection();
+
+    }
+
     protected $id;
 
     /**
