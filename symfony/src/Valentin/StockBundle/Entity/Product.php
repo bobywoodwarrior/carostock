@@ -13,6 +13,15 @@ use Doctrine\ORM\Mapping as ORM;
 class Product
 {
     /**
+     * @ORM\OneToMany(targetEntity="ProductElement", mappedBy="Product")
+     */
+    protected $ProductElement;
+
+    public function __construct()
+    {
+        $this->ProductElement = new ArrayCollection();
+    }
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")

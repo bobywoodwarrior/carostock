@@ -1,5 +1,5 @@
 <?php
-namespace Valentin\StockBundle\Entity\Commande;
+namespace Valentin\StockBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

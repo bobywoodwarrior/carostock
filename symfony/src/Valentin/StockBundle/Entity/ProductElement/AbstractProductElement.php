@@ -7,6 +7,12 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class AbstractProductElement
 {
     /**
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="AbstractProductElement")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     */
+    protected $product;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -71,7 +77,7 @@ abstract class AbstractProductElement
      *
      * @param int $stock
      *
-     * @return ProductElement
+     * @return $this
      */
     public function setStock($stock)
     {
