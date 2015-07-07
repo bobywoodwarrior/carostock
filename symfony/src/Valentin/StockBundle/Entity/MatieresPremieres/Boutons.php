@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Boutons extends MatieresPremieres
 {
+    /**
+     * @ORM\ManyToOne(targetEntity="MatieresPremieres", inversedBy="boutons")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $MatieresPremieres;
 	/**
      * @var integer
      *

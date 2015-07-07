@@ -11,6 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Tissus extends MatieresPremieres
 {
+    /**
+     * @ORM\ManyToOne(targetEntity="MatieresPremieres", inversedBy="tissus")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $MatieresPremieres;
 	/**
      * @var integer
      *

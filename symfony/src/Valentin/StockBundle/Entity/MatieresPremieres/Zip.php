@@ -12,6 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Zip extends MatieresPremieres
 {
+    /**
+     * @ORM\ManyToOne(targetEntity="MatieresPremieres", inversedBy="zip")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $MatieresPremieres;
 	/**
      * @var integer
      *
