@@ -24,9 +24,9 @@ class Produits
     /**
      * @var integer
      *
-     * @ORM\Column(name="nombre", type="integer")
+     * @ORM\Column(name="number", type="integer")
      */
-    protected $nombre;
+    protected $number;
 
     /**
      * @var integer
