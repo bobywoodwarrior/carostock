@@ -56,17 +56,7 @@ class Cloth extends ProductElement
     {
         return $this->id;
     }
-
-    /**
-     * @param int $id
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
+    
 
     /**
      * @return string

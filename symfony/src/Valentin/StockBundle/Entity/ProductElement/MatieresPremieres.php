@@ -53,18 +53,21 @@ class ProductElement
     }
 
     /**
-     * @param int $id
-     * @return $this
+     * @return string
      */
-    public function setId($id)
+    public function getName()
     {
-        $this->id = $id;
-
-        return $this;
+        return $this->name;
     }
 
     /**
-     * @return string
+     * @param $name
+     * @return $this
      */
+    public function setName($name)
+    {
+        $this->name = $name;
 
+        return $this;
+    }
 }
