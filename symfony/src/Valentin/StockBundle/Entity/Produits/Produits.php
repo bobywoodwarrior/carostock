@@ -1,18 +1,18 @@
 <?php
 
-namespace Valentin\StockBundle\Entity;
+namespace Valentin\StockBundle\Entity\MatieresPremieres;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Tissu
+ * Produits
  *
- * @ORM\Table(name="tissu")
+ * @ORM\Table(name="Produits")
  * @ORM\Entity()
  */
-class Tissu
+class Produits
 {
-	/**
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -22,19 +22,32 @@ class Tissu
     protected $id;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="nombre", type="integer")
+     */
+    protected $nombre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="prix", type="integer")
+     */
+    protected $prix;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
     protected $name;
 
-
     /**
-     * Constructor
+     * @var string
+     *
+     * @ORM\Column(name="saison", type="string", length=255)
      */
-    public function __construct()
-    {
-    }
+    protected $saison; //int ou string ?
 
     /**
      * @return int

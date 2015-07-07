@@ -4,12 +4,12 @@ namespace Valentin\StockBundle\Entity\Commande;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Commande
+ * Adresse
  *
- * @ORM\Table(name="commande")
+ * @ORM\Table(name="adresse")
  * @ORM\Entity()
  */
-class Commande
+class Adresse
 {
     /**
      * @var integer
@@ -23,23 +23,32 @@ class Commande
     /**
      * @var integer
      *
-     * @ORM\Column(name="nombre", type="datetime")
+     * @ORM\Column(name="numero", type="integer")
      */
-    protected $nombre;
+    protected $numero;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="date", type="datetime")
+     * @ORM\Column(name="postal", type="integer")
      */
-    protected $date;
+
+    protected $postal;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rue", type="string", length=255)
+     */
+    protected $rue;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="pays", type="string", length=255)
      */
-    protected $name;//ref ou nom ?
+    protected $pays;
+
+
 
     /**
      * Constructor
