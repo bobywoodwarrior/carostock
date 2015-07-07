@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="adresse")
  * @ORM\Entity()
  */
-class Adresse
+class Address
 {
     /**
      * @var integer
