@@ -1,21 +1,22 @@
 <?php
 
-namespace Valentin\StockBundle\Entity\MatieresPremieres;
+namespace Valentin\StockBundle\Entity\ProductElement;
 
 use Doctrine\ORM\Mapping as ORM;
+
 /**
- * Tissus
+ * Button
  *
- * @ORM\Table(name="tissus")
+ * @ORM\Table(name="button")
  * @ORM\Entity()
  */
-class Tissus extends MatieresPremieres
+class Button extends ProductElement
 {
     /**
-     * @ORM\ManyToOne(targetEntity="MatieresPremieres", inversedBy="tissus")
+     * @ORM\ManyToOne(targetEntity="ProductElement", inversedBy="button")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
-    protected $MatieresPremieres;
+    protected $ProductElement;
 	/**
      * @var integer
      *
@@ -28,10 +29,9 @@ class Tissus extends MatieresPremieres
     /**
      * @var integer
      *
-     * @ORM\Column(name="metre", type="float")
+     * @ORM\Column(name="stock", type="integer")
      */
-    protected $metre;
-
+    protected $stock;
 
     /**
      * @var string

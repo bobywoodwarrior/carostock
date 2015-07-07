@@ -1,22 +1,21 @@
 <?php
 
-namespace Valentin\StockBundle\Entity\MatieresPremieres;
+namespace Valentin\StockBundle\Entity\ProductElement;
 
 use Doctrine\ORM\Mapping as ORM;
-
 /**
- * Zip
+ * Cloth
  *
- * @ORM\Table(name="Zip")
+ * @ORM\Table(name="cloth")
  * @ORM\Entity()
  */
-class Zip extends MatieresPremieres
+class Cloth extends ProductElement
 {
     /**
-     * @ORM\ManyToOne(targetEntity="MatieresPremieres", inversedBy="zip")
+     * @ORM\ManyToOne(targetEntity="ProductElement", inversedBy="cloth")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
-    protected $MatieresPremieres;
+    protected $ProductElement;
 	/**
      * @var integer
      *
@@ -29,16 +28,17 @@ class Zip extends MatieresPremieres
     /**
      * @var integer
      *
-     * @ORM\Column(name="number", type="integer")
+     * @ORM\Column(name="stock", type="integer")
      */
-    protected $number;
+    protected $stock;
+
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    protected $name; //ref ou nom ?
+    protected $name;//ref ou nom ?
 
 
     /**

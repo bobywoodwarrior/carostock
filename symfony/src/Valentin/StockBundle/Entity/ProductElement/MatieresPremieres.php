@@ -1,30 +1,30 @@
 <?php
 
-namespace Valentin\StockBundle\Entity\MatieresPremieres;
+namespace Valentin\StockBundle\Entity\ProductElement;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * MatieresPremieres
+ * ProductElement
  *
- * @ORM\Table(name="MatieresPremieres")
+ * @ORM\Table(name="ProductElement")
  * @ORM\Entity()
  */
-class MatieresPremieres
+class ProductElement
 {
     /**
-     * @ORM\OneToMany(targetEntity="Tissus", mappedBy="MatieresPremieres")
+     * @ORM\OneToMany(targetEntity="Tissus", mappedBy="ProductElement")
      */
-    protected $Tissus;
+    protected $Cloth;
 
     /**
-     * @ORM\OneToMany(targetEntity="Zip", mappedBy="MatieresPremieres")
+     * @ORM\OneToMany(targetEntity="Zip", mappedBy="ProductElement")
      */
     protected $Zip;
     /**
-     * @ORM\OneToMany(targetEntity="Boutons", mappedBy="MatieresPremieres")
+     * @ORM\OneToMany(targetEntity="Boutons", mappedBy="ProductElement")
      */
-    protected $Boutons;
+    protected $Button;
 
     /**
      * @var integer
@@ -36,9 +36,9 @@ class MatieresPremieres
 
     public function __construct()
     {
-        $this->Tissus = new ArrayCollection();
+        $this->Cloth = new ArrayCollection();
         $this->Zip = new ArrayCollection();
-        $this->Boutons = new ArrayCollection();
+        $this->Button = new ArrayCollection();
 
     }
 
