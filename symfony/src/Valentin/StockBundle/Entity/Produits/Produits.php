@@ -1,6 +1,6 @@
 <?php
 
-namespace Valentin\StockBundle\Entity\MatieresPremieres;
+namespace Valentin\StockBundle\Entity\Produits;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -86,5 +86,4 @@ class Produits
 
         return $this;
     }
-
 }

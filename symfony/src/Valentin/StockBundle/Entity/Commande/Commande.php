@@ -23,12 +23,12 @@ class Commande
     /**
      * @var integer
      *
-     * @ORM\Column(name="nombre", type="datetime")
+     * @ORM\Column(name="nombre", type="integer")
      */
     protected $nombre;
 
     /**
-     * @var integer
+     * @var \DateTime
      *
      * @ORM\Column(name="date", type="datetime")
      */

@@ -21,13 +21,6 @@ class Client
     protected $id;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="date", type="datetime")
-     */
-    protected $date;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="nom", type="string", length=255)
