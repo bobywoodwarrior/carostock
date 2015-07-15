@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="product_element_button")
  * @ORM\Entity()
  */
-class Button extends AbstractProductElement
+class Button
 {
+    /**
+     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\Product", mappedBy"product")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     */
+    protected $product;
 }

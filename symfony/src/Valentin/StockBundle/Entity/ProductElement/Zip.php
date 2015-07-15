@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="product_element_zip")
  * @ORM\Entity()
  */
-class Zip extends AbstractProductElement
+class Zip
 {
+    /**
+     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\Product", mappedBy"product")
+     * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     */
+    protected $product;
 }

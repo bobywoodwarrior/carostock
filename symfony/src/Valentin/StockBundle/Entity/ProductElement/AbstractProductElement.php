@@ -2,16 +2,20 @@
 
 namespace Valentin\StockBundle\Entity\ProductElement;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 abstract class AbstractProductElement
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Product", inversedBy="AbstractProductElement")
+     * @ORM\OneToMany(targetEntity="Product", inversedBy="AbstractProductElement")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
     protected $product;
 
+    public function __construct(){
+        $this->product = new ArrayCollection();
+    }
     /**
      * @var integer
      *

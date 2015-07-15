@@ -3,24 +3,38 @@
 namespace Valentin\StockBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Produits
+ * Product
  *
- * @ORM\Table(name="Product")
+ * @ORM\Table(name="product")
  * @ORM\Entity()
  */
 class Product
 {
     /**
-     * @ORM\OneToMany(targetEntity="ProductElement", mappedBy="Product")
+     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\Button", mappedBy="product")
      */
-    protected $ProductElement;
+    protected $button;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\Zip", mappedBy="product")
+     */
+    protected $zip;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\Cloth", mappedBy="product")
+     */
+    protected $cloth;
 
     public function __construct()
     {
-        $this->ProductElement = new ArrayCollection();
+        $this->button = new ArrayCollection();
+        $this->zip = new ArrayCollection();
+        $this->cloth = new ArrayCollection();
     }
+
     /**
      * @var integer
      *
