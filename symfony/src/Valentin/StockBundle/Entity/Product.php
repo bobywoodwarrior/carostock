@@ -14,17 +14,17 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Product
 {
     /**
-     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\Button", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\ProductElement\Button", mappedBy="product")
      */
     protected $button;
 
     /**
-     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\Zip", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\ProductElement\Zip", mappedBy="product")
      */
     protected $zip;
 
     /**
-     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\Cloth", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\ProductElement\Cloth", mappedBy="product")
      */
     protected $cloth;
 

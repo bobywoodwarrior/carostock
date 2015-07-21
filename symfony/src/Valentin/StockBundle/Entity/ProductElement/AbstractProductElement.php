@@ -16,6 +16,7 @@ abstract class AbstractProductElement
     public function __construct(){
         $this->product = new ArrayCollection();
     }
+
     /**
      * @var integer
      *
