@@ -13,3 +13,5 @@
 
 # Misc dev env files
 .idea/
+# doctrine entities generation backup
+*.php~
