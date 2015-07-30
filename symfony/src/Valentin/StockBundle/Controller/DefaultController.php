@@ -8,14 +8,24 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/{name}", name="homepage")
+     * @Route("/", name="homepage")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('ValentinStockBundle:Default:index.html.twig', array(
-            'toto' => $name
+        return $this->render('ValentinStockBundle:Default:index.html.twig');
+    }
+
+    /**
+     * @Route("/test", name="test_page")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function testAction()
+    {
+        return $this->render('ValentinStockBundle:Default:test.html.twig', array(
+            'plop' => 'une variable passée par le controleur'
         ));
     }
 }
