@@ -1,0 +1,10 @@
+.nav-pills {
+    width: 100%;
+    text-align: center;
+}
+
+.nav-pills li {
+      float: none;
+      display: inline-block;
+}
+

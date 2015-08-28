@@ -2,9 +2,30 @@
 <html lang="fr">
     <head>
         <title>Carostock</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% stylesheets 'Valentin/StockBundle/Ressources/assets' %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </head>
-    <body>
+    <body style="width: 800px;">
         <header>
+            <ul class="nav nav-pills">
+                <li role="presentation" class="active"><a href="#">Accueil</a></li>
+                <li role="presentation"><a href="#">Base de données</a></li>
+                <li role="presentation"><a href="http://www.carolinaritz.com">Site</a></li>
+            </ul>
             <p>En tete récurrente</p>
         </header>
 
@@ -12,7 +33,7 @@
         {% endblock %}
 
         <footer>
-            <p>Pieds de page réccurent</p>
+            <p>Pieds de page récurrent</p>
         </footer>
     </body>
 </html>
