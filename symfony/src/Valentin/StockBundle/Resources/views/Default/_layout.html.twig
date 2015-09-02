@@ -6,8 +6,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% stylesheets 'Valentin/StockBundle/Ressources/assets' %}
-            <link rel="stylesheet" href="{{ asset_url }}" />
+
+        test
+
+        {% stylesheets 'ValentinStockBundle/Ressources/assets/style.css' filter="cssrewrite" %}
+            <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
         {% endstylesheets %}
 
         <!-- Latest compiled and minified CSS -->
