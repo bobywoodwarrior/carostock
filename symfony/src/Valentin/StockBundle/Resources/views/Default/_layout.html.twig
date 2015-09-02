@@ -7,10 +7,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        test
-
-        {% stylesheets 'ValentinStockBundle/Ressources/assets/style.css' filter="cssrewrite" %}
-            <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+        {% stylesheets 'bundles/valentinstock/assets/css/style.css' filter="cssrewrite" %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
 
         <!-- Latest compiled and minified CSS -->
@@ -19,8 +17,6 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     </head>
     <body style="width: 800px;">
         <header>
@@ -39,4 +35,8 @@
             <p>Pieds de page récurrent</p>
         </footer>
     </body>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </html>
