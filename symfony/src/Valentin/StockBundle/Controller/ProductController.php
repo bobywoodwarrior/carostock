@@ -4,6 +4,7 @@ namespace Valentin\StockBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Valentin\StockBundle\Entity\Product;
 
 /**
  * Created by PhpStorm.
@@ -26,4 +27,17 @@ class ProductController extends Controller
     {
         return $this->render('ValentinStockBundle:Product:index.html.twig');
     }
+
+    public function addProduct()
+    {
+        $product = new Product();
+
+        $form = $this->createFormBuilder($product)
+            ->getForm();
+
+        return $this->render('ValentinStockBundle:Product:index.html.twig', array(
+            'form' => $form->createView(),
+        ));
+    }
+
 }
