@@ -28,7 +28,6 @@ class ProductController extends Controller
     {
         return $this->render('ValentinStockBundle:Product:index.html.twig');
     }
-
     public function addProduct(Request $request)
     {
         $product = new Product();
