@@ -79,4 +79,118 @@ class Product
     {
         return $this->id;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getButton()
+    {
+        return $this->button;
+    }
+
+    /**
+     * @param mixed $button
+     */
+    public function setButton($button)
+    {
+        $this->button = $button;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getZip()
+    {
+        return $this->zip;
+    }
+
+    /**
+     * @param mixed $zip
+     */
+    public function setZip($zip)
+    {
+        $this->zip = $zip;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCloth()
+    {
+        return $this->cloth;
+    }
+
+    /**
+     * @param mixed $cloth
+     */
+    public function setCloth($cloth)
+    {
+        $this->cloth = $cloth;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * @param int $number
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param int $price
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSeason()
+    {
+        return $this->season;
+    }
+
+    /**
+     * @param string $season
+     */
+    public function setSeason($season)
+    {
+        $this->season = $season;
+    }
+
+
 }

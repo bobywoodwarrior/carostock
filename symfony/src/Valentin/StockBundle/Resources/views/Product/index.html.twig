@@ -1,9 +1,15 @@
 {% extends "ValentinStockBundle:Default:_layout.html.twig" %}
 
 {% block main %}
-    <h1>Product</h1>
-    <form method="POST" {{ form_enctype(form) }}>
-        {{ form_widget(form) }}
-        <input type="submit" id="submit" value="Envoyer" />
-    </form>
+    <h1>Products</h1>
+
+
+    {% for product in products %}
+
+        <p>{{ product.id }} | {{ product.name }} | {{ product.price }}</p>
+
+    {% endfor %}
+
+    <hr>
+    <a href="{{ path('product_add') }}" class="btn btn-primary">Ajouter un produit</a>
 {% endblock %}
