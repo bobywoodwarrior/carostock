@@ -35,10 +35,12 @@ class ProductController extends Controller
 
         $form = $this->createForm(new Product, $product);
         $form->handleRequest($request);
+
         if ($form->isValid())
         {
             return $this->redirect($this->generateUrl('task_success'));
         }
+
         return $this->render('ValentinStockBundle:Product:index.html.twig', array(
             'form' => $form->createView(),
         ));
