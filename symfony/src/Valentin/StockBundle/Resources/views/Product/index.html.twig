@@ -1,7 +1,9 @@
 {% extends "ValentinStockBundle:Default:_layout.html.twig" %}
-{# src/Valentin/SotckBundle/Resources/views/Product/index.html.twig #}
 
 {% block main %}
     <h1>Product</h1>
-    {{ form(form) }}
+    <form method="POST" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <input type="submit" id="submit" value="Envoyer" />
+    </form>
 {% endblock %}

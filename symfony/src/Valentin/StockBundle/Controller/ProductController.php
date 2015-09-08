@@ -4,6 +4,7 @@ namespace Valentin\StockBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 use Valentin\StockBundle\Entity\Product;
 
 /**
@@ -28,16 +29,15 @@ class ProductController extends Controller
         return $this->render('ValentinStockBundle:Product:index.html.twig');
     }
 
-    public function addProduct()
+    public function addProduct(Request $request)
     {
         $product = new Product();
 
-        $form = $this->createFormBuilder($product)
-            ->getForm();
+        $form = $this->createForm(new Product, $product);
+        $form->handleRequest($request);
 
         return $this->render('ValentinStockBundle:Product:index.html.twig', array(
             'form' => $form->createView(),
         ));
     }
-
 }
