@@ -109,7 +109,7 @@ class ProductController extends Controller
      */
     public function editAction(Request $request, Product $product)
     {
-        $form = $this->createForm(new Product(), $product);
+        $form = $this->createForm(new ProductType(), $product);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
