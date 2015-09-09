@@ -6,10 +6,12 @@
 
     {% for product in products %}
 
-        <p>{{ product.id }} | {{ product.name }} | {{ product.price }}</p>
+        <p>{{ product.id }} | {{ product.name }} | {{ product.price }}€ | Quantité : {{ product.number }}</p>
 
     {% endfor %}
 
     <hr>
     <a href="{{ path('product_add') }}" class="btn btn-primary">Ajouter un produit</a>
+    <a href="{{ path('product_edit') }}" class="btn btn-primary">Editer un produit</a>
+    <a href="{{ path('product_delete') }}" class="btn btn-primary">Supprimer un produit</a>
 {% endblock %}

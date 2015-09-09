@@ -1,9 +1,9 @@
 {% extends "ValentinStockBundle:Default:_layout.html.twig" %}
 
 {% block main %}
-    <h1>Ajouter Produit</h1>
+    <h1>Editer Produit</h1>
     <form method="POST" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
-        <input type="submit" id="submit" value="Envoyer" />
+        <input type="submit" id="submit" value="Editer" />
     </form>
 {% endblock %}
