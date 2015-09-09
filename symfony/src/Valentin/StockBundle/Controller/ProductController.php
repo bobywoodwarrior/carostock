@@ -133,7 +133,7 @@ class ProductController extends Controller
             }
         }
 
-        return $this->render('@OvinzDevis/Backend/Affiliate/edit.html.twig', array(
+        return $this->render('ValentinStockBundle:Product:edit.html.twig', array(
             'affiliate' => $product,
             'form'      => $form->createView()
         ));

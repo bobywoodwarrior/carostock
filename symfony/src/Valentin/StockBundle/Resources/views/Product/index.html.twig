@@ -1,14 +1,38 @@
 {% extends "ValentinStockBundle:Default:_layout.html.twig" %}
 
 {% block main %}
-    <h1>Products</h1>
 
+    <hr>
 
+    <!--
     {% for product in products %}
-
         <p>{{ product.id }} | {{ product.name }} | {{ product.price }}€ | Quantité : {{ product.number }}</p>
-
     {% endfor %}
+    -->
+
+    <div class="container">
+        <h2>Base de données</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                    <tr>
+                        <td><p>{{ product.id }}</p></td>
+                        <td><p>{{ product.name }}</p></td>
+                        <td><p>{{ product.price }}€</p></td>
+                        <td><p>{{ product.number }}</p></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
     <hr>
     <a href="{{ path('product_add') }}" class="btn btn-primary">Ajouter un produit</a>
