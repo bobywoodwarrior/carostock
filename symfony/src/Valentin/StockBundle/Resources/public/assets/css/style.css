@@ -1,0 +1,8 @@
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+}
