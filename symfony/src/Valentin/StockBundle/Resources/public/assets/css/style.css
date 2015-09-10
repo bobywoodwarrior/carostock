@@ -1,10 +1,11 @@
-html {
+html{
     display: table;
     margin: auto;
 }
 
-body {
+body{
     display: table-cell;
+    width: 60%;
 }
 
 .table td{
