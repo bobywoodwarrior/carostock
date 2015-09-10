@@ -6,3 +6,11 @@ html {
 body {
     display: table-cell;
 }
+
+.table td{
+    text-align: center;
+}
+
+.table th{
+    text-align: center;
+}
