@@ -19,6 +19,7 @@
                 <th>Nom</th>
                 <th>Prix</th>
                 <th>Quantité</th>
+                <th>Total</th>
             </tr>
             </thead>
             <tbody>
@@ -28,6 +29,7 @@
                         <td><p>{{ product.name }}</p></td>
                         <td><p>{{ product.price }}€</p></td>
                         <td><p>{{ product.number }}</p></td>
+                        <td><p>{{ product.price * product.number }}€</p></td>
                     </tr>
                 {% endfor %}
             </tbody>
