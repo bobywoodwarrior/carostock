@@ -18,6 +18,7 @@
                     <th>Quantité</th>
                     <th>Total</th>
                     <th>Edit</th>
+                    <th>Delete</th>
                  </tr>
             </thead>
             <tbody>
@@ -31,6 +32,11 @@
                         <td>
                             <a href="{{ path('product_edit', {'id':product.id}) }}">
                                 <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('product_delete', {'id':product.id}) }}">
+                                <i class="glyphicon glyphicon-remove" style="color: red;"></i>
                             </a>
                         </td>
                     </tr>
