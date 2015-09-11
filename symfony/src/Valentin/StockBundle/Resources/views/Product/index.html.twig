@@ -17,6 +17,7 @@
                     <th>Prix</th>
                     <th>Quantité</th>
                     <th>Total</th>
+                    <th>Edit</th>
                  </tr>
             </thead>
             <tbody>
@@ -27,6 +28,11 @@
                         <td><p>{{ product.price }}€</p></td>
                         <td><p>{{ product.number }}</p></td>
                         <td><p>{{ product.price * product.number }}€</p></td>
+                        <td>
+                            <a href="{{ path('product_edit', {'id':product.id}) }}">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </td>
                     </tr>
                 {% endfor %}
             </tbody>
@@ -35,7 +41,5 @@
 
     <hr>
 
-    <a href="{{ path('product_add') }}" class="btn btn-primary">Ajouter un produit</a>
-    <a href="{{ path('product_edit') }}" class="btn btn-primary">Editer un produit</a>
-    <a href="{{ path('product_delete') }}" class="btn btn-danger" style="float: right;">Supprimer un produit</a>
+    <a href="{{ path('product_new') }}" class="btn btn-primary">Ajouter un produit</a>
 {% endblock %}

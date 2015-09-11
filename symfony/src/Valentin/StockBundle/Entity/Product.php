@@ -28,13 +28,6 @@ class Product
      */
     protected $cloth;
 
-    public function __construct()
-    {
-        $this->button = new ArrayCollection();
-        $this->zip = new ArrayCollection();
-        $this->cloth = new ArrayCollection();
-    }
-
     /**
      * @var integer
      *
@@ -73,14 +66,18 @@ class Product
     protected $season; //int ou string ?
 
     /**
-     * @return int
+     * Constructor
      */
-    public function getId()
+    public function __construct()
     {
-        return $this->id;
+        $this->button   = new ArrayCollection();
+        $this->zip      = new ArrayCollection();
+        $this->cloth    = new ArrayCollection();
     }
 
     /**
+     * Get Button
+     *
      * @return mixed
      */
     public function getButton()
@@ -89,14 +86,22 @@ class Product
     }
 
     /**
+     * Set button
+     *
      * @param mixed $button
+     *
+     * @return Product
      */
     public function setButton($button)
     {
         $this->button = $button;
+
+        return $this;
     }
 
     /**
+     * Get Zip
+     *
      * @return mixed
      */
     public function getZip()
@@ -105,14 +110,22 @@ class Product
     }
 
     /**
+     * Set zip
+     *
      * @param mixed $zip
+     *
+     * @return Product
      */
     public function setZip($zip)
     {
         $this->zip = $zip;
+
+        return $this;
     }
 
     /**
+     * Get Cloth
+     *
      * @return mixed
      */
     public function getCloth()
@@ -121,14 +134,46 @@ class Product
     }
 
     /**
+     * Set cloth
+     *
      * @param mixed $cloth
+     *
+     * @return Product
      */
     public function setCloth($cloth)
     {
         $this->cloth = $cloth;
+
+        return $this;
     }
 
     /**
+     * Get Id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set id
+     *
+     * @param int $id
+     *
+     * @return Product
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    /**
+     * Get Name
+     *
      * @return string
      */
     public function getName()
@@ -137,14 +182,22 @@ class Product
     }
 
     /**
+     * Set name
+     *
      * @param string $name
+     *
+     * @return Product
      */
     public function setName($name)
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
+     * Get Number
+     *
      * @return int
      */
     public function getNumber()
@@ -153,14 +206,22 @@ class Product
     }
 
     /**
+     * Set number
+     *
      * @param int $number
+     *
+     * @return Product
      */
     public function setNumber($number)
     {
         $this->number = $number;
+
+        return $this;
     }
 
     /**
+     * Get Price
+     *
      * @return int
      */
     public function getPrice()
@@ -169,14 +230,22 @@ class Product
     }
 
     /**
+     * Set price
+     *
      * @param int $price
+     *
+     * @return Product
      */
     public function setPrice($price)
     {
         $this->price = $price;
+
+        return $this;
     }
 
     /**
+     * Get Season
+     *
      * @return string
      */
     public function getSeason()
@@ -185,11 +254,17 @@ class Product
     }
 
     /**
+     * Set season
+     *
      * @param string $season
+     *
+     * @return Product
      */
     public function setSeason($season)
     {
         $this->season = $season;
+
+        return $this;
     }
 
 

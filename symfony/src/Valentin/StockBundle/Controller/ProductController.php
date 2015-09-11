@@ -34,11 +34,11 @@ class ProductController extends Controller
     }
 
     /**
-     * Product Add
+     * New Product
      *
-     * @Route("/add", name="product_add")
+     * @Route("/new", name="product_new")
      */
-    public function addProduct(Request $request)
+    public function newProduct(Request $request)
     {
         $product = new Product();
         $form = $this->createForm(new ProductType(), $product);
@@ -54,7 +54,7 @@ class ProductController extends Controller
                 );
                 return $this->redirect(
                     $this->generateUrl(
-                        'product_index',
+                        'product_edit',
                         array(
                             'id' => $product->getId()
                         )
@@ -62,41 +62,10 @@ class ProductController extends Controller
                 );
             }
         }
-        return $this->render('ValentinStockBundle:Product:add.html.twig', array(
+
+        return $this->render('ValentinStockBundle:Product:new.html.twig', array(
             'product' => $product,
             'form'    => $form->createView()
-        ));
-    }
-
-    /**
-     * Product Delete
-     *
-     * @Route("/delete", name="product_delete")
-     * @param Product $product
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function deleteAction(Request $request, Product $product)
-    {
-        if ($request->getMethod() === 'POST'){
-            $em = $this->getDoctrine()->getManager();
-
-            $em->remove($product);
-            $em->flush();
-
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                'Produit supprimé!'
-            );
-
-            return $this->redirect(
-                $this->generateUrl(
-                    'product_index'
-                )
-            );
-        }
-
-        return $this->render('ValentinStockBundle:Product:delete.html.twig', array(
-            'product' => $product
         ));
     }
 
@@ -104,7 +73,7 @@ class ProductController extends Controller
      * Product Edit
      *
      * @param Product $product
-     * @Route("/edit", name="product_edit")
+     * @Route("/edit/{id}", name="product_edit")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request, Product $product)
@@ -134,8 +103,40 @@ class ProductController extends Controller
         }
 
         return $this->render('ValentinStockBundle:Product:edit.html.twig', array(
-            'affiliate' => $product,
-            'form'      => $form->createView()
+            'product' => $product,
+            'form'    => $form->createView()
+        ));
+    }
+
+    /**
+     * Product Delete
+     *
+     * @Route("/delete/{id}", name="product_delete")
+     * @param Product $product
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteAction(Request $request, Product $product)
+    {
+        if ($request->getMethod() === 'POST'){
+            $em = $this->getDoctrine()->getManager();
+
+            $em->remove($product);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Produit supprimé!'
+            );
+
+            return $this->redirect(
+                $this->generateUrl(
+                    'product_index'
+                )
+            );
+        }
+
+        return $this->render('ValentinStockBundle:Product:delete.html.twig', array(
+            'product' => $product
         ));
     }
 }
