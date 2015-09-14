@@ -4,6 +4,8 @@
     <h1>Ajouter Produit</h1>
     <form method="POST" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
-        <input class="btn btn-success" type="submit" id="submit" value="Ajouter" />
+        <hr>
+        <input class="btn btn-success" type="submit" id="submit" value="Ajouter" style="float: right;"/>
     </form>
+    <a href="{{ path('product_index') }}" class="btn btn-default">Annuler</a>
 {% endblock %}

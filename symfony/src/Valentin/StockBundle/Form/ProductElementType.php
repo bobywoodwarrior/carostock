@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ProductType extends AbstractType
+class ProductElementType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -18,14 +18,7 @@ class ProductType extends AbstractType
             ->add('name','text')
             ->add('price','text')
             ->add('number','text')
-            ->add('season','text')
-            ->add('season', 'choice', array(
-                'choices' => array(
-                    'FW 15/16' => 'FW 15/16',
-                    'SS 16' => 'SS 16'
-                ),
-                'multiple' => false,
-            ));
+        ;
     }
 
     /**
@@ -34,7 +27,7 @@ class ProductType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Valentin\StockBundle\Entity\Product'
+            'data_class' => 'Valentin\StockBundle\Entity\ProductElement\AbstractProductElement'
         ));
     }
 
