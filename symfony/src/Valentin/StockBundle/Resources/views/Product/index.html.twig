@@ -1,19 +1,14 @@
 {% extends "ValentinStockBundle:Default:_layout.html.twig" %}
 
 {% block main %}
-    <!--
-    {% for product in products %}
-        <p>{{ product.id }} | {{ product.name }} | {{ product.price }}€ | Quantité : {{ product.number }}</p>
-    {% endfor %}
-    -->
-
     <div class="container">
-        <h2>Base de données</h2>
+        <h2>Produits en stock</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>id</th>
                     <th>Nom</th>
+                    <th>Saison</th>
                     <th>Prix</th>
                     <th>Quantité</th>
                     <th>Total</th>
@@ -26,6 +21,7 @@
                     <tr>
                         <td><p>{{ product.id }}</p></td>
                         <td><p>{{ product.name }}</p></td>
+                        <td><p>{{ product.season }}</p></td>
                         <td><p>{{ product.price }}€</p></td>
                         <td><p>{{ product.number }}</p></td>
                         <td><p>{{ product.price * product.number }}€</p></td>

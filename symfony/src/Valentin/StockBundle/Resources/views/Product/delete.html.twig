@@ -1,8 +1,10 @@
 {% extends "ValentinStockBundle:Default:_layout.html.twig" %}
 
 {% block main %}
-    <h1>Supprimer Produit</h1>
+    <h1>Êtes-vous sûr vouloir supprimer "{{ product.name }}" ?</h1>
+    <hr>
+    <a href="{{ path('product_index') }}" class="btn btn-primary">Non</a>
     <form method="POST">
-        <button class="btn btn-danger" type="submit">Supprimer</button>
+        <button class="btn btn-danger" type="submit">Oui</button>
     </form>
 {% endblock %}

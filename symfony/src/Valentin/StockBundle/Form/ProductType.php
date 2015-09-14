@@ -19,6 +19,13 @@ class ProductType extends AbstractType
             ->add('price','text')
             ->add('number','text')
             ->add('season','text')
+            ->add('season', 'choice', array(
+                'choices' => array(
+                    'FW 15/16' => 'FW 15/16',
+                    'SS 16' => 'SS 16'
+                ),
+                'multiple' => false,
+            ))
         ;
     }
 
