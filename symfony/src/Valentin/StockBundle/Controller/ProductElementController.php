@@ -12,7 +12,6 @@ use Valentin\StockBundle\Form\ClothType;
 use Valentin\StockBundle\Form\ButtonType;
 
 
-
 /**
  * Created by PhpStorm.
  * User: root
