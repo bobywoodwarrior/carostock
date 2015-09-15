@@ -1,5 +1,6 @@
 <?php
 namespace Valentin\StockBundle\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +27,7 @@ class ProductElementController extends Controller
     public function indexAction()
     {
         $product = $this->getDoctrine()->getManager()
-            ->getRepository('ValentinStockBundle:ProductElement:AbstractProductElement')
+            ->getRepository('ValentinStockBundle:ProductElement\Button')
             ->findAll();
         return $this->render('ValentinStockBundle:ProductElement:index.html.twig', array(
             'products' => $product
