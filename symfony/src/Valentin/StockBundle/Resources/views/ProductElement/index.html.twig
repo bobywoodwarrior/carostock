@@ -86,12 +86,12 @@
                     <td><p>{{ button.id }}</p></td>
                     <td><p>{{ button.name }}</p></td>
                     <td>
-                        <a href="#todo">
+                        <a href="{{ path('button_edit', {'id':button.id}) }}">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
                     </td>
                     <td>
-                        <a href="#todo">
+                        <a href="{{ path('button_delete', {'id':button.id}) }}">
                             <i class="glyphicon glyphicon-remove" style="color: red;"></i>
                         </a>
                     </td>
@@ -99,5 +99,7 @@
             {% endfor %}
             </tbody>
         </table>
+        <hr>
+        <a href="{{ path('button_new') }}" class="btn btn-primary">Ajouter un bouton</a>
     </div>
 {% endblock %}

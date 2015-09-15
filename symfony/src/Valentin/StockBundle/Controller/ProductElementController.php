@@ -6,8 +6,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Valentin\StockBundle\Entity\ProductElement\Zip;
 use Valentin\StockBundle\Entity\ProductElement\Cloth;
+use Valentin\StockBundle\Entity\ProductElement\Button;
 use Valentin\StockBundle\Form\ZipType;
 use Valentin\StockBundle\Form\ClothType;
+use Valentin\StockBundle\Form\ButtonType;
+
 
 
 /**
@@ -168,7 +171,7 @@ class ProductElementController extends Controller
                 $em->flush();
                 $this->get('session')->getFlashBag()->add(
                     'success',
-                    'Zip ajouté !'
+                    'Tissu ajouté !'
                 );
                 return $this->redirect(
                     $this->generateUrl(
@@ -243,7 +246,7 @@ class ProductElementController extends Controller
 
             $this->get('session')->getFlashBag()->add(
                 'success',
-                'Zip supprimé !'
+                'Tissu supprimé !'
             );
 
             return $this->redirect(
@@ -255,6 +258,114 @@ class ProductElementController extends Controller
 
         return $this->render('ValentinStockBundle:ProductElement:delete_cloth.html.twig', array(
             'cloth' => $cloth
+        ));
+    }
+
+
+    /**
+     * New Button
+     *
+     * @Route("/new_button", name="button_new")
+     */
+    public function newButton(Request $request)
+    {
+        $button = new Button();
+        $form = $this->createForm(new ButtonType(), $button);
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($button);
+                $em->flush();
+                $this->get('session')->getFlashBag()->add(
+                    'success',
+                    'Bouton ajouté !'
+                );
+                return $this->redirect(
+                    $this->generateUrl(
+                        'product_element_index',
+                        array(
+                            'id' => $button->getId()
+                        )
+                    )
+                );
+            }
+        }
+
+        return $this->render('ValentinStockBundle:ProductElement:new_button.html.twig', array(
+            'button'   => $button,
+            'form'    => $form->createView()
+        ));
+    }
+
+    /**
+     * Button Edit
+     *
+     * @param Button $button
+     * @Route("/edit_button/{id}", name="button_edit")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editButton(Request $request, Button $button)
+    {
+        $form = $this->createForm(new ButtonType(), $button);
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+
+                $em->flush();
+                $this->get('session')->getFlashBag()->add(
+                    'success',
+                    'Changements sauvegardés !'
+                );
+
+                return $this->redirect(
+                    $this->generateUrl(
+                        'product_element_index',
+                        array(
+                            'id' => $button->getId()
+                        )
+                    )
+                );
+            }
+        }
+
+        return $this->render('ValentinStockBundle:Product:edit.html.twig', array(
+            'button'   => $button,
+            'form'    => $form->createView()
+        ));
+    }
+
+    /**
+     * Button Delete
+     *
+     * @Route("/delete_button/{id}", name="button_delete")
+     * @param Button $button
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteButton(Request $request, Button $button)
+    {
+        if ($request->getMethod() === 'POST'){
+            $em = $this->getDoctrine()->getManager();
+
+            $em->remove($button);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Bouton supprimé !'
+            );
+
+            return $this->redirect(
+                $this->generateUrl(
+                    'product_element_index'
+                )
+            );
+        }
+
+        return $this->render('ValentinStockBundle:ProductElement:delete_button.html.twig', array(
+            'button' => $button
         ));
     }
 }
