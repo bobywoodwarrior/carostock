@@ -26,7 +26,7 @@ class ProductElementController extends Controller
     public function indexAction()
     {
         $product = $this->getDoctrine()->getManager()
-            ->getRepository('ValentinStockBundle:AbstractProductElement')
+            ->getRepository('ValentinStockBundle:ProductElement:AbstractProductElement')
             ->findAll();
         return $this->render('ValentinStockBundle:ProductElement:index.html.twig', array(
             'products' => $product
