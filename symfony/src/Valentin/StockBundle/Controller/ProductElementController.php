@@ -5,7 +5,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Valentin\StockBundle\Entity\ProductElement\Zip;
+use Valentin\StockBundle\Entity\ProductElement\Cloth;
 use Valentin\StockBundle\Form\ZipType;
+use Valentin\StockBundle\Form\ClothType;
 
 
 /**
@@ -83,7 +85,7 @@ class ProductElementController extends Controller
      * @Route("/edit_zip/{id}", name="zip_edit")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, Zip $zip)
+    public function editZip(Request $request, Zip $zip)
     {
         $form = $this->createForm(new ZipType(), $zip);
 
@@ -122,7 +124,7 @@ class ProductElementController extends Controller
      * @param Zip $zip
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteAction(Request $request, Zip $zip)
+    public function deleteZip(Request $request, Zip $zip)
     {
         if ($request->getMethod() === 'POST'){
             $em = $this->getDoctrine()->getManager();
@@ -144,6 +146,115 @@ class ProductElementController extends Controller
 
         return $this->render('ValentinStockBundle:ProductElement:delete_zip.html.twig', array(
             'zip' => $zip
+        ));
+    }
+
+
+
+    /**
+     * New Cloth
+     *
+     * @Route("/new_cloth", name="cloth_new")
+     */
+    public function newCloth(Request $request)
+    {
+        $cloth = new Cloth();
+        $form = $this->createForm(new ClothType(), $cloth);
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($cloth);
+                $em->flush();
+                $this->get('session')->getFlashBag()->add(
+                    'success',
+                    'Zip ajouté !'
+                );
+                return $this->redirect(
+                    $this->generateUrl(
+                        'product_element_index',
+                        array(
+                            'id' => $cloth->getId()
+                        )
+                    )
+                );
+            }
+        }
+
+        return $this->render('ValentinStockBundle:ProductElement:new_cloth.html.twig', array(
+            'cloth'   => $cloth,
+            'form'    => $form->createView()
+        ));
+    }
+
+    /**
+     * Cloth Edit
+     *
+     * @param Cloth $cloth
+     * @Route("/edit_cloth/{id}", name="cloth_edit")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editCloth(Request $request, Cloth $cloth)
+    {
+        $form = $this->createForm(new ClothType(), $cloth);
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+
+                $em->flush();
+                $this->get('session')->getFlashBag()->add(
+                    'success',
+                    'Changements sauvegardés !'
+                );
+
+                return $this->redirect(
+                    $this->generateUrl(
+                        'product_element_index',
+                        array(
+                            'id' => $cloth->getId()
+                        )
+                    )
+                );
+            }
+        }
+
+        return $this->render('ValentinStockBundle:Product:edit.html.twig', array(
+            'cloth'   => $cloth,
+            'form'    => $form->createView()
+        ));
+    }
+
+    /**
+     * Cloth Delete
+     *
+     * @Route("/delete_cloth/{id}", name="cloth_delete")
+     * @param Cloth $cloth
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function deleteCloth(Request $request, Cloth $cloth)
+    {
+        if ($request->getMethod() === 'POST'){
+            $em = $this->getDoctrine()->getManager();
+
+            $em->remove($cloth);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add(
+                'success',
+                'Zip supprimé !'
+            );
+
+            return $this->redirect(
+                $this->generateUrl(
+                    'product_element_index'
+                )
+            );
+        }
+
+        return $this->render('ValentinStockBundle:ProductElement:delete_cloth.html.twig', array(
+            'cloth' => $cloth
         ));
     }
 }

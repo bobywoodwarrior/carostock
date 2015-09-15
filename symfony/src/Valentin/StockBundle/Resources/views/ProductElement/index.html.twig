@@ -31,6 +31,10 @@
             {% endfor %}
             </tbody>
         </table>
+        <hr>
+        <a href="{{ path('zip_new') }}" class="btn btn-primary">Ajouter un zip</a>
+        <hr>
+
 
         <h2>Cloth en stock</h2>
         <table class="table table-striped">
@@ -48,12 +52,12 @@
                     <td><p>{{ cloth.id }}</p></td>
                     <td><p>{{ cloth.name }}</p></td>
                     <td>
-                        <a href="#todo">
+                        <a href="{{ path('cloth_edit', {'id':cloth.id}) }}">
                             <i class="glyphicon glyphicon-edit"></i>
                         </a>
                     </td>
                     <td>
-                        <a href="#todo">
+                        <a href="{{ path('cloth_delete', {'id':cloth.id}) }}">
                             <i class="glyphicon glyphicon-remove" style="color: red;"></i>
                         </a>
                     </td>
@@ -61,6 +65,10 @@
             {% endfor %}
             </tbody>
         </table>
+        <hr>
+        <a href="{{ path('cloth_new') }}" class="btn btn-primary">Ajouter un tissu</a>
+        <hr>
+
 
         <h2>Boutons en stock</h2>
         <table class="table table-striped">
@@ -92,8 +100,4 @@
             </tbody>
         </table>
     </div>
-
-    <hr>
-
-    <a href="{{ path('zip_new') }}" class="btn btn-primary">Ajouter un zip</a>
 {% endblock %}

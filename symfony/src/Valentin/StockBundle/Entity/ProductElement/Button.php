@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Button extends AbstractProductElement
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\Product", inversedBy="button")
+     * @ORM\ManyToMany(targetEntity="Valentin\StockBundle\Entity\Product", inversedBy="button")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
     protected $product;

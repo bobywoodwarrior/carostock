@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Cloth extends AbstractProductElement
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\Product", inversedBy="cloth")
+     * @ORM\ManyToMany(targetEntity="Valentin\StockBundle\Entity\Product", inversedBy="cloth")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
     protected $product;
