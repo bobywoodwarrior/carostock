@@ -8,12 +8,13 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class AbstractProductElement
 {
     /**
-     * @ORM\OneToMany(targetEntity="Product", inversedBy="AbstractProductElement")
+     * @ORM\ManyToMany(targetEntity="Product", inversedBy="AbstractProductElement")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
     protected $product;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->product = new ArrayCollection();
     }
 
@@ -25,13 +26,6 @@ abstract class AbstractProductElement
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="stock", type="integer")
-     */
-    protected $stock;
 
     /**
      * @var string
@@ -63,30 +57,6 @@ abstract class AbstractProductElement
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get Stock
-     *
-     * @return int
-     */
-    public function getStock()
-    {
-        return $this->stock;
-    }
-
-    /**
-     * Set stock
-     *
-     * @param int $stock
-     *
-     * @return $this
-     */
-    public function setStock($stock)
-    {
-        $this->stock = $stock;
 
         return $this;
     }

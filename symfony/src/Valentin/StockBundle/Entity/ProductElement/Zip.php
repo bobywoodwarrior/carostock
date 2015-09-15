@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Zip extends AbstractProductElement
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\Product", inversedBy="zip")
+     * @ORM\ManyToMany(targetEntity="Valentin\StockBundle\Entity\Product", inversedBy="zip")
      * @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      */
     protected $product;

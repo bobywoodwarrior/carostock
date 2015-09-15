@@ -2,23 +2,31 @@
 
 {% block main %}
     <div class="container">
-        <h2>Matières Premières en stock</h2>
+        <h2>Zip en stock</h2>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>id</th>
                 <th>Nom</th>
-                <th>Prix</th>
-                <th>Quantité</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
-            {% for product in products %}
+            {% for zip in zips %}
                 <tr>
-                    <td><p>{{ product.id }}</p></td>
-                    <td><p>{{ product.name }}</p></td>
-                    <td><p>{{ product.price }}€</p></td>
-                    <td><p>{{ product.number }}</p></td>
+                    <td><p>{{ zip.id }}</p></td>
+                    <td><p>{{ zip.name }}</p></td>
+                    <td>
+                        <a href="{{ path('zip_edit', {'id':zip.id}) }}">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{ path('zip_delete', {'id':zip.id}) }}">
+                            <i class="glyphicon glyphicon-remove" style="color: red;"></i>
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>
@@ -27,5 +35,5 @@
 
     <hr>
 
-    <a href="{{ path('product_new') }}" class="btn btn-primary">Ajouter une matière première</a>
+    <a href="{{ path('zip_new') }}" class="btn btn-primary">Ajouter un zip</a>
 {% endblock %}

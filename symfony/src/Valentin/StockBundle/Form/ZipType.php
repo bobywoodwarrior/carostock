@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ProductElementType extends AbstractType
+class ZipType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,8 +16,6 @@ class ProductElementType extends AbstractType
     {
         $builder
             ->add('name','text')
-            ->add('price','text')
-            ->add('number','text')
         ;
     }
 
@@ -27,7 +25,7 @@ class ProductElementType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Valentin\StockBundle\Entity\ProductElement\AbstractProductElement'
+            'data_class' => 'Valentin\StockBundle\Entity\ProductElement\Zip'
         ));
     }
 
@@ -36,6 +34,6 @@ class ProductElementType extends AbstractType
      */
     public function getName()
     {
-        return 'valentin_stockbundle_product';
+        return 'valentin_stockbundle_zip';
     }
 }
