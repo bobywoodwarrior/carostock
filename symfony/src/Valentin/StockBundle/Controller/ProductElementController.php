@@ -26,11 +26,17 @@ class ProductElementController extends Controller
      */
     public function indexAction()
     {
-        $zip = $this->getDoctrine()->getManager()
-            ->getRepository('ValentinStockBundle:ProductElement\Zip')
-            ->findAll();
+        $em = $this->getDoctrine()->getManager();
+
+        $zip    = $em->getRepository('ValentinStockBundle:ProductElement\Zip')->findAll();
+        $cloth  = $em->getRepository('ValentinStockBundle:ProductElement\Cloth')->findAll();
+        $button = $em->getRepository('ValentinStockBundle:ProductElement\Button')->findAll();
+
+
         return $this->render('ValentinStockBundle:ProductElement:index.html.twig', array(
-            'zips' => $zip
+            'zips'      => $zip,
+            'cloths'    => $cloth,
+            'buttons'   => $button
         ));
     }
 

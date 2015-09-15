@@ -31,6 +31,66 @@
             {% endfor %}
             </tbody>
         </table>
+
+        <h2>Cloth en stock</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Nom</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for cloth in cloths %}
+                <tr>
+                    <td><p>{{ cloth.id }}</p></td>
+                    <td><p>{{ cloth.name }}</p></td>
+                    <td>
+                        <a href="#todo">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#todo">
+                            <i class="glyphicon glyphicon-remove" style="color: red;"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Boutons en stock</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>Nom</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for button in buttons %}
+                <tr>
+                    <td><p>{{ button.id }}</p></td>
+                    <td><p>{{ button.name }}</p></td>
+                    <td>
+                        <a href="#todo">
+                            <i class="glyphicon glyphicon-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="#todo">
+                            <i class="glyphicon glyphicon-remove" style="color: red;"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 
     <hr>
