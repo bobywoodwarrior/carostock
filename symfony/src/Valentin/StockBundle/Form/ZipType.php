@@ -16,6 +16,8 @@ class ZipType extends AbstractType
     {
         $builder
             ->add('name','text')
+            ->add('number','text')
+            ->add('price','text')
         ;
     }
 

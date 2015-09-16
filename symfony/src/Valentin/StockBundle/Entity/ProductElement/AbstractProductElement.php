@@ -35,8 +35,23 @@ abstract class AbstractProductElement
     protected $name;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="number", type="integer")
+     */
+    protected $number;
+
+    /**
      * @return int
      */
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="price", type="integer")
+     */
+    protected $price;
+
     public function getId()
     {
         return $this->id;
@@ -60,4 +75,53 @@ abstract class AbstractProductElement
 
         return $this;
     }
+
+    /**
+     * Get Number
+     *
+     * @return int
+     */
+    public function getNumber()
+    {
+        return $this->number;
+    }
+
+    /**
+     * Set number
+     *
+     * @param int $number
+     *
+     * @return $this
+     */
+    public function setNumber($number)
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+
+    /**
+     * Get Price
+     *
+     * @return int
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set price
+     *
+     * @param int $price
+     *
+     * @return Product
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
 }
