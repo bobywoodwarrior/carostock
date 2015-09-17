@@ -54,10 +54,7 @@ class ProductController extends Controller
                 );
                 return $this->redirect(
                     $this->generateUrl(
-                        'product_index',
-                        array(
-                            'id' => $product->getId()
-                        )
+                        'product_index'
                     )
                 );
             }
@@ -93,10 +90,7 @@ class ProductController extends Controller
 
                 return $this->redirect(
                     $this->generateUrl(
-                        'product_index',
-                        array(
-                            'id' => $product->getId()
-                        )
+                        'product_index'
                     )
                 );
             }

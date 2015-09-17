@@ -46,7 +46,7 @@ class ProductElementController extends Controller
     /**
      * New Zip
      *
-     * @Route("/new_zip", name="zip_new")
+     * @Route("/zip/new", name="zip_new")
      */
     public function newZip(Request $request)
     {
@@ -64,10 +64,7 @@ class ProductElementController extends Controller
                 );
                 return $this->redirect(
                     $this->generateUrl(
-                        'product_element_index',
-                        array(
-                            'id' => $zip->getId()
-                        )
+                        'product_element_index'
                     )
                 );
             }
@@ -83,7 +80,7 @@ class ProductElementController extends Controller
      * Zip Edit
      *
      * @param Zip $zip
-     * @Route("/edit_zip/{id}", name="zip_edit")
+     * @Route("/zip/edit/{id}", name="zip_edit")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editZip(Request $request, Zip $zip)
@@ -103,16 +100,13 @@ class ProductElementController extends Controller
 
                 return $this->redirect(
                     $this->generateUrl(
-                        'product_element_index',
-                        array(
-                            'id' => $zip->getId()
-                        )
+                        'product_element_index'
                     )
                 );
             }
         }
 
-        return $this->render('ValentinStockBundle:Product:edit.html.twig', array(
+        return $this->render('ValentinStockBundle:ProductElement:edit_zip.html.twig', array(
             'zip'     => $zip,
             'form'    => $form->createView()
         ));
@@ -121,7 +115,7 @@ class ProductElementController extends Controller
     /**
      * Zip Delete
      *
-     * @Route("/delete_zip/{id}", name="zip_delete")
+     * @Route("/zip/delete/{id}", name="zip_delete")
      * @param Zip $zip
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -155,7 +149,7 @@ class ProductElementController extends Controller
     /**
      * New Cloth
      *
-     * @Route("/new_cloth", name="cloth_new")
+     * @Route("/cloth/new", name="cloth_new")
      */
     public function newCloth(Request $request)
     {
@@ -173,10 +167,7 @@ class ProductElementController extends Controller
                 );
                 return $this->redirect(
                     $this->generateUrl(
-                        'product_element_index',
-                        array(
-                            'id' => $cloth->getId()
-                        )
+                        'product_element_index'
                     )
                 );
             }
@@ -192,7 +183,7 @@ class ProductElementController extends Controller
      * Cloth Edit
      *
      * @param Cloth $cloth
-     * @Route("/edit_cloth/{id}", name="cloth_edit")
+     * @Route("/cloth/edit/{id}", name="cloth_edit")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editCloth(Request $request, Cloth $cloth)
@@ -212,16 +203,13 @@ class ProductElementController extends Controller
 
                 return $this->redirect(
                     $this->generateUrl(
-                        'product_element_index',
-                        array(
-                            'id' => $cloth->getId()
-                        )
+                        'product_element_index'
                     )
                 );
             }
         }
 
-        return $this->render('ValentinStockBundle:Product:edit.html.twig', array(
+        return $this->render('ValentinStockBundle:ProductElement:edit_cloth.html.twig', array(
             'cloth'   => $cloth,
             'form'    => $form->createView()
         ));
@@ -230,7 +218,7 @@ class ProductElementController extends Controller
     /**
      * Cloth Delete
      *
-     * @Route("/delete_cloth/{id}", name="cloth_delete")
+     * @Route("/cloth/delete/{id}", name="cloth_delete")
      * @param Cloth $cloth
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -263,7 +251,7 @@ class ProductElementController extends Controller
     /**
      * New Button
      *
-     * @Route("/new_button", name="button_new")
+     * @Route("/button/new", name="button_new")
      */
     public function newButton(Request $request)
     {
@@ -281,10 +269,7 @@ class ProductElementController extends Controller
                 );
                 return $this->redirect(
                     $this->generateUrl(
-                        'product_element_index',
-                        array(
-                            'id' => $button->getId()
-                        )
+                        'product_element_index'
                     )
                 );
             }
@@ -300,7 +285,7 @@ class ProductElementController extends Controller
      * Button Edit
      *
      * @param Button $button
-     * @Route("/edit_button/{id}", name="button_edit")
+     * @Route("/button/edit/{id}", name="button_edit")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editButton(Request $request, Button $button)
@@ -320,16 +305,13 @@ class ProductElementController extends Controller
 
                 return $this->redirect(
                     $this->generateUrl(
-                        'product_element_index',
-                        array(
-                            'id' => $button->getId()
-                        )
+                        'product_element_index'
                     )
                 );
             }
         }
 
-        return $this->render('ValentinStockBundle:Product:edit.html.twig', array(
+        return $this->render('ValentinStockBundle:ProductElement:edit_button.html.twig', array(
             'button'   => $button,
             'form'    => $form->createView()
         ));
@@ -338,7 +320,7 @@ class ProductElementController extends Controller
     /**
      * Button Delete
      *
-     * @Route("/delete_button/{id}", name="button_delete")
+     * @Route("/button/delete/{id}", name="button_delete")
      * @param Button $button
      * @return \Symfony\Component\HttpFoundation\Response
      */
