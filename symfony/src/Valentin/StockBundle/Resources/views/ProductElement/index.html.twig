@@ -2,17 +2,17 @@
 
 {% block main %}
     <div class="container">
-        <h2>Zip</h2>
+        <h2>Zips</h2>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>#</th>
                 <th>Nom</th>
                 <th>Quantité</th>
-                <th>Price</th>
+                <th>Prix</th>
                 <th>Total</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
             </tr>
             </thead>
             <tbody>
@@ -21,7 +21,7 @@
                     <td><p>{{ zip.id }}</p></td>
                     <td><p>{{ zip.name }}</p></td>
                     <td><p>{{ zip.number }}</p></td>
-                    <th><p>{{ zip.price }}€</p>
+                    <th><p style="font-weight: normal;">{{ zip.price }}€</p>
                     <th><p>{{ zip.number * zip.price }}€</p></th>
                     <td>
                         <a href="{{ path('zip_edit', {'id':zip.id}) }}">
@@ -42,17 +42,17 @@
         <hr>
 
 
-        <h2>Tissu</h2>
+        <h2>Tissus</h2>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>#</th>
                 <th>Nom</th>
                 <th>Quantité</th>
-                <th>Price</th>
+                <th>Prix</th>
                 <th>Total</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
             </tr>
             </thead>
             <tbody>
@@ -61,7 +61,7 @@
                     <td><p>{{ cloth.id }}</p></td>
                     <td><p>{{ cloth.name }}</p></td>
                     <td><p>{{ cloth.number }}m</p></td>
-                    <th><p>{{ cloth.price }}€</p></th>
+                    <th><p style="font-weight: normal;">{{ cloth.price }}€/m</p></th>
                     <th><p>{{ cloth.number * cloth.price }}€</p></th>
                     <td>
                         <a href="{{ path('cloth_edit', {'id':cloth.id}) }}">
@@ -89,10 +89,10 @@
                 <th>#</th>
                 <th>Nom</th>
                 <th>Quantité</th>
-                <th>Price</th>
+                <th>Prix</th>
                 <th>Total</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
             </tr>
             </thead>
             <tbody>
@@ -101,7 +101,7 @@
                     <td><p>{{ button.id }}</p></td>
                     <td><p>{{ button.name }}</p></td>
                     <td><p>{{ button.number }}</p></td>
-                    <th><p>{{ button.price }}€</p></th>
+                    <th><p style="font-weight: normal;">{{ button.price }}€</p></th>
                     <th><p>{{ button.number * button.price }}€</p></th>
                     <td>
                         <a href="{{ path('button_edit', {'id':button.id}) }}">

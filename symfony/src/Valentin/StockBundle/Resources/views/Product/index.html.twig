@@ -12,8 +12,8 @@
                     <th>Prix</th>
                     <th>Quantité</th>
                     <th>Total</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>Editer</th>
+                    <th>Supprimer</th>
                  </tr>
             </thead>
             <tbody>
@@ -24,7 +24,7 @@
                         <td><p>{{ product.season }}</p></td>
                         <td><p>{{ product.price }}€</p></td>
                         <td><p>{{ product.number }}</p></td>
-                        <td><p>{{ product.price * product.number }}€</p></td>
+                        <td><p style="font-weight: bold;">{{ product.price * product.number }}€</p></td>
                         <td>
                             <a href="{{ path('product_edit', {'id':product.id}) }}">
                                 <i class="glyphicon glyphicon-edit"></i>
