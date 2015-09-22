@@ -42,15 +42,18 @@ abstract class AbstractProductElement
     protected $number;
 
     /**
-     * @return int
-     */
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="price", type="integer")
      */
     protected $price;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ref", type="string", length=255)
+     */
+    protected $ref;
 
     public function getId()
     {
@@ -124,4 +127,27 @@ abstract class AbstractProductElement
         return $this;
     }
 
+    /**
+     * Get Ref
+     *
+     * @return string
+     */
+    public function getRef()
+    {
+        return $this->ref;
+    }
+
+    /**
+     * Set ref
+     *
+     * @param string $ref
+     *
+     * @return Product
+     */
+    public function setRef($ref)
+    {
+        $this->ref = $ref;
+
+        return $this;
+    }
 }

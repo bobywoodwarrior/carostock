@@ -18,6 +18,7 @@ class ProductType extends AbstractType
             ->add('name','text')
             ->add('price','text')
             ->add('number','text')
+            ->add('ref','text')
             ->add('season','text')
             ->add('season', 'choice', array(
                 'choices' => array(

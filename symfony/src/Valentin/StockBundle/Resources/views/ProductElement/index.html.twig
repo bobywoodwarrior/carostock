@@ -7,6 +7,7 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>Ref</th>
                     <th>Nom</th>
                     <th>Quantité</th>
                     <th>Prix</th>
@@ -16,25 +17,26 @@
                 </tr>
             </thead>
             <tbody>
-            {% for zip in zips %}
-                <tr>
-                    <td><p>{{ zip.id }}</p></td>
-                    <td><p>{{ zip.name }}</p></td>
-                    <td><p>{{ zip.number }}</p></td>
-                    <th><p style="font-weight: normal;">{{ zip.price }}€</p>
-                    <th><p>{{ zip.number * zip.price }}€</p></th>
-                    <td>
-                        <a href="{{ path('zip_edit', {'id':zip.id}) }}">
-                            <i class="glyphicon glyphicon-edit"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{ path('zip_delete', {'id':zip.id}) }}">
-                            <i class="glyphicon glyphicon-remove" style="color: red;"></i>
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
+                {% for zip in zips %}
+                    <tr>
+                        <td><p>{{ zip.id }}</p></td>
+                        <td><p>{{ zip.ref }}</p></td>
+                        <td><p>{{ zip.name }}</p></td>
+                        <td><p>{{ zip.number }}</p></td>
+                        <th><p style="font-weight: normal;">{{ zip.price }}€</p>
+                        <th><p>{{ zip.number * zip.price }}€</p></th>
+                        <td>
+                            <a href="{{ path('zip_edit', {'id':zip.id}) }}">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('zip_delete', {'id':zip.id}) }}">
+                                <i class="glyphicon glyphicon-remove" style="color: red;"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
         <hr>
@@ -47,6 +49,7 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>Ref</th>
                     <th>Nom</th>
                     <th>Quantité</th>
                     <th>Prix</th>
@@ -56,25 +59,26 @@
                 </tr>
             </thead>
             <tbody>
-            {% for cloth in cloths %}
-                <tr>
-                    <td><p>{{ cloth.id }}</p></td>
-                    <td><p>{{ cloth.name }}</p></td>
-                    <td><p>{{ cloth.number }}m</p></td>
-                    <th><p style="font-weight: normal;">{{ cloth.price }}€/m</p></th>
-                    <th><p>{{ cloth.number * cloth.price }}€</p></th>
-                    <td>
-                        <a href="{{ path('cloth_edit', {'id':cloth.id}) }}">
-                            <i class="glyphicon glyphicon-edit"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{ path('cloth_delete', {'id':cloth.id}) }}">
-                            <i class="glyphicon glyphicon-remove" style="color: red;"></i>
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
+                {% for cloth in cloths %}
+                    <tr>
+                        <td><p>{{ cloth.id }}</p></td>
+                        <td><p>{{ cloth.ref }}</p></td>
+                        <td><p>{{ cloth.name }}</p></td>
+                        <td><p>{{ cloth.number }}m</p></td>
+                        <th><p style="font-weight: normal;">{{ cloth.price }}€/m</p></th>
+                        <th><p>{{ cloth.number * cloth.price }}€</p></th>
+                        <td>
+                            <a href="{{ path('cloth_edit', {'id':cloth.id}) }}">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('cloth_delete', {'id':cloth.id}) }}">
+                                <i class="glyphicon glyphicon-remove" style="color: red;"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
         <hr>
@@ -87,6 +91,7 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>Ref</th>
                     <th>Nom</th>
                     <th>Quantité</th>
                     <th>Prix</th>
@@ -96,25 +101,26 @@
                 </tr>
             </thead>
             <tbody>
-            {% for button in buttons %}
-                <tr>
-                    <td><p>{{ button.id }}</p></td>
-                    <td><p>{{ button.name }}</p></td>
-                    <td><p>{{ button.number }}</p></td>
-                    <th><p style="font-weight: normal;">{{ button.price }}€</p></th>
-                    <th><p>{{ button.number * button.price }}€</p></th>
-                    <td>
-                        <a href="{{ path('button_edit', {'id':button.id}) }}">
-                            <i class="glyphicon glyphicon-edit"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="{{ path('button_delete', {'id':button.id}) }}">
-                            <i class="glyphicon glyphicon-remove" style="color: red;"></i>
-                        </a>
-                    </td>
-                </tr>
-            {% endfor %}
+                {% for button in buttons %}
+                    <tr>
+                        <td><p>{{ button.id }}</p></td>
+                        <td><p>{{ button.ref }}</p></td>
+                        <td><p>{{ button.name }}</p></td>
+                        <td><p>{{ button.number }}</p></td>
+                        <th><p style="font-weight: normal;">{{ button.price }}€</p></th>
+                        <th><p>{{ button.number * button.price }}€</p></th>
+                        <td>
+                            <a href="{{ path('button_edit', {'id':button.id}) }}">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ path('button_delete', {'id':button.id}) }}">
+                                <i class="glyphicon glyphicon-remove" style="color: red;"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
             </tbody>
         </table>
         <hr>

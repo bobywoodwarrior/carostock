@@ -18,6 +18,7 @@ class ZipType extends AbstractType
             ->add('name','text')
             ->add('number','text')
             ->add('price','text')
+            ->add('ref','text')
         ;
     }
 

@@ -66,6 +66,13 @@ class Product
     protected $season; //int ou string ?
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="ref", type="string", length=255)
+     */
+    protected $ref;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -267,5 +274,27 @@ class Product
         return $this;
     }
 
+    /**
+     * Get Ref
+     *
+     * @return string
+     */
+    public function getRef()
+    {
+        return $this->ref;
+    }
 
+    /**
+     * Set ref
+     *
+     * @param string $ref
+     *
+     * @return Product
+     */
+    public function setRef($ref)
+    {
+        $this->ref = $ref;
+
+        return $this;
+    }
 }

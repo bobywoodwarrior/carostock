@@ -7,6 +7,7 @@
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>Ref</th>
                     <th>Nom</th>
                     <th>Saison</th>
                     <th>Prix</th>
@@ -20,6 +21,7 @@
                 {% for product in products %}
                     <tr>
                         <td><p>{{ product.id }}</p></td>
+                        <td><p>{{ product.ref }}</p></td>
                         <td><p>{{ product.name }}</p></td>
                         <td><p>{{ product.season }}</p></td>
                         <td><p>{{ product.price }}€</p></td>
