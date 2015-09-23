@@ -10,7 +10,10 @@
                     <th>Ref</th>
                     <th>Nom</th>
                     <th>Saison</th>
-                    <th>Prix</th>
+                    <th>Size</th>
+                    <th>Tissu</th>
+                    <th>Prix Prod</th>
+                    <th>Prix Whole Sale</th>
                     <th>Quantité</th>
                     <th>Total</th>
                     <th>Editer</th>
@@ -24,9 +27,12 @@
                         <td><p>{{ product.ref }}</p></td>
                         <td><p>{{ product.name }}</p></td>
                         <td><p>{{ product.season }}</p></td>
-                        <td><p>{{ product.price }}€</p></td>
+                        <td><p>{{ product.size }}</p></td>
+                        <td><p>{{ product.name_cloth }}</p></td>
+                        <td><p>{{ product.price_prod }}</p></td>
+                        <td><p>{{ product.price_whole }}</p></td>
                         <td><p>{{ product.number }}</p></td>
-                        <td><p style="font-weight: bold;">{{ product.price * product.number }}€</p></td>
+                        <td><p style="font-weight: bold;">{{ product.price_whole * product.number }}€</p></td>
                         <td>
                             <a href="{{ path('product_edit', {'id':product.id}) }}">
                                 <i class="glyphicon glyphicon-edit"></i>
@@ -68,7 +74,7 @@
                         <td><input type="text" value="{{ product.ref }}" class="form-control" placeholder="Référence" min=0></td>
                         <td><input type="text" value="{{ product.name }}" class="form-control" placeholder="Nom"></td>
                         <td><input type="text" value="{{ product.season }}" class="form-control" placeholder="Saison"></td>
-                        <td><input type="number" value="{{ product.price }}" class="form-control bfh-number" min=0></td>
+                        <td><input type="number" value="{{ product.price_whole }}" class="form-control bfh-number" min=0></td>
                         <td><input type="number" value="{{ product.number }}" class="form-control bfh-number" min=0></td>
                         <td>{{ product.price * product.number }}</td>
                         <td>
@@ -84,7 +90,7 @@
                     <td class="success"></td>
                     <td class="success"></td>
                     <td class="success">€</td>
-                    <td class="success"></td>
+                    <td class="success">article(s)</td>
                     <td class="success">€</td>
                     <td class="success"></td>
                 </tr>

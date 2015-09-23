@@ -52,16 +52,9 @@ class Product
     protected $number;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="price", type="integer")
-     */
-    protected $price;
-
-    /**
      * @var string
      *
-     * @ORM\Column(name="saison", type="string", length=255)
+     * @ORM\Column(name="season", type="string", length=255)
      */
     protected $season; //int ou string ?
 
@@ -71,6 +64,34 @@ class Product
      * @ORM\Column(name="ref", type="string", length=255)
      */
     protected $ref;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name_cloth", type="string", length=255)
+     */
+    protected $name_cloth;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="size", type="integer")
+     */
+    protected $size;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="price_prod", type="integer")
+     */
+    protected $price_prod;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="price_whole", type="integer")
+     */
+    protected $price_whole;
 
     /**
      * Constructor
@@ -97,7 +118,7 @@ class Product
      *
      * @param mixed $button
      *
-     * @return Product
+     * @return $this
      */
     public function setButton($button)
     {
@@ -121,7 +142,7 @@ class Product
      *
      * @param mixed $zip
      *
-     * @return Product
+     * @return $this
      */
     public function setZip($zip)
     {
@@ -145,7 +166,7 @@ class Product
      *
      * @param mixed $cloth
      *
-     * @return Product
+     * @return $this
      */
     public function setCloth($cloth)
     {
@@ -169,7 +190,7 @@ class Product
      *
      * @param int $id
      *
-     * @return Product
+     * @return $this
      */
     public function setId($id)
     {
@@ -193,7 +214,7 @@ class Product
      *
      * @param string $name
      *
-     * @return Product
+     * @return $this
      */
     public function setName($name)
     {
@@ -217,35 +238,11 @@ class Product
      *
      * @param int $number
      *
-     * @return Product
+     * @return $this
      */
     public function setNumber($number)
     {
         $this->number = $number;
-
-        return $this;
-    }
-
-    /**
-     * Get Price
-     *
-     * @return int
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * Set price
-     *
-     * @param int $price
-     *
-     * @return Product
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
 
         return $this;
     }
@@ -265,7 +262,7 @@ class Product
      *
      * @param string $season
      *
-     * @return Product
+     * @return $this
      */
     public function setSeason($season)
     {
@@ -289,11 +286,107 @@ class Product
      *
      * @param string $ref
      *
-     * @return Product
+     * @return $this
      */
     public function setRef($ref)
     {
         $this->ref = $ref;
+
+        return $this;
+    }
+
+    /**
+     * Get name_cloth
+     *
+     * @return string
+     */
+    public function getNameCloth()
+    {
+        return $this->name_cloth;
+    }
+
+    /**
+     * Set name_cloth
+     *
+     * @param string $name_cloth
+     *
+     * @return $this
+     */
+    public function setNameCloth($name_cloth)
+    {
+        $this->name_cloth = $name_cloth;
+
+        return $this;
+    }
+
+    /**
+     * Get price_prod
+     *
+     * @return int
+     */
+    public function getPriceProd()
+    {
+        return $this->price_prod;
+    }
+
+    /**
+     * Set price_prod
+     *
+     * @param int $price_prod
+     *
+     * @return $this
+     */
+    public function setPriceProd($price_prod)
+    {
+        $this->price_prod = $price_prod;
+
+        return $this;
+    }
+
+    /**
+     * Get price_whole
+     *
+     * @return int
+     */
+    public function getPriceWhole()
+    {
+        return $this->price_whole;
+    }
+
+    /**
+     * Set price_whole
+     *
+     * @param int $price_whole
+     *
+     * @return $this
+     */
+    public function setPriceWhole($price_whole)
+    {
+        $this->price_whole = $price_whole;
+
+        return $this;
+    }
+
+    /**
+     * Get size
+     *
+     * @return int
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     * Set size
+     *
+     * @param int $size
+     *
+     * @return $this
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
 
         return $this;
     }
