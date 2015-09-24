@@ -320,6 +320,30 @@ class Product
     }
 
     /**
+     * Get size
+     *
+     * @return int
+     */
+    public function getSize()
+    {
+        return $this->size;
+    }
+
+    /**
+     * Set size
+     *
+     * @param int $size
+     *
+     * @return $this
+     */
+    public function setSize($size)
+    {
+        $this->size = $size;
+
+        return $this;
+    }
+
+    /**
      * Get price_prod
      *
      * @return int
@@ -363,30 +387,6 @@ class Product
     public function setPriceWhole($price_whole)
     {
         $this->price_whole = $price_whole;
-
-        return $this;
-    }
-
-    /**
-     * Get size
-     *
-     * @return int
-     */
-    public function getSize()
-    {
-        return $this->size;
-    }
-
-    /**
-     * Set size
-     *
-     * @param int $size
-     *
-     * @return $this
-     */
-    public function setSize($size)
-    {
-        $this->size = $size;
 
         return $this;
     }
