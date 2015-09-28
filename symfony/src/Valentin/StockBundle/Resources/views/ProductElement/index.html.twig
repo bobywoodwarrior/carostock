@@ -27,8 +27,8 @@
                         <td><p>{{ zip.brand }}</p></td>
                         <td><p>{{ zip.color }}</p></td>
                         <td><p>{{ zip.number }}</p></td>
-                        <th><p style="font-weight: normal;">{{ zip.price }}€</p>
-                        <th><p>{{ zip.number * zip.price }}€</p></th>
+                        <td><p>{{ zip.price }}€</p></td>
+                        <td><p style="font-weight: bold;">{{ zip.number * zip.price }}€</p></td>
                         <td>
                             <a href="{{ path('zip_edit', {'id':zip.id}) }}">
                                 <i class="glyphicon glyphicon-edit"></i>
@@ -71,8 +71,8 @@
                         <td><p>{{ cloth.name }}</p></td>
                         <td><p>{{ cloth.brand }}</p></td>
                         <td><p>{{ cloth.number }}m</p></td>
-                        <th><p style="font-weight: normal;">{{ cloth.price }}€/m</p></th>
-                        <th><p>{{ cloth.number * cloth.price }}€</p></th>
+                        <td><p>{{ cloth.price }}€/m</p></td>
+                        <td><p style="font-weight: bold;">{{ cloth.number * cloth.price }}€</p></td>
                         <td>
                             <a href="{{ path('cloth_edit', {'id':cloth.id}) }}">
                                 <i class="glyphicon glyphicon-edit"></i>
@@ -117,8 +117,8 @@
                         <td><p>{{ button.brand }}</p></td>
                         <td><p>{{ button.color }}</p></td>
                         <td><p>{{ button.number }}</p></td>
-                        <th><p style="font-weight: normal;">{{ button.price }}€</p></th>
-                        <th><p>{{ button.number * button.price }}€</p></th>
+                        <td><p>{{ button.price }}€</p></td>
+                        <td><p style="font-weight: bold;">{{ button.number * button.price }}€</p></td>
                         <td>
                             <a href="{{ path('button_edit', {'id':button.id}) }}">
                                 <i class="glyphicon glyphicon-edit"></i>
