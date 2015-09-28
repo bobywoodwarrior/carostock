@@ -28,11 +28,11 @@
                         <td><p>{{ product.name }}</p></td>
                         <td><p>{{ product.season }}</p></td>
                         <td><p>{{ product.size }}</p></td>
-                        <td><p>{{ product.name_cloth }}</p></td>
-                        <td><p>{{ product.price_prod }}</p></td>
-                        <td><p>{{ product.price_whole }}</p></td>
+                        <td><p>{{ product.nameCloth }}</p></td>
+                        <td><p>{{ product.priceProd }}</p></td>
+                        <td><p>{{ product.priceWhole }}</p></td>
                         <td><p>{{ product.number }}</p></td>
-                        <td><p style="font-weight: bold;">{{ product.price_whole * product.number }}€</p></td>
+                        <td><p style="font-weight: bold;">{{ product.priceWhole * product.number }}€</p></td>
                         <td>
                             <a href="{{ path('product_edit', {'id':product.id}) }}">
                                 <i class="glyphicon glyphicon-edit"></i>
@@ -74,9 +74,9 @@
                         <td><input type="text" value="{{ product.ref }}" class="form-control" placeholder="Référence" min=0></td>
                         <td><input type="text" value="{{ product.name }}" class="form-control" placeholder="Nom"></td>
                         <td><input type="text" value="{{ product.season }}" class="form-control" placeholder="Saison"></td>
-                        <td><input type="number" value="{{ product.price_whole }}" class="form-control bfh-number" min=0></td>
+                        <td><input type="number" value="{{ product.priceWhole }}" class="form-control bfh-number" min=0></td>
                         <td><input type="number" value="{{ product.number }}" class="form-control bfh-number" min=0></td>
-                        <td>{{ product.price * product.number }}</td>
+                        <td>{{ product.priceWhole * product.number }}</td>
                         <td>
                             <a href="{{ path('product_delete', {'id':product.id}) }}">
                                 <i class="glyphicon glyphicon-remove" style="color: red;"></i>

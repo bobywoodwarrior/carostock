@@ -55,6 +55,20 @@ abstract class AbstractProductElement
      */
     protected $ref;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="brand", type="string", length=255)
+     */
+    protected $brand;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="color", type="string", length=255)
+     */
+    protected $color;
+
     public function getId()
     {
         return $this->id;
@@ -147,6 +161,44 @@ abstract class AbstractProductElement
     public function setRef($ref)
     {
         $this->ref = $ref;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBrand()
+    {
+        return $this->brand;
+    }
+
+    /**
+     * @param $brand
+     * @return $this
+     */
+    public function setBrand($brand)
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getColor()
+    {
+        return $this->color;
+    }
+
+    /**
+     * @param $color
+     * @return $this
+     */
+    public function setColor($color)
+    {
+        $this->color = $color;
 
         return $this;
     }

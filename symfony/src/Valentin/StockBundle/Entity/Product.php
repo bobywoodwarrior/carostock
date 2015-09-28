@@ -70,7 +70,7 @@ class Product
      *
      * @ORM\Column(name="name_cloth", type="string", length=255)
      */
-    protected $name_cloth;
+    protected $nameCloth;
 
     /**
      * @var integer
@@ -84,14 +84,14 @@ class Product
      *
      * @ORM\Column(name="price_prod", type="integer")
      */
-    protected $price_prod;
+    protected $priceProd;
 
     /**
      * @var integer
      *
      * @ORM\Column(name="price_whole", type="integer")
      */
-    protected $price_whole;
+    protected $priceWhole;
 
     /**
      * Constructor
@@ -302,19 +302,19 @@ class Product
      */
     public function getNameCloth()
     {
-        return $this->name_cloth;
+        return $this->nameCloth;
     }
 
     /**
      * Set name_cloth
      *
-     * @param string $name_cloth
+     * @param string $nameCloth
      *
      * @return $this
      */
-    public function setNameCloth($name_cloth)
+    public function setNameCloth($nameCloth)
     {
-        $this->name_cloth = $name_cloth;
+        $this->nameCloth = $nameCloth;
 
         return $this;
     }
@@ -350,19 +350,19 @@ class Product
      */
     public function getPriceProd()
     {
-        return $this->price_prod;
+        return $this->priceProd;
     }
 
     /**
      * Set price_prod
      *
-     * @param int $price_prod
+     * @param int $priceProd
      *
      * @return $this
      */
-    public function setPriceProd($price_prod)
+    public function setPriceProd($priceProd)
     {
-        $this->price_prod = $price_prod;
+        $this->priceProd = $priceProd;
 
         return $this;
     }
@@ -374,19 +374,19 @@ class Product
      */
     public function getPriceWhole()
     {
-        return $this->price_whole;
+        return $this->priceWhole;
     }
 
     /**
      * Set price_whole
      *
-     * @param int $price_whole
+     * @param int $priceWhole
      *
      * @return $this
      */
-    public function setPriceWhole($price_whole)
+    public function setPriceWhole($priceWhole)
     {
-        $this->price_whole = $price_whole;
+        $this->priceWhole = $priceWhole;
 
         return $this;
     }

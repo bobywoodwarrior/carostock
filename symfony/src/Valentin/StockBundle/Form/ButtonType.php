@@ -19,6 +19,8 @@ class ButtonType extends AbstractType
             ->add('number','text')
             ->add('price','text')
             ->add('ref','text')
+            ->add('brand','text')
+            ->add('color','text')
         ;
     }
 

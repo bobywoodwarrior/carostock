@@ -17,13 +17,11 @@ class ProductType extends AbstractType
         $builder
             ->add('ref','text')
             ->add('name','text')
-            ->add('price','text')
-            ->add('price_prod','text')
-            ->add('price_whole','text')
+            ->add('priceProd','text')
+            ->add('priceWhole','text')
             ->add('number','text')
             ->add('size','text')
-            ->add('name_cloth','text')
-            ->add('season','text')
+            ->add('nameCloth','text')
             ->add('season', 'choice', array(
                 'choices' => array(
                     'FW 15/16' => 'FW 15/16',

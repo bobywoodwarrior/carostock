@@ -30,6 +30,9 @@ framework:
         handler_id:  ~
     fragments:       ~
     http_method_override: true
+    session:
+        gc_probability: 0
+
 
 # Twig Configuration
 twig:

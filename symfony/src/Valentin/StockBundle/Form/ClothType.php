@@ -19,6 +19,7 @@ class ClothType extends AbstractType
             ->add('number','text')
             ->add('price','text')
             ->add('ref','text')
+            ->add('brand','text')
         ;
     }
 
