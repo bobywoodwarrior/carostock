@@ -14,21 +14,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Product
 {
     /**
-     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\ProductElement\Button", mappedBy="product")
-     */
-    protected $button;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\ProductElement\Zip", mappedBy="product")
-     */
-    protected $zip;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\ProductElement\Cloth", mappedBy="product")
-     */
-    protected $cloth;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -47,44 +32,23 @@ class Product
     /**
      * @var integer
      *
-     * @ORM\Column(name="number", type="integer")
+     * @ORM\Column(name="quantity", type="integer")
      */
-    protected $number;
+    protected $quantity;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="season", type="string", length=255)
+     * @ORM\Column(name="season", type="string", length=255, nullable=true)
      */
-    protected $season; //int ou string ?
+    protected $season;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="ref", type="string", length=255)
+     * @ORM\Column(name="reference", type="string", length=255)
      */
-    protected $ref;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name_cloth", type="string", length=255)
-     */
-    protected $nameCloth;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="size", type="integer")
-     */
-    protected $size;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="price_prod", type="integer")
-     */
-    protected $priceProd;
+    protected $reference;
 
     /**
      * @var integer
@@ -94,85 +58,24 @@ class Product
     protected $priceWhole;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\ProductModel", inversedBy="product")
+     * @ORM\JoinColumn(name="productModel_id", referencedColumnName="id")
+     */
+    protected $productModel;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    protected $createdAt;
+
+    /**
      * Constructor
      */
     public function __construct()
     {
-        $this->button   = new ArrayCollection();
-        $this->zip      = new ArrayCollection();
-        $this->cloth    = new ArrayCollection();
-    }
 
-    /**
-     * Get Button
-     *
-     * @return mixed
-     */
-    public function getButton()
-    {
-        return $this->button;
-    }
-
-    /**
-     * Set button
-     *
-     * @param mixed $button
-     *
-     * @return $this
-     */
-    public function setButton($button)
-    {
-        $this->button = $button;
-
-        return $this;
-    }
-
-    /**
-     * Get Zip
-     *
-     * @return mixed
-     */
-    public function getZip()
-    {
-        return $this->zip;
-    }
-
-    /**
-     * Set zip
-     *
-     * @param mixed $zip
-     *
-     * @return $this
-     */
-    public function setZip($zip)
-    {
-        $this->zip = $zip;
-
-        return $this;
-    }
-
-    /**
-     * Get Cloth
-     *
-     * @return mixed
-     */
-    public function getCloth()
-    {
-        return $this->cloth;
-    }
-
-    /**
-     * Set cloth
-     *
-     * @param mixed $cloth
-     *
-     * @return $this
-     */
-    public function setCloth($cloth)
-    {
-        $this->cloth = $cloth;
-
-        return $this;
     }
 
     /**
@@ -190,7 +93,7 @@ class Product
      *
      * @param int $id
      *
-     * @return $this
+     * @return Product
      */
     public function setId($id)
     {
@@ -214,35 +117,11 @@ class Product
      *
      * @param string $name
      *
-     * @return $this
+     * @return Product
      */
     public function setName($name)
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get Number
-     *
-     * @return int
-     */
-    public function getNumber()
-    {
-        return $this->number;
-    }
-
-    /**
-     * Set number
-     *
-     * @param int $number
-     *
-     * @return $this
-     */
-    public function setNumber($number)
-    {
-        $this->number = $number;
 
         return $this;
     }
@@ -262,7 +141,7 @@ class Product
      *
      * @param string $season
      *
-     * @return $this
+     * @return Product
      */
     public function setSeason($season)
     {
@@ -272,103 +151,31 @@ class Product
     }
 
     /**
-     * Get Ref
+     * Get Reference
      *
      * @return string
      */
-    public function getRef()
+    public function getReference()
     {
-        return $this->ref;
+        return $this->reference;
     }
 
     /**
-     * Set ref
+     * Set reference
      *
-     * @param string $ref
+     * @param string $reference
      *
-     * @return $this
+     * @return Product
      */
-    public function setRef($ref)
+    public function setReference($reference)
     {
-        $this->ref = $ref;
+        $this->reference = $reference;
 
         return $this;
     }
 
     /**
-     * Get name_cloth
-     *
-     * @return string
-     */
-    public function getNameCloth()
-    {
-        return $this->nameCloth;
-    }
-
-    /**
-     * Set name_cloth
-     *
-     * @param string $nameCloth
-     *
-     * @return $this
-     */
-    public function setNameCloth($nameCloth)
-    {
-        $this->nameCloth = $nameCloth;
-
-        return $this;
-    }
-
-    /**
-     * Get size
-     *
-     * @return int
-     */
-    public function getSize()
-    {
-        return $this->size;
-    }
-
-    /**
-     * Set size
-     *
-     * @param int $size
-     *
-     * @return $this
-     */
-    public function setSize($size)
-    {
-        $this->size = $size;
-
-        return $this;
-    }
-
-    /**
-     * Get price_prod
-     *
-     * @return int
-     */
-    public function getPriceProd()
-    {
-        return $this->priceProd;
-    }
-
-    /**
-     * Set price_prod
-     *
-     * @param int $priceProd
-     *
-     * @return $this
-     */
-    public function setPriceProd($priceProd)
-    {
-        $this->priceProd = $priceProd;
-
-        return $this;
-    }
-
-    /**
-     * Get price_whole
+     * Get PriceWhole
      *
      * @return int
      */
@@ -378,15 +185,87 @@ class Product
     }
 
     /**
-     * Set price_whole
+     * Set priceWhole
      *
      * @param int $priceWhole
      *
-     * @return $this
+     * @return Product
      */
     public function setPriceWhole($priceWhole)
     {
         $this->priceWhole = $priceWhole;
+
+        return $this;
+    }
+
+    /**
+     * Get ProductModel
+     *
+     * @return mixed
+     */
+    public function getProductModel()
+    {
+        return $this->productModel;
+    }
+
+    /**
+     * Set productModel
+     *
+     * @param mixed $productModel
+     *
+     * @return Product
+     */
+    public function setProductModel($productModel)
+    {
+        $this->productModel = $productModel;
+
+        return $this;
+    }
+
+    /**
+     * Get Quantity
+     *
+     * @return int
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param int $quantity
+     *
+     * @return Product
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    /**
+     * Get CreatedAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Product
+     */
+    public function setCreatedAt(\DateTime $createdAt)
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
