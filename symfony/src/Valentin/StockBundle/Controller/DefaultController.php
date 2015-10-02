@@ -16,16 +16,4 @@ class DefaultController extends Controller
     {
         return $this->render('ValentinStockBundle:Default:index.html.twig');
     }
-
-    /**
-     * @Route("/test", name="test_page")
-     *
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function testAction()
-    {
-        return $this->render('ValentinStockBundle:Default:test.html.twig', array(
-            'plop' => 'une variable passée par le controleur'
-        ));
-    }
 }
