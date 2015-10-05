@@ -25,7 +25,7 @@ class MaterialController extends Controller
     public function indexAction()
     {
         $materials = $this->getDoctrine()->getManager()
-            ->getRepository('ValentinStockBundle:Product')
+            ->getRepository('ValentinStockBundle:Material')
             ->findAll()
         ;
         return $this->render('ValentinStockBundle:Material:index.html.twig', array(
@@ -41,7 +41,7 @@ class MaterialController extends Controller
     public function newProduct(Request $request)
     {
         $material = new Material();
-        $form = $this->createForm(new ProductType(), $material);
+        $form = $this->createForm(new MaterialType(), $material);
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
@@ -60,7 +60,7 @@ class MaterialController extends Controller
             }
         }
 
-        return $this->render('ValentinStockBundle:Material:new.html.twig', array(
+        return $this->render('ValentinStockBundle:Material:new_material.html.twig', array(
             'material' => $material,
             'form'    => $form->createView()
         ));
@@ -96,7 +96,7 @@ class MaterialController extends Controller
             }
         }
 
-        return $this->render('ValentinStockBundle:Material:edit.html.twig', array(
+        return $this->render('ValentinStockBundle:Material:edit_material.html.twig', array(
             'material' => $material,
             'form'    => $form->createView()
         ));
@@ -129,7 +129,7 @@ class MaterialController extends Controller
             );
         }
 
-        return $this->render('ValentinStockBundle:Material:delete.html.twig', array(
+        return $this->render('ValentinStockBundle:Material:delete_material.html.twig', array(
             'material' => $material
         ));
     }
