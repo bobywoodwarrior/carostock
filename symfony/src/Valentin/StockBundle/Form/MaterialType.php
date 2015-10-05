@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ClothType extends AbstractType
+class MaterialType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,10 +16,11 @@ class ClothType extends AbstractType
     {
         $builder
             ->add('name','text')
-            ->add('number','text')
-            ->add('price','text')
-            ->add('ref','text')
+            ->add('reference','text')
+            ->add('quantity','number')
             ->add('brand','text')
+            ->add('color','text')
+            ->add('price','number')
         ;
     }
 
@@ -29,7 +30,7 @@ class ClothType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Valentin\StockBundle\Entity\ProductElement\Cloth'
+            'data_class' => 'Valentin\StockBundle\Entity\Material'
         ));
     }
 
@@ -38,6 +39,6 @@ class ClothType extends AbstractType
      */
     public function getName()
     {
-        return 'valentin_stockbundle_cloth';
+        return 'valentin_stockbundle_material';
     }
 }

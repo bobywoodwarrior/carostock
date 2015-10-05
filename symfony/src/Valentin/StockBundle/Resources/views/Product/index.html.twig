@@ -2,19 +2,15 @@
 
 {% block main %}
     <div class="container">
-        <h2>Produits finis</h2>
+        <h2>Final products</h2>
         <table id="product-table" class="table table-striped table-hover table-responsive">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Ref</th>
+                    <th>Référence</th>
                     <th>Nom</th>
                     <th>Saison</th>
-                    <th>Size</th>
-                    <th>Tissu</th>
-                    <th>Prix Prod</th>
                     <th>Prix Whole Sale</th>
-                    <th>Quantité</th>
                     <th>Total</th>
                     <th>Editer</th>
                     <th>Supprimer</th>
@@ -24,15 +20,11 @@
                 {% for product in products %}
                     <tr>
                         <td><p>{{ product.id }}</p></td>
-                        <td><p>{{ product.ref }}</p></td>
+                        <td><p>{{ product.reference }}</p></td>
                         <td><p>{{ product.name }}</p></td>
                         <td><p>{{ product.season }}</p></td>
-                        <td><p>{{ product.size }}</p></td>
-                        <td><p>{{ product.nameCloth }}</p></td>
-                        <td><p>{{ product.priceProd }} €</p></td>
                         <td><p>{{ product.priceWhole }} €</p></td>
-                        <td><p>{{ product.number }}</p></td>
-                        <td><p style="font-weight: bold;">{{ product.priceWhole * product.number }}€</p></td>
+                        <td><p style="font-weight: bold;">{{ product.priceWhole }}€</p></td>
                         <td>
                             <a href="{{ path('product_edit', {'id':product.id}) }}">
                                 <i class="glyphicon glyphicon-edit"></i>
@@ -51,7 +43,7 @@
 
     <hr>
 
-    <a href="{{ path('product_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Ajouter un produit</a>
+    <a href="{{ path('product_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add product</a>
 
     <div>
         <div class="col-md-12">
@@ -63,7 +55,6 @@
                         <th>Nom</th>
                         <th>Saison</th>
                         <th>Prix HT/€</th>
-                        <th>Quantité</th>
                         <th>Total HT/€</th>
                         <th>Supprimer</th>
                     </tr>
@@ -71,12 +62,11 @@
                 {% for product in products %}
                     <tr>
                         <td>{{ product.id }}</td>
-                        <td><input type="text" value="{{ product.ref }}" class="form-control" placeholder="Référence" min=0></td>
+                        <td><input type="text" value="{{ product.reference }}" class="form-control" placeholder="Référence" min=0></td>
                         <td><input type="text" value="{{ product.name }}" class="form-control" placeholder="Nom"></td>
                         <td><input type="text" value="{{ product.season }}" class="form-control" placeholder="Saison"></td>
                         <td><input type="number" value="{{ product.priceWhole }}" class="form-control bfh-number" min=0></td>
-                        <td><input type="number" value="{{ product.number }}" class="form-control bfh-number" min=0></td>
-                        <td>{{ product.priceWhole * product.number }}</td>
+                        <td>{{ product.priceWhole }}</td>
                         <td>
                             <a href="{{ path('product_delete', {'id':product.id}) }}">
                                 <i class="glyphicon glyphicon-remove" style="color: red;"></i>
@@ -95,7 +85,7 @@
                     <td class="success"></td>
                 </tr>
             </table>
-            <a href="{{ path('product_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Ajouter un produit</a>
+            <a href="{{ path('product_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add product</a>
         </div>
     </div>
 {% endblock %}
