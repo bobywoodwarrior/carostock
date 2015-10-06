@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  *
  * @ORM\Table(name="product")
  * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks()
  */
 class Product
 {
@@ -66,7 +67,7 @@ class Product
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetime")
+     * @ORM\Column(name="created_at", type="datetime", nullable=true)
      */
     protected $createdAt;
 
