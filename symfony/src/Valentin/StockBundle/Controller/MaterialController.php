@@ -66,6 +66,7 @@ class MaterialController extends Controller
         }
 
         return $this->render('ValentinStockBundle:Material:new_material.html.twig', array(
+            // Ca sert à quoi de passer $material ici ??? Copier/coller non ?
             'material' => $material,
             'form'     => $form->createView()
         ));
