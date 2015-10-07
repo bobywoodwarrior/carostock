@@ -1,5 +1,8 @@
 CaroStock
 
-1. composer install
+## To deploy the app
 
-2. php symfony app/console doctrine:s:u --force
+- composer install
+- php app/console doctrine:schema:update --force
+- php app/console assets:install web --symlink
+- php app/console doctrine:fixtures:load --append
