@@ -83,7 +83,7 @@ class MaterialController extends Controller
      */
     public function editMaterial(Request $request, Material $material)
     {
-        $form = $this->createForm(new RawMaterialType(), $material);
+        $form = $this->createForm(new MaterialType(), $material);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
