@@ -54,13 +54,13 @@
             </tr>
             </thead>
             <tbody>
-            {% for type in types %}
+            {% for kind in kinds %}
                 <tr>
-                    <td><p>{{ type.id }}</p></td>
-                    <td><p>{{ type.name }}</p></td>
-                    <td><p>{{ type.unit }}</p></td>
+                    <td><p>{{ kind.id }}</p></td>
+                    <td><p>{{ kind.name }}</p></td>
+                    <td><p>{{ kind.unit }}</p></td>
                     <td>
-                        <a href="{{ path('material_type_delete', {'id':type.id}) }}">
+                        <a href="#todo">
                             <i class="glyphicon glyphicon-remove" style="color: red;"></i>
                         </a>
                     </td>
@@ -69,5 +69,5 @@
             </tbody>
         </table>
     </div>
-    <a href="{{ path('material_type_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add type</a>
+    <a href="#todo" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add type</a>
 {% endblock %}

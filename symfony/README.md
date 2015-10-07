@@ -1,5 +1,12 @@
 # CaroStock 1.0
 
+## To deploy the app
+
+- composer install
+- php app/console doctrine:schema:update --force
+- php app/console assets:install web --symlink
+- php app/console doctrine:fixtures:load --append
+
 ## Docker Compose useful aliases
 
 

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class MaterialTypeType extends AbstractType
+class MaterialType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,7 +16,17 @@ class MaterialTypeType extends AbstractType
     {
         $builder
             ->add('name','text')
-            ->add('unit','text')
+            ->add('reference','text')
+            ->add('quantity','number')
+            ->add('brand','text')
+            ->add('color','text')
+            ->add('price','number')
+            ->add('materialKind','entity', [
+                'class'     => 'Valentin\StockBundle\Entity\MaterialKind',
+                'property'  => 'name',
+                'multiple'  => false,
+                'expanded'  => false
+            ])
         ;
     }
 
@@ -26,7 +36,7 @@ class MaterialTypeType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Valentin\StockBundle\Entity\MaterialType'
+            'data_class' => 'Valentin\StockBundle\Entity\Material'
         ));
     }
 
@@ -35,6 +45,6 @@ class MaterialTypeType extends AbstractType
      */
     public function getName()
     {
-        return 'valentin_stockbundle_material_type';
+        return 'valentin_stockbundle_material';
     }
 }

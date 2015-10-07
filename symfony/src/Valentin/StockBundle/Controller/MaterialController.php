@@ -1,12 +1,13 @@
 <?php
 namespace Valentin\StockBundle\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Valentin\StockBundle\Entity\Material;
-use Valentin\StockBundle\Entity\MaterialType;
-use Valentin\StockBundle\Form\RawMaterialType;
-use Valentin\StockBundle\Form\MaterialTypeType;
+use Valentin\StockBundle\Entity\MaterialKind;
+use Valentin\StockBundle\Form\MaterialType;
+use Valentin\StockBundle\Form\MaterialKindType;
 
 /**
  * Created by PhpStorm.
@@ -28,12 +29,13 @@ class MaterialController extends Controller
     {
         $em         = $this->getDoctrine()->getManager();
         $materials  = $em->getRepository('ValentinStockBundle:Material')->findAll();
-        $types      = $em->getRepository('ValentinStockBundle:MaterialType')->findAll();
+        $kinds      = $em->getRepository('ValentinStockBundle:MaterialKind')->findAll();
+
         return $this->render(
             'ValentinStockBundle:Material:index.html.twig',
             [
                 'materials' => $materials,
-                'types'     => $types
+                'kinds'     => $kinds
             ]
         );
     }
@@ -41,12 +43,14 @@ class MaterialController extends Controller
     /**
      * New Material
      *
-     * @Route("/new_material", name="material_new")
+     * @Route("/new", name="material_new")
      */
     public function newMaterial(Request $request)
     {
         $material = new Material();
-        $form = $this->createForm(new RawMaterialType(), $material);
+
+        $form = $this->createForm(new MaterialType(), $material);
+
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
@@ -66,8 +70,6 @@ class MaterialController extends Controller
         }
 
         return $this->render('ValentinStockBundle:Material:new_material.html.twig', array(
-            // Ca sert à quoi de passer $material ici ??? Copier/coller non ?
-            'material' => $material,
             'form'     => $form->createView()
         ));
     }
@@ -76,7 +78,7 @@ class MaterialController extends Controller
      * Material Edit
      *
      * @param Material $material
-     * @Route("/edit_material/{id}", name="material_edit")
+     * @Route("/edit/{id}", name="material_edit")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function editMaterial(Request $request, Material $material)
@@ -111,7 +113,7 @@ class MaterialController extends Controller
     /**
      * Material Delete
      *
-     * @Route("/delete_material/{id}", name="material_delete")
+     * @Route("/delete/{id}", name="material_delete")
      * @param Material $material
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -140,69 +142,4 @@ class MaterialController extends Controller
         ));
     }
 
-
-
-    /**
-     * New Material Type
-     *
-     * @Route("/new_type", name="material_type_new")
-     */
-    public function newType(Request $request)
-    {
-        $type = new MaterialType();
-        $form = $this->createForm(new MaterialTypeType(), $type);
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($type);
-                $em->flush();
-                $this->get('session')->getFlashBag()->add(
-                    'success',
-                    'Type ajouté !'
-                );
-                return $this->redirect(
-                    $this->generateUrl(
-                        'material_index'
-                    )
-                );
-            }
-        }
-        return $this->render('ValentinStockBundle:Material:new_material_type.html.twig', array(
-            'type' => $type,
-            'form' => $form->createView()
-        ));
-    }
-
-    /**
-     * Material Type Delete
-     *
-     * @Route("/delete_type/{id}", name="material_type_delete")
-     * @param MaterialType $type
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function deleteType(Request $request, MaterialType $type)
-    {
-        if ($request->getMethod() === 'POST'){
-            $em = $this->getDoctrine()->getManager();
-
-            $em->remove($type);
-            $em->flush();
-
-            $this->get('session')->getFlashBag()->add(
-                'success',
-                'Type supprimé !'
-            );
-
-            return $this->redirect(
-                $this->generateUrl(
-                    'material_index'
-                )
-            );
-        }
-
-        return $this->render('ValentinStockBundle:Material:delete_material_type.html.twig', array(
-            'type' => $type
-        ));
-    }
 }

@@ -71,10 +71,10 @@ class Material
     protected $materialsQuantity;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\MaterialType", inversedBy="material")
-     * @ORM\JoinColumn(name="material_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\MaterialKind", inversedBy="material")
+     * @ORM\JoinColumn(name="material_type_id", referencedColumnName="id", nullable=false)
      */
-    protected $materialType;
+    protected $materialKind;
 
     /**
      * @var \DateTime
@@ -356,25 +356,25 @@ class Material
     }
 
     /**
-     * Get MaterialType
+     * Get materialKind
      *
      * @return mixed
      */
-    public function getMaterialType()
+    public function getMaterialKind()
     {
-        return $this->materialType;
+        return $this->materialKind;
     }
 
     /**
-     * Set materialType
+     * Set materialKind
      *
-     * @param mixed $materialType
+     * @param mixed $materialKind
      *
      * @return Material
      */
-    public function setMaterialType($materialType)
+    public function setMaterialKind($materialKind)
     {
-        $this->materialType = $materialType;
+        $this->materialKind = $materialKind;
 
         return $this;
     }

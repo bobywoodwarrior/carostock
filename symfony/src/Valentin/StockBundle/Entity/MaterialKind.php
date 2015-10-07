@@ -6,12 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * MaterialType
+ * MaterialKind
  *
- * @ORM\Table(name="material_type")
+ * @ORM\Table(name="material_kind")
  * @ORM\Entity()
  */
-class MaterialType
+class MaterialKind
 {
     /**
      * @var integer
@@ -59,7 +59,7 @@ class MaterialType
      *
      * @param int $id
      *
-     * @return MaterialType
+     * @return MaterialKind
      */
     public function setId($id)
     {
@@ -83,7 +83,7 @@ class MaterialType
      *
      * @param string $name
      *
-     * @return MaterialType
+     * @return MaterialKind
      */
     public function setName($name)
     {
@@ -107,7 +107,7 @@ class MaterialType
      *
      * @param string $unit
      *
-     * @return MaterialType
+     * @return MaterialKind
      */
     public function setUnit($unit)
     {
