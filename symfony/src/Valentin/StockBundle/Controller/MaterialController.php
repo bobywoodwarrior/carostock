@@ -67,7 +67,7 @@ class MaterialController extends Controller
 
         return $this->render('ValentinStockBundle:Material:new_material.html.twig', array(
             'material' => $material,
-            'form'    => $form->createView()
+            'form'     => $form->createView()
         ));
     }
 
@@ -138,7 +138,6 @@ class MaterialController extends Controller
             'material' => $material
         ));
     }
-
 
 
 
