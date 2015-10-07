@@ -62,7 +62,7 @@ class MaterialTypeController extends Controller
         }
         return $this->render('ValentinStockBundle:Material:new_material_type.html.twig', array(
             'type' => $type,
-            'form'    => $form->createView()
+            'form' => $form->createView()
         ));
     }
 
