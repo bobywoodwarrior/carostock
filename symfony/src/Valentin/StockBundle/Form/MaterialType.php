@@ -15,18 +15,18 @@ class MaterialType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name','text')
-            ->add('reference','text')
-            ->add('quantity','number')
-            ->add('brand','text')
-            ->add('color','text')
-            ->add('price','number')
             ->add('materialKind','entity', [
                 'class'     => 'Valentin\StockBundle\Entity\MaterialKind',
                 'property'  => 'name',
                 'multiple'  => false,
                 'expanded'  => false
             ])
+            ->add('name','text')
+            ->add('reference','text')
+            ->add('quantity','number')
+            ->add('brand','text')
+            ->add('color','text')
+            ->add('price','number')
         ;
     }
 
