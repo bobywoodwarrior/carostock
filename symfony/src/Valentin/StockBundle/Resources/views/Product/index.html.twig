@@ -7,24 +7,24 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Référence</th>
-                    <th>Nom</th>
-                    <th>Saison</th>
-                    <th>Prix Whole Sale</th>
+                    <th>Reference</th>
+                    <th>Name</th>
+                    <th>Season</th>
+                    <th>Price Whole Sale</th>
                     <th>Total</th>
-                    <th>Editer</th>
-                    <th>Supprimer</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                  </tr>
             </thead>
             <tbody>
                 {% for product in products %}
                     <tr>
-                        <td><p>{{ product.id }}</p></td>
-                        <td><p>{{ product.reference }}</p></td>
-                        <td><p>{{ product.name }}</p></td>
-                        <td><p>{{ product.season }}</p></td>
-                        <td><p>{{ product.priceWhole }} €</p></td>
-                        <td><p style="font-weight: bold;">{{ product.priceWhole }}€</p></td>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.reference }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.season }}</td>
+                        <td>{{ product.priceWhole }} €</td>
+                        <td>{{ product.priceWhole }}€</td>
                         <td>
                             <a href="{{ path('product_edit', {'id':product.id}) }}">
                                 <i class="glyphicon glyphicon-edit"></i>

@@ -50,7 +50,7 @@ class ProductController extends Controller
                 $em->flush();
                 $this->get('session')->getFlashBag()->add(
                     'success',
-                    'Produit ajouté !'
+                    'Product added !'
                 );
                 return $this->redirect(
                     $this->generateUrl(
@@ -85,7 +85,7 @@ class ProductController extends Controller
                 $em->flush();
                 $this->get('session')->getFlashBag()->add(
                     'success',
-                    'Changements sauvegardés !'
+                    'Product edited !'
                 );
 
                 return $this->redirect(
@@ -119,7 +119,7 @@ class ProductController extends Controller
 
             $this->get('session')->getFlashBag()->add(
                 'success',
-                'Produit supprimé !'
+                'Product deleted !'
             );
 
             return $this->redirect(
