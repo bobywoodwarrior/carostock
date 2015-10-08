@@ -18,10 +18,11 @@
     <body style="width: 800px;">
         <header>
             <ul class="nav nav-pills">
-                <li role="presentation" class="active"><a href="{{ path('product_index') }}">Products</a></li>
+                <li role="presentation" class="active"><a href="{{ path('product_index') }}">Production</a></li>
                 <li role="presentation" class="active"><a href="{{ path('material_index') }}">Materials</a></li>
                 <li role="presentation" class="active"><a href="{{ path('material_kind_index') }}">Material Types</a></li>
-                <li role="presentation"><a href="http://www.carolinaritz.com" onclick="window.open(this.href); return false;">Site</a></li>
+                <li role="presentation" class="active"><a href="{{ path('product_model_index') }}">Product Models</a></li>
+                <li role="presentation"><a href="http://www.carolinaritz.com" onclick="window.open(this.href); return false;">Website</a></li>
             </ul>
         </header>
         <hr>

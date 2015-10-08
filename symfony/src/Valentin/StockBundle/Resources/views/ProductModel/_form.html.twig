@@ -1,18 +1,17 @@
 {{ form_start(form) }}
 <div class="panel panel-info">
     <div class="panel-heading">
-        <h3 class="panel-title">Products</h3>
+        <h3 class="panel-title">Product Models</h3>
     </div>
     <div class="panel-body">
 
         {{ form_row(form) }} <!--à enlever pour enlever "Valentin stockbundle product"**/-->
 
     </div>
-
     <div class="panel-footer">
         <div class="row">
             <div class="col-md-4">
-                <a href="{{ path('product_index') }}" class="btn btn-default btn-block">Annuler</a>
+                <a href="{{ path('product_model_index') }}" class="btn btn-default btn-block">Annuler</a>
             </div>
             <div class="col-md-8">
                 <button type="submit" class="btn btn-info btn-block">Save</button>
