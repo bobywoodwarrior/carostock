@@ -4,8 +4,8 @@ namespace Valentin\StockBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Valentin\StockBundle\Entity\Material;
-use Valentin\StockBundle\Form\MaterialType;
+use Valentin\StockBundle\Entity\MaterialKind;
+use Valentin\StockBundle\Form\MaterialKindType;
 
 /**
  * Created by PhpStorm.
@@ -14,70 +14,70 @@ use Valentin\StockBundle\Form\MaterialType;
  * Time: 17:46
  */
 /**
- * @Route("/material")
+ * @Route("/material_kind")
  */
-class MaterialController extends Controller
+class MaterialKindController extends Controller
 {
     /**
-     * Material Index
+     * Material Kind Index
      *
-     * @Route("/", name="material_index")
+     * @Route("/", name="material_kind_index")
      */
     public function indexAction()
     {
-        $materials = $this->getDoctrine()->getManager()
-            ->getRepository('ValentinStockBundle:Material')
+        $kinds = $this->getDoctrine()->getManager()
+            ->getRepository('ValentinStockBundle:MaterialKind')
             ->findAll()
         ;
-        return $this->render('ValentinStockBundle:Material:index.html.twig', array(
-            'materials' => $materials
+        return $this->render('ValentinStockBundle:MaterialKind:index.html.twig', array(
+            'kinds' => $kinds
         ));
     }
 
     /**
-     * New Material
+     * New Material Kind
      *
-     * @Route("/new", name="material_new")
+     * @Route("/new", name="material_kind_new")
      */
     public function newMaterial(Request $request)
     {
-        $material = new Material();
+        $kind = new MaterialKind();
 
-        $form = $this->createForm(new MaterialType(), $material);
+        $form = $this->createForm(new MaterialKindType(), $kind);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($material);
+                $em->persist($kind);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add(
                     'success',
-                    'Material added !'
+                    'Type added !'
                 );
                 return $this->redirect(
                     $this->generateUrl(
-                        'material_index'
+                        'material_kind_index'
                     )
                 );
             }
         }
 
-        return $this->render('ValentinStockBundle:Material:new.html.twig', array(
+        return $this->render('ValentinStockBundle:MaterialKind:new.html.twig', array(
             'form'     => $form->createView()
         ));
     }
 
     /**
-     * Material Edit
+     * Material Kind Edit
      *
-     * @param Material $material
-     * @Route("/edit/{id}", name="material_edit")
+     * @param MaterialKind $kind
+     * @Route("/edit/{id}", name="material_kind_edit")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editMaterial(Request $request, Material $material)
+    public function editMaterial(Request $request, MaterialKind $kind)
     {
-        $form = $this->createForm(new MaterialType(), $material);
+        $form = $this->createForm(new MaterialKindType(), $kind);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -87,52 +87,52 @@ class MaterialController extends Controller
                 $em->flush();
                 $this->get('session')->getFlashBag()->add(
                     'success',
-                    'Material edited !'
+                    'Type edited !'
                 );
 
                 return $this->redirect(
                     $this->generateUrl(
-                        'material_index'
+                        'material_kind_index'
                     )
                 );
             }
         }
 
-        return $this->render('ValentinStockBundle:Material:edit.html.twig', array(
-            'material' => $material,
+        return $this->render('ValentinStockBundle:MaterialKind:edit.html.twig', array(
+            'kind' => $kind,
             'form'    => $form->createView()
         ));
     }
 
     /**
-     * Material Delete
+     * Material Kind Delete
      *
-     * @Route("/delete/{id}", name="material_delete")
-     * @param Material $material
+     * @Route("/delete/{id}", name="material_kind_delete")
+     * @param MaterialKind $kind
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteMaterial(Request $request, Material $material)
+    public function deleteMaterial(Request $request, MaterialKind $kind)
     {
         if ($request->getMethod() === 'POST'){
             $em = $this->getDoctrine()->getManager();
 
-            $em->remove($material);
+            $em->remove($kind);
             $em->flush();
 
             $this->get('session')->getFlashBag()->add(
                 'success',
-                'Material deleted !'
+                'Type deleted !'
             );
 
             return $this->redirect(
                 $this->generateUrl(
-                    'material_index'
+                    'material_kind_index'
                 )
             );
         }
 
-        return $this->render('ValentinStockBundle:Material:delete.html.twig', array(
-            'material' => $material
+        return $this->render('ValentinStockBundle:MaterialKind:delete.html.twig', array(
+            'kind' => $kind
         ));
     }
 

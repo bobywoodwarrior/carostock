@@ -1,10 +1,9 @@
 <?php
 
-namespace Valentin\StockBundle\DataFixtures\ORM\;
+namespace Valentin\StockBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use Acme\HelloBundle\Entity\User;
 use Valentin\StockBundle\Entity\MaterialKind;
 
 class LoadMaterialKindData implements FixtureInterface
