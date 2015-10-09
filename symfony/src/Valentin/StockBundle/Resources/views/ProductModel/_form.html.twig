@@ -5,7 +5,43 @@
     </div>
     <div class="panel-body">
 
-        {{ form_row(form) }} <!--à enlever pour enlever "Valentin stockbundle product"**/-->
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.name) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.reference) }}
+            </div>
+        </div>
+
+        <hr>
+        <h4>Materials required</h4>
+
+        <div class="collection">
+            <span class="pull-right">
+                <a href="#" class="btn collection-add" data-collection="valentin_stockbundle_product_model_materialsQuantity">
+                    <i class="glyphicon glyphicon-plus">Add</i>
+                </a>
+            </span>
+
+            <div class="">
+                {{ form_widget(form.materialsQuantity.vars.prototype) }}
+            </div>
+
+            {% for materialQty in form.materialsQuantity %}
+                <div class="well">
+                    <div class="row">
+                        <div class="col-md-8">
+                            {{ form_row(materialQty.material) }}
+                        </div>
+                        <div class="col-md-4">
+                            {{ form_row(materialQty.quantity) }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
 
     </div>
     <div class="panel-footer">

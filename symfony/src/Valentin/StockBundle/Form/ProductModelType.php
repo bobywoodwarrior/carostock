@@ -16,6 +16,15 @@ class ProductModelType extends AbstractType
     {
         $builder
             ->add('name','text')
+            ->add('reference','text')
+            ->add('materialsQuantity','collection', [
+                'type'          => new MaterialQuantityType(),
+                'allow_add'     => true,
+                'allow_delete'  => true,
+                'options'       => array(
+                    'required'  => true
+                ),
+            ])
         ;
     }
 

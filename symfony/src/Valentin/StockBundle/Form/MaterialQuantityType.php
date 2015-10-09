@@ -15,7 +15,21 @@ class MaterialQuantityType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('material','entity', [
+                'class'     => 'Valentin\StockBundle\Entity\Material',
+                'choice_label'  => 'nameForDropdown',
+                'multiple'  => false,
+                'expanded'  => false
+            ])
             ->add('quantity','number')
+            /*
+            ->add('productModel','entity', [
+                'class'     => 'Valentin\StockBundle\Entity\ProductModel',
+                'choice_label'  => 'name',
+                'multiple'  => false,
+                'expanded'  => false
+            ])
+            */
         ;
     }
 

@@ -15,7 +15,7 @@
         <tbody>
         {% for quantity in quantities %}
             <tr>
-                <td>{{ quantity.id }}</td>
+                <td><a href="{{ path('product_model_edit', {'id' : quantity.productmodel.id}) }}">{{ quantity.id }}</a></td>
                 <td>{{ quantity.quantity }}</td>
                 <td>
                     <a href="{{ path('material_quantity_edit', {'id':quantity.id}) }}">

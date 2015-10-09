@@ -37,7 +37,7 @@ class ProductModel
     protected $reference;
 
     /**
-     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\MaterialQuantity", mappedBy="productModel")
+     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\MaterialQuantity", mappedBy="productModel", cascade={"persist"})
      */
     protected $materialsQuantity;
 

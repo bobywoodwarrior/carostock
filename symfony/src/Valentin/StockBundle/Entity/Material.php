@@ -378,4 +378,9 @@ class Material
 
         return $this;
     }
+
+    public function getNameForDropdown()
+    {
+        return $this->getName(). ' ('.$this->getMaterialKind()->getName().')';
+    }
 }
