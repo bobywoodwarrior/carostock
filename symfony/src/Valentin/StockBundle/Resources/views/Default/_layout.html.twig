@@ -42,5 +42,10 @@
 
     {% javascripts '@ValentinStockBundle/Resources/public/assets/js/*' %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
+
+        <script src="{{ asset('ValentinStockBundle/Ressources/public/js/jquery.collection.js') }}"></script>
+        <script type="text/javascript">
+            $('.my-selector').collection();
+        </script>
     {% endjavascripts %}
 </html>
