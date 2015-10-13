@@ -4,12 +4,18 @@ namespace Valentin\StockBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * MaterialQuantity (quantity material needed for a model)
  *
  * @ORM\Table(name="material_quantity")
  * @ORM\Entity()
+ * @UniqueEntity(
+ *     fields={"material", "productModel"},
+ *     errorPath="productModel",
+ *     message="This material is already in use on that Product Model."
+ * )
  */
 class MaterialQuantity
 {
