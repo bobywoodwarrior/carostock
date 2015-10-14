@@ -71,7 +71,7 @@ class Material
     protected $materialsQuantity;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\MaterialKind", inversedBy="material")
+     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\MaterialKind")
      * @ORM\JoinColumn(name="material_type_id", referencedColumnName="id", nullable=false)
      */
     protected $materialKind;

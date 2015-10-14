@@ -59,7 +59,7 @@ class Product
     protected $priceWhole;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\ProductModel", inversedBy="product")
+     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\ProductModel", inversedBy="products")
      * @ORM\JoinColumn(name="productModel_id", referencedColumnName="id")
      */
     protected $productModel;

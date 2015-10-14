@@ -18,9 +18,11 @@ class ProductModelType extends AbstractType
             ->add('name','text')
             ->add('reference','text')
             ->add('materialsQuantity','collection', [
-                'type'          => new MaterialQuantityType(),
-                'allow_add'     => true,
-                'allow_delete'  => true,
+                'type'                  => new MaterialQuantityType(),
+                'allow_add'             => true,
+                'allow_delete'          => true,
+                'by_reference'          => false,
+                //'cascade_validation'    => true,
                 'options'       => array(
                     'required'  => true
                 ),

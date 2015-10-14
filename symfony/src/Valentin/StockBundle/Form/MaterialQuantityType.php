@@ -24,10 +24,11 @@ class MaterialQuantityType extends AbstractType
             ->add('quantity','number')
             /*
             ->add('productModel','entity', [
-                'class'     => 'Valentin\StockBundle\Entity\ProductModel',
+                'class'         => 'Valentin\StockBundle\Entity\ProductModel',
                 'choice_label'  => 'name',
-                'multiple'  => false,
-                'expanded'  => false
+                //'disabled'      => true,
+                'multiple'      => false,
+                'expanded'      => false
             ])
             */
         ;

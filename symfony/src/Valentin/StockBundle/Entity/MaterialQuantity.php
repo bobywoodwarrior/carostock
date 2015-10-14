@@ -2,6 +2,7 @@
 
 namespace Valentin\StockBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -11,11 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="material_quantity")
  * @ORM\Entity()
- * @UniqueEntity(
- *     fields={"material", "productModel"},
- *     errorPath="productModel",
- *     message="This material is already in use on that Product Model."
- * )
+ * @UniqueEntity(fields={"material", "productModel"}, errorPath="productModel", message="This material is already in use on that Product Model.")
  */
 class MaterialQuantity
 {
@@ -29,23 +26,24 @@ class MaterialQuantity
     protected $id;
 
     /**
-     * @var integer
      *
-     * @ORM\Column(name="quantity", type="integer")
-     */
-    protected $quantity;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\Material", inversedBy="materialQuantity")
+     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\Material", inversedBy="materialsQuantity")
      * @ORM\JoinColumn(name="material_id", referencedColumnName="id")
      */
     protected $material;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\ProductModel", inversedBy="productModel")
+     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\ProductModel", inversedBy="materialsQuantity")
      * @ORM\JoinColumn(name="productModel_id", referencedColumnName="id")
      */
     protected $productModel;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="quantity", type="integer")
+     */
+    protected $quantity;
 
     /**
      * Constructor
@@ -80,30 +78,6 @@ class MaterialQuantity
     }
 
     /**
-     * Get Quantity
-     *
-     * @return int
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
-
-    /**
-     * Set quantity
-     *
-     * @param int $quantity
-     *
-     * @return MaterialQuantity
-     */
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-
-        return $this;
-    }
-
-    /**
      * Get Material
      *
      * @return mixed
@@ -120,7 +94,7 @@ class MaterialQuantity
      *
      * @return MaterialQuantity
      */
-    public function setMaterial($material)
+    public function setMaterial(Material $material)
     {
         $this->material = $material;
 
@@ -144,9 +118,33 @@ class MaterialQuantity
      *
      * @return MaterialQuantity
      */
-    public function setProductModel($productModel)
+    public function setProductModel(ProductModel $productModel)
     {
         $this->productModel = $productModel;
+
+        return $this;
+    }
+
+    /**
+     * Get Quantity
+     *
+     * @return int
+     */
+    public function getQuantity()
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param int $quantity
+     *
+     * @return MaterialQuantity
+     */
+    public function setQuantity($quantity)
+    {
+        $this->quantity = $quantity;
 
         return $this;
     }

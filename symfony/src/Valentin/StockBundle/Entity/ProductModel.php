@@ -37,12 +37,12 @@ class ProductModel
     protected $reference;
 
     /**
-     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\MaterialQuantity", mappedBy="productModel", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\MaterialQuantity", mappedBy="productModel", cascade={"persist", "remove"})
      */
     protected $materialsQuantity;
 
     /**
-     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\Product", mappedBy="product")
+     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\Product", mappedBy="productModel")
      */
     protected $products;
 
@@ -51,6 +51,7 @@ class ProductModel
      */
     public function __construct()
     {
+        $this->materialsQuantity = new ArrayCollection();
     }
 
     /**
@@ -138,16 +139,41 @@ class ProductModel
     /**
      * Set materialsQuantity
      *
-     * @param mixed $materialsQuantity
+     * @param $materialsQuantity
      *
      * @return ProductModel
      */
     public function setMaterialsQuantity($materialsQuantity)
     {
-        $this->materialsQuantity = $materialsQuantity;
+        foreach ($materialsQuantity as $materialQuantity){
+            $this->addMaterialQuantity($materialQuantity);
+        }
+        return $this;
+    }
+
+    /**
+     * Add material Quantity
+     *
+     * @param MaterialQuantity $materialQuantity
+     * @return ProductModel
+     */
+    public function addMaterialQuantity(MaterialQuantity $materialQuantity)
+    {
+        $materialQuantity->setProductModel($this);
+        $this->materialsQuantity[] = $materialQuantity;
 
         return $this;
     }
 
+    /**
+     * Remove material Quantity
+     *
+     * @param MaterialQuantity
+     */
+    public function removeMaterialQuantity(MaterialQuantity $materialQuantity)
+    {
+        //$materialQuantity->removeProductModel($this);
+        $this->materialsQuantity->removeElement($materialQuantity);
+    }
 
 }

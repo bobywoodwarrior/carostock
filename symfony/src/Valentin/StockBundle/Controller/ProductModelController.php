@@ -4,6 +4,7 @@ namespace Valentin\StockBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Valentin\StockBundle\Entity\MaterialQuantity;
 use Valentin\StockBundle\Entity\ProductModel;
 use Valentin\StockBundle\Form\ProductModelType;
 
@@ -48,6 +49,7 @@ class ProductModelController extends Controller
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
+
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($model);
                 $em->flush();
@@ -55,6 +57,7 @@ class ProductModelController extends Controller
                     'success',
                     'Model added !'
                 );
+
                 return $this->redirect(
                     $this->generateUrl(
                         'product_model_index'
@@ -77,6 +80,10 @@ class ProductModelController extends Controller
      */
     public function editMaterial(Request $request, ProductModel $model)
     {
+
+        // Keep old categories
+        $originalMaterialsQuantity = clone $model->getMaterialsQuantity();
+
         $form = $this->createForm(new ProductModelType(), $model);
 
         if ($request->isMethod('POST')) {
@@ -90,11 +97,13 @@ class ProductModelController extends Controller
                     'Model edited !'
                 );
 
+                /*
                 return $this->redirect(
                     $this->generateUrl(
                         'product_model_index'
                     )
                 );
+                */
             }
         }
 
