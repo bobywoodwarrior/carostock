@@ -40,7 +40,7 @@ class ProductModelController extends Controller
      *
      * @Route("/new", name="product_model_new")
      */
-    public function newMaterial(Request $request)
+    public function newProductModel(Request $request)
     {
         $model = new ProductModel();
 
@@ -78,7 +78,7 @@ class ProductModelController extends Controller
      * @Route("/edit/{id}", name="product_model_edit")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editMaterial(Request $request, ProductModel $model)
+    public function editProductModel(Request $request, ProductModel $model)
     {
 
         // Keep old categories
@@ -120,7 +120,7 @@ class ProductModelController extends Controller
      * @param ProductModel $model
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteMaterial(Request $request, ProductModel $model)
+    public function deleteProductModel(Request $request, ProductModel $model)
     {
         if ($request->getMethod() === 'POST'){
             $em = $this->getDoctrine()->getManager();

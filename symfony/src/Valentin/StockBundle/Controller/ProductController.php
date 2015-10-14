@@ -73,7 +73,7 @@ class ProductController extends Controller
      * @Route("/edit/{id}", name="product_edit")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(Request $request, Product $product)
+    public function editProduct(Request $request, Product $product)
     {
         $form = $this->createForm(new ProductType(), $product);
 
@@ -109,7 +109,7 @@ class ProductController extends Controller
      * @param Product $product
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteAction(Request $request, Product $product)
+    public function deleteProduct(Request $request, Product $product)
     {
         if ($request->getMethod() === 'POST'){
             $em = $this->getDoctrine()->getManager();
