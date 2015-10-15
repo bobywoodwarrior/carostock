@@ -2,6 +2,7 @@
 
 namespace Valentin\StockBundle\Entity;
 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -37,12 +38,14 @@ class ProductModel
     protected $reference;
 
     /**
-     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\MaterialQuantity", mappedBy="productModel", cascade={"persist", "remove"})
+     * Materials with their quantities
+     *
+     * @ORM\OneToMany(targetEntity="MaterialQuantity", mappedBy="productModel", cascade={"persist", "remove"})
      */
-    protected $materialsQuantity;
+    protected $materials;
 
     /**
-     * @ORM\OneToMany(targetEntity="Valentin\StockBundle\Entity\Product", mappedBy="productModel")
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="productModel")
      */
     protected $products;
 
@@ -51,7 +54,7 @@ class ProductModel
      */
     public function __construct()
     {
-        $this->materialsQuantity = new ArrayCollection();
+        $this->materials = new ArrayCollection();
     }
 
     /**
@@ -127,53 +130,55 @@ class ProductModel
     }
 
     /**
-     * Get MaterialsQuantity
+     * Get Materials
      *
-     * @return mixed
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getMaterialsQuantity()
+    public function getMaterials()
     {
-        return $this->materialsQuantity;
+        return $this->materials;
     }
 
     /**
-     * Set materialsQuantity
+     * Set materials
      *
-     * @param $materialsQuantity
+     * @param $materials
      *
      * @return ProductModel
      */
-    public function setMaterialsQuantity($materialsQuantity)
+    public function setMaterials(Collection $materials)
     {
-        foreach ($materialsQuantity as $materialQuantity){
-            $this->addMaterialQuantity($materialQuantity);
+        foreach ($materials as $material){
+            $this->addMaterial($material);
         }
         return $this;
     }
 
     /**
-     * Add material Quantity
+     * Add material
      *
-     * @param MaterialQuantity $materialQuantity
+     * @param MaterialQuantity $material
      * @return ProductModel
      */
-    public function addMaterialQuantity(MaterialQuantity $materialQuantity)
+    public function addMaterial(MaterialQuantity $material)
     {
-        $materialQuantity->setProductModel($this);
-        $this->materialsQuantity[] = $materialQuantity;
+        $material->setProductModel($this);
+        if (!$this->materials->contains($material)) {
+            $this->materials->add($material);
+        }
+        //$this->material[] = $material;
 
         return $this;
     }
 
     /**
-     * Remove material Quantity
+     * Remove material
      *
      * @param MaterialQuantity
      */
-    public function removeMaterialQuantity(MaterialQuantity $materialQuantity)
+    public function removeMaterial(MaterialQuantity $material)
     {
-        //$materialQuantity->removeProductModel($this);
-        $this->materialsQuantity->removeElement($materialQuantity);
+        $this->materials->removeElement($material);
     }
 
 }

@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @ORM\Table(name="material_quantity")
  * @ORM\Entity()
- * @UniqueEntity(fields={"material", "productModel"}, errorPath="productModel", message="This material is already in use on that Product Model.")
+ * @UniqueEntity(fields={"material", "productModel"}, message="This material is already in use on that Product Model.")
  */
 class MaterialQuantity
 {
@@ -27,13 +27,13 @@ class MaterialQuantity
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\Material", inversedBy="materialsQuantity")
+     * @ORM\ManyToOne(targetEntity="Material", inversedBy="materialsQuantity")
      * @ORM\JoinColumn(name="material_id", referencedColumnName="id")
      */
     protected $material;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\ProductModel", inversedBy="materialsQuantity")
+     * @ORM\ManyToOne(targetEntity="ProductModel", inversedBy="materials")
      * @ORM\JoinColumn(name="productModel_id", referencedColumnName="id")
      */
     protected $productModel;

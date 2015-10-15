@@ -1,6 +1,7 @@
 <?php
 namespace Valentin\StockBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,7 @@ use Valentin\StockBundle\Form\ProductModelType;
  * Time: 17:46
  */
 /**
- * @Route("/product_model")
+ * @Route("/productModel")
  */
 class ProductModelController extends Controller
 {
@@ -40,7 +41,7 @@ class ProductModelController extends Controller
      *
      * @Route("/new", name="product_model_new")
      */
-    public function newMaterial(Request $request)
+    public function newAction(Request $request)
     {
         $model = new ProductModel();
 
@@ -78,11 +79,14 @@ class ProductModelController extends Controller
      * @Route("/edit/{id}", name="product_model_edit")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editMaterial(Request $request, ProductModel $model)
+    public function editAction(Request $request, ProductModel $model)
     {
+        // Keep old materials
+        $originalMaterials = new ArrayCollection();
 
-        // Keep old categories
-        $originalMaterialsQuantity = clone $model->getMaterialsQuantity();
+        foreach($model->getMaterials() as $material) {
+            $originalMaterials->add($material);
+        }
 
         $form = $this->createForm(new ProductModelType(), $model);
 
@@ -91,19 +95,26 @@ class ProductModelController extends Controller
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
 
+                // New materials
+                foreach ($originalMaterials as $material) {
+                    if ($model->getMaterials()->contains($material) === false){
+
+                        $em->remove($material);
+                    }
+                }
+
+                $em->persist($model);
                 $em->flush();
                 $this->get('session')->getFlashBag()->add(
                     'success',
                     'Model edited !'
                 );
 
-                /*
                 return $this->redirect(
                     $this->generateUrl(
                         'product_model_index'
                     )
                 );
-                */
             }
         }
 
@@ -120,7 +131,7 @@ class ProductModelController extends Controller
      * @param ProductModel $model
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteMaterial(Request $request, ProductModel $model)
+    public function deleteAction(Request $request, ProductModel $model)
     {
         if ($request->getMethod() === 'POST'){
             $em = $this->getDoctrine()->getManager();

@@ -17,15 +17,12 @@ class ProductModelType extends AbstractType
         $builder
             ->add('name','text')
             ->add('reference','text')
-            ->add('materialsQuantity','collection', [
+            ->add('materials','collection', [
                 'type'                  => new MaterialQuantityType(),
                 'allow_add'             => true,
                 'allow_delete'          => true,
                 'by_reference'          => false,
-                //'cascade_validation'    => true,
-                'options'       => array(
-                    'required'  => true
-                ),
+                'cascade_validation'    => true
             ])
         ;
     }

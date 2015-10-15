@@ -16,10 +16,10 @@ class MaterialQuantityType extends AbstractType
     {
         $builder
             ->add('material','entity', [
-                'class'     => 'Valentin\StockBundle\Entity\Material',
+                'class'         => 'Valentin\StockBundle\Entity\Material',
                 'choice_label'  => 'nameForDropdown',
-                'multiple'  => false,
-                'expanded'  => false
+                'multiple'      => false,
+                'expanded'      => false
             ])
             ->add('quantity','number')
             /*

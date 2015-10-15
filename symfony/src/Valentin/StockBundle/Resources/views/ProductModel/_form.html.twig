@@ -18,19 +18,13 @@
         <h4>Materials required</h4>
 
         <div class="collection">
-            <ul class="materials list-unstyled" data-prototype="{{ form_widget(form.materialsQuantity.vars.prototype)|e }}">
+            <ul class="materials list-unstyled" data-prototype="{{ form_widget(form.materials.vars.prototype)|e }}">
 
-                {% for materialQty in form.materialsQuantity %}
-                    <div class="well">
-                        <div class="row">
-                            <div class="col-md-8">
-                                {{ form_row(materialQty.material) }}
-                            </div>
-                            <div class="col-md-4">
-                                {{ form_row(materialQty.quantity) }}
-                            </div>
-                        </div>
-                    </div>
+                {% for material in form.materials %}
+                    <li class="well">
+                        {{ form_row(material.material) }}
+                        {{ form_row(material.quantity) }}
+                    </li>
                 {% endfor %}
 
             </ul>
