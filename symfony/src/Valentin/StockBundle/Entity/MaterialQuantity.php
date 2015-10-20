@@ -11,7 +11,6 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * MaterialQuantity (quantity material needed for a model)
  *
  * @ORM\Table(name="material_quantity")
- * @ORM\Table(uniqueConstraints={@ORM\UniqueConstraint(name="IDX_USER_CONNECT", columns={"material_id", "productModel_id"})})
  * @ORM\Entity()
  * @UniqueEntity(fields={"material", "productModel"}, message="This material is already in use on that Product Model.")
  */

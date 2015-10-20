@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ProductType extends AbstractType
+class ProductionType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -34,7 +34,7 @@ class ProductType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Valentin\StockBundle\Entity\Product'
+            'data_class' => 'Valentin\StockBundle\Entity\Production'
         ));
     }
 
@@ -43,6 +43,6 @@ class ProductType extends AbstractType
      */
     public function getName()
     {
-        return 'valentin_stockbundle_product';
+        return 'valentin_stockbundle_production';
     }
 }

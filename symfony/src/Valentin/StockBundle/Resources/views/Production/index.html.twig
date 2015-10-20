@@ -12,26 +12,20 @@
                     <th>Season</th>
                     <th>Price Whole Sale</th>
                     <th>Total</th>
-                    <th>Edit</th>
                     <th>Delete</th>
                  </tr>
             </thead>
             <tbody>
-                {% for product in products %}
+                {% for production in productions %}
                     <tr>
-                        <td>{{ product.id }}</td>
-                        <td>{{ product.reference }}</td>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.season }}</td>
-                        <td>{{ product.priceWhole }} €</td>
-                        <td>{{ product.priceWhole }}€</td>
+                        <td>{{ production.id }}</td>
+                        <td>{{ production.reference }}</td>
+                        <td>{{ production.name }}</td>
+                        <td>{{ production.season }}</td>
+                        <td>{{ production.priceWhole }} €</td>
+                        <td>{{ production.priceWhole }}€</td>
                         <td>
-                            <a href="{{ path('product_edit', {'id':product.id}) }}">
-                                <i class="glyphicon glyphicon-edit"></i>
-                            </a>
-                        </td>
-                        <td>
-                            <a href="{{ path('product_delete', {'id':product.id}) }}">
+                            <a href="{{ path('production_delete', {'id':production.id}) }}">
                                 <i class="glyphicon glyphicon-remove" style="color: red;"></i>
                             </a>
                         </td>
@@ -43,7 +37,7 @@
 
     <hr>
 
-    <a href="{{ path('product_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add product</a>
+    <a href="{{ path('production_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add production</a>
 
     <div>
         <div class="col-md-12">
@@ -59,16 +53,16 @@
                         <th>Supprimer</th>
                     </tr>
                 </thead>
-                {% for product in products %}
+                {% for production in productions %}
                     <tr>
-                        <td>{{ product.id }}</td>
-                        <td><input type="text" value="{{ product.reference }}" class="form-control" placeholder="Référence" min=0></td>
-                        <td><input type="text" value="{{ product.name }}" class="form-control" placeholder="Nom"></td>
-                        <td><input type="text" value="{{ product.season }}" class="form-control" placeholder="Saison"></td>
-                        <td><input type="number" value="{{ product.priceWhole }}" class="form-control bfh-number" min=0></td>
-                        <td>{{ product.priceWhole }}</td>
+                        <td>{{ production.id }}</td>
+                        <td><input type="text" value="{{ production.reference }}" class="form-control" placeholder="Référence" min=0></td>
+                        <td><input type="text" value="{{ production.name }}" class="form-control" placeholder="Nom"></td>
+                        <td><input type="text" value="{{ production.season }}" class="form-control" placeholder="Saison"></td>
+                        <td><input type="number" value="{{ production.priceWhole }}" class="form-control bfh-number" min=0></td>
+                        <td>{{ production.priceWhole }}</td>
                         <td>
-                            <a href="{{ path('product_delete', {'id':product.id}) }}">
+                            <a href="{{ path('production_delete', {'id':production.id}) }}">
                                 <i class="glyphicon glyphicon-remove" style="color: red;"></i>
                             </a>
                         </td>
@@ -85,7 +79,7 @@
                     <td class="success"></td>
                 </tr>
             </table>
-            <a href="{{ path('product_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add product</a>
+            <a href="{{ path('production_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add production</a>
         </div>
     </div>
 {% endblock %}

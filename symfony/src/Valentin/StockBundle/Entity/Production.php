@@ -8,11 +8,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Product
  *
- * @ORM\Table(name="product")
+ * @ORM\Table(name="production")
  * @ORM\Entity()
  * @ORM\HasLifecycleCallbacks()
  */
-class Product
+class Production
 {
     /**
      * @var integer

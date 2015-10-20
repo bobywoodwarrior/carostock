@@ -45,9 +45,9 @@ class ProductModel
     protected $materials;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="productModel")
+     * @ORM\OneToMany(targetEntity="Production", mappedBy="productModel")
      */
-    protected $products;
+    protected $productions;
 
     /**
      * Constructor
