@@ -8,6 +8,7 @@
                 <tr>
                     <th>#</th>
                     <th>Reference</th>
+                    <th>Porduct Model</th>
                     <th>Name</th>
                     <th>Season</th>
                     <th>Price Whole Sale</th>
@@ -21,6 +22,7 @@
                     <tr>
                         <td>{{ production.id }}</td>
                         <td>{{ production.reference }}</td>
+                        <td>{{ production.productModel.name }}</td>
                         <td>{{ production.name }}</td>
                         <td>{{ production.season }}</td>
                         <td>{{ production.priceWhole }} €</td>
