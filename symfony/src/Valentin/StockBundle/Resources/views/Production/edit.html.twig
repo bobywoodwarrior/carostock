@@ -2,5 +2,36 @@
 
 {% block main %}
     <h1>Edit Production</h1>
-    {% include('ValentinStockBundle:Production:_form.html.twig') %}
+
+    {{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    <div class="panel panel-info">
+    <div class="panel-heading">
+        <h3 class="panel-title">Production</h3>
+    </div>
+
+    <div class="panel-body">
+        {{ form_row(form.reference) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.quantity) }}
+        {{ form_row(form.priceWhole) }}
+        {{ form_row(form.season) }}
+    </div>
+
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-4">
+                <a href="{{ path('production_index') }}" class="btn btn-default btn-block">Annuler</a>
+            </div>
+            <div class="col-md-8">
+                <button type="submit" class="btn btn-info btn-block">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {{ form_end(form) }}
+
+
 {% endblock %}
