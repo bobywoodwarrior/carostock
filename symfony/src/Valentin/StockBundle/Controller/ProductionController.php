@@ -67,6 +67,42 @@ class ProductionController extends Controller
     }
 
     /**
+     * Production Edit
+     *
+     * @param Production $production
+     * @Route("/edit/{id}", name="production_edit")
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editMaterial(Request $request, Production $production)
+    {
+        $form = $this->createForm(new ProductionType(), $production);
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+
+                $em->flush();
+                $this->get('session')->getFlashBag()->add(
+                    'success',
+                    'Material edited !'
+                );
+
+                return $this->redirect(
+                    $this->generateUrl(
+                        'production_index'
+                    )
+                );
+            }
+        }
+
+        return $this->render('ValentinStockBundle:Production:edit.html.twig', array(
+            'production' => $production,
+            'form'    => $form->createView()
+        ));
+    }
+
+    /**
      * Production Delete
      *
      * @Route("/delete/{id}", name="production_delete")

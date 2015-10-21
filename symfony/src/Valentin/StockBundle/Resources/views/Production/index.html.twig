@@ -12,6 +12,7 @@
                     <th>Season</th>
                     <th>Price Whole Sale</th>
                     <th>Total</th>
+                    <th>Edit</th>
                     <th>Delete</th>
                  </tr>
             </thead>
@@ -24,6 +25,11 @@
                         <td>{{ production.season }}</td>
                         <td>{{ production.priceWhole }} €</td>
                         <td>{{ production.priceWhole }}€</td>
+                        <td>
+                            <a href="{{ path('production_edit', {'id':production.id}) }}">
+                                <i class="glyphicon glyphicon-edit"></i>
+                            </a>
+                        </td>
                         <td>
                             <a href="{{ path('production_delete', {'id':production.id}) }}">
                                 <i class="glyphicon glyphicon-remove" style="color: red;"></i>
@@ -39,6 +45,7 @@
 
     <a href="{{ path('production_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add production</a>
 
+    <!--
     <div>
         <div class="col-md-12">
             <table class="table table-striped table-hover table-responsive">
@@ -82,4 +89,5 @@
             <a href="{{ path('production_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add production</a>
         </div>
     </div>
+    -->
 {% endblock %}
