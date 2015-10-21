@@ -96,6 +96,8 @@ class ProductionController extends Controller
             }
         }
 
+        $form->remove('productModel');
+
         return $this->render('ValentinStockBundle:Production:edit.html.twig', array(
             'production' => $production,
             'form'    => $form->createView()
