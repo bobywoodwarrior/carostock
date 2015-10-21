@@ -28,13 +28,13 @@ class MaterialQuantity
     /**
      *
      * @ORM\ManyToOne(targetEntity="Material", inversedBy="materialsQuantity")
-     * @ORM\JoinColumn(name="material_id", referencedColumnName="id", unique=true)
+     * @ORM\JoinColumn(name="material_id", referencedColumnName="id")
      */
     protected $material;
 
     /**
      * @ORM\ManyToOne(targetEntity="ProductModel", inversedBy="materials")
-     * @ORM\JoinColumn(name="productModel_id", referencedColumnName="id", unique=true)
+     * @ORM\JoinColumn(name="productModel_id", referencedColumnName="id")
      */
     protected $productModel;
 
