@@ -15,6 +15,12 @@ class ProductionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('productModel','entity', [
+                'class'     => 'Valentin\StockBundle\Entity\ProductModel',
+                'property'  => 'name',
+                'multiple'  => false,
+                'expanded'  => false
+            ])
             ->add('reference','text')
             ->add('name','text')
             ->add('quantity','number')
