@@ -76,7 +76,8 @@ class ProductionController extends Controller
     public function editMaterial(Request $request, Production $production)
     {
         $form = $this->createForm(new ProductionType(), $production);
-
+        $form->remove('productModel');
+        
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
@@ -95,8 +96,6 @@ class ProductionController extends Controller
                 );
             }
         }
-
-        $form->remove('productModel');
 
         return $this->render('ValentinStockBundle:Production:edit.html.twig', array(
             'production' => $production,
