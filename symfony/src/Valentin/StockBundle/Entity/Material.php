@@ -24,11 +24,22 @@ class Material
     protected $id;
 
     /**
+     * Quantity original
+     *
      * @var integer
      *
      * @ORM\Column(name="quantity", type="integer")
      */
     protected $quantity;
+
+    /**
+     * Quantity used
+     *
+     * @var integer
+     *
+     * @ORM\Column(name="quantity_used", type="integer", options={"unsigned"=true, "default" = 0}))
+     */
+    protected $quantityUsed;
 
     /**
      * @var string
@@ -382,5 +393,61 @@ class Material
     public function getNameForDropdown()
     {
         return $this->getName(). ' ('.$this->getMaterialKind()->getName().')';
+    }
+
+    /**
+     * Get QuantityUsed
+     *
+     * @return int
+     */
+    public function getQuantityUsed()
+    {
+        return $this->quantityUsed;
+    }
+
+    /**
+     * Set quantityUsed
+     *
+     * @param int $quantityUsed
+     *
+     * @return Material
+     */
+    public function setQuantityUsed($quantityUsed)
+    {
+        $this->quantityUsed = $quantityUsed;
+
+        return $this;
+    }
+
+    /**
+     * Check if material required is available
+     *
+     * @param int $qty
+     *
+     * @return bool
+     */
+    public function isAvailableQuantity($qty)
+    {
+        $stock = $this->getQuantity() - $this->getQuantityUsed();
+
+        return ($qty < $stock) ? true : false;
+    }
+
+    /**
+     * Increase quantity used
+     *
+     * @param int $qty
+     *
+     * @return $this
+     */
+    public function increaseQuantityUsed($qty)
+    {
+        if ($this->isAvailableQuantity($qty)) {
+
+            $newQty = $this->getQuantityUsed() + $qty;
+            $this->setQuantityUsed($newQty);
+        }
+
+        return $this;
     }
 }

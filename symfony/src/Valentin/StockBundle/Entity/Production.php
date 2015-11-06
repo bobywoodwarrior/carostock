@@ -31,13 +31,6 @@ class Production
     protected $name;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="quantity", type="integer")
-     */
-    protected $quantity;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="season", type="string", length=255, nullable=true)
@@ -65,6 +58,55 @@ class Production
     protected $productModel;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="qty_size_uniq", type="integer", options={"unsigned"=true, "default" = 0})
+     */
+    protected $quantitySizeUniq = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="qty_size_zero", type="integer", options={"unsigned"=true, "default" = 0})
+     */
+    protected $quantitySizeZero = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="qty_size_one", type="integer", options={"unsigned"=true, "default" = 0})
+     */
+    protected $quantitySizeOne = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="qty_size_two", type="integer", options={"unsigned"=true, "default" = 0})
+     */
+    protected $quantitySizeTwo = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="qty_size_three", type="integer", options={"unsigned"=true, "default" = 0})
+     */
+    protected $quantitySizeThree = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="qty_size_four", type="integer", options={"unsigned"=true, "default" = 0})
+     */
+    protected $quantitySizeFour = 0;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="qty_size_five", type="integer", options={"unsigned"=true, "default" = 0})
+     */
+    protected $quantitySizeFive = 0;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime", nullable=true)
@@ -76,7 +118,7 @@ class Production
      */
     public function __construct()
     {
-
+        $this->createdAt = new \DateTime("now");
     }
 
     /**
@@ -224,30 +266,6 @@ class Production
     }
 
     /**
-     * Get Quantity
-     *
-     * @return int
-     */
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
-
-    /**
-     * Set quantity
-     *
-     * @param int $quantity
-     *
-     * @return Product
-     */
-    public function setQuantity($quantity)
-    {
-        $this->quantity = $quantity;
-
-        return $this;
-    }
-
-    /**
      * Get CreatedAt
      *
      * @return \DateTime
@@ -269,5 +287,193 @@ class Production
         $this->createdAt = $createdAt;
 
         return $this;
+    }
+
+    /**
+     * Get QuantitySizeUniq
+     *
+     * @return int
+     */
+    public function getQuantitySizeUniq()
+    {
+        return $this->quantitySizeUniq;
+    }
+
+    /**
+     * Set quantitySizeUniq
+     *
+     * @param int $quantitySizeUniq
+     *
+     * @return Production
+     */
+    public function setQuantitySizeUniq($quantitySizeUniq)
+    {
+        $this->quantitySizeUniq = $quantitySizeUniq;
+
+        return $this;
+    }
+
+    /**
+     * Get QuantitySizeZero
+     *
+     * @return int
+     */
+    public function getQuantitySizeZero()
+    {
+        return $this->quantitySizeZero;
+    }
+
+    /**
+     * Set quantitySizeZero
+     *
+     * @param int $quantitySizeZero
+     *
+     * @return Production
+     */
+    public function setQuantitySizeZero($quantitySizeZero)
+    {
+        $this->quantitySizeZero = $quantitySizeZero;
+
+        return $this;
+    }
+
+    /**
+     * Get QuantitySizeOne
+     *
+     * @return int
+     */
+    public function getQuantitySizeOne()
+    {
+        return $this->quantitySizeOne;
+    }
+
+    /**
+     * Set quantitySizeOne
+     *
+     * @param int $quantitySizeOne
+     *
+     * @return Production
+     */
+    public function setQuantitySizeOne($quantitySizeOne)
+    {
+        $this->quantitySizeOne = $quantitySizeOne;
+
+        return $this;
+    }
+
+    /**
+     * Get QuantitySizeTwo
+     *
+     * @return int
+     */
+    public function getQuantitySizeTwo()
+    {
+        return $this->quantitySizeTwo;
+    }
+
+    /**
+     * Set quantitySizeTwo
+     *
+     * @param int $quantitySizeTwo
+     *
+     * @return Production
+     */
+    public function setQuantitySizeTwo($quantitySizeTwo)
+    {
+        $this->quantitySizeTwo = $quantitySizeTwo;
+
+        return $this;
+    }
+
+    /**
+     * Get QuantitySizeThree
+     *
+     * @return int
+     */
+    public function getQuantitySizeThree()
+    {
+        return $this->quantitySizeThree;
+    }
+
+    /**
+     * Set quantitySizeThree
+     *
+     * @param int $quantitySizeThree
+     *
+     * @return Production
+     */
+    public function setQuantitySizeThree($quantitySizeThree)
+    {
+        $this->quantitySizeThree = $quantitySizeThree;
+
+        return $this;
+    }
+
+    /**
+     * Get QuantitySizeFour
+     *
+     * @return int
+     */
+    public function getQuantitySizeFour()
+    {
+        return $this->quantitySizeFour;
+    }
+
+    /**
+     * Set quantitySizeFour
+     *
+     * @param int $quantitySizeFour
+     *
+     * @return Production
+     */
+    public function setQuantitySizeFour($quantitySizeFour)
+    {
+        $this->quantitySizeFour = $quantitySizeFour;
+
+        return $this;
+    }
+
+    /**
+     * Get QuantitySizeFive
+     *
+     * @return int
+     */
+    public function getQuantitySizeFive()
+    {
+        return $this->quantitySizeFive;
+    }
+
+    /**
+     * Set quantitySizeFive
+     *
+     * @param int $quantitySizeFive
+     *
+     * @return Production
+     */
+    public function setQuantitySizeFive($quantitySizeFive)
+    {
+        $this->quantitySizeFive = $quantitySizeFive;
+
+        return $this;
+    }
+
+    /**
+     * Get total quantities sizes
+     *
+     *
+     * @return int
+     */
+    public function getTotalSizes()
+    {
+        $total = 0;
+        $total += $this->getQuantitySizeUniq();
+        $total += $this->getQuantitySizeZero();
+        $total += $this->getQuantitySizeOne();
+        $total += $this->getQuantitySizeTwo();
+        $total += $this->getQuantitySizeThree();
+        $total += $this->getQuantitySizeFour();
+        $total += $this->getQuantitySizeFive();
+
+        return (int) $total;
     }
 }

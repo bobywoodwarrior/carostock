@@ -5,7 +5,81 @@
     </div>
     <div class="panel-body">
 
-        {{ form_row(form) }} <!--à enlever pour enlever "Valentin stockbundle product"**/-->
+        <div class="well">
+
+            <h4><i class="glyphicon glyphicon-star"></i> Model</h4>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-4">
+                    {{ form_row(form.productModel) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_row(form.name) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_row(form.reference) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    {{ form_row(form.priceWhole) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_row(form.season) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_row(form.createdAt) }}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="well">
+
+            <h4><i class="glyphicon glyphicon-list-alt"></i> Sizes quantities</h4>
+            <hr>
+
+            <div class="row">
+                <div class="col-md-4">
+                    {{ form_row(form.quantitySizeUniq) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    {{ form_row(form.quantitySizeZero) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_row(form.quantitySizeOne) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_row(form.quantitySizeTwo) }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    {{ form_row(form.quantitySizeThree) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_row(form.quantitySizeFour) }}
+                </div>
+                <div class="col-md-4">
+                    {{ form_row(form.quantitySizeFive) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="well">
+
+            <p><strong>Todo</strong></p>
+            <p>On affiche en direct le décompte que ca va effectuer lorsqu'on va valider</p>
+            <p>Disable submit button si on demande plus de stock de MP que dispo</p>
+            <p>JS donc!</p>
+
+        </div>
 
     </div>
 
@@ -15,7 +89,7 @@
                 <a href="{{ path('production_index') }}" class="btn btn-default btn-block">Annuler</a>
             </div>
             <div class="col-md-8">
-                <button type="submit" class="btn btn-info btn-block">Save</button>
+                <button type="submit" class="btn btn-info btn-block">Save and dicrease materials</button>
             </div>
         </div>
     </div>

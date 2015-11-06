@@ -37,6 +37,9 @@ class ProductionController extends Controller
      * New Production
      *
      * @Route("/new", name="production_new")
+     *
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function newProduction(Request $request)
     {
@@ -45,6 +48,39 @@ class ProductionController extends Controller
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
+
+                // Todo : dicrease materials
+                $total = $production->getTotalSizes();
+                $model = $production->getProductModel();
+                $isPossible = true;
+
+                foreach ($model->getMaterials() as $mp) {
+
+                    $materialNeeded = $mp->getQuantity() * $total;
+
+                    if($mp->getMaterial()->isAvailableQuantity($materialNeeded) === false) {
+                        $isPossible = false;
+
+                        $this->get('session')->getFlashBag()->add(
+                            'danger',
+                            'Material needed are insuffisant in stock'
+                        );
+
+                        break;
+                    }
+                }
+
+                if ($isPossible === true){
+
+                    foreach ($model->getMaterials() as $mp) {
+
+                        $materialNeeded = $mp->getQuantity() * $total;
+
+                        $mp->getMaterial()->increaseQuantityUsed($materialNeeded);
+                    }
+
+                }
+
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($production);
                 $em->flush();
@@ -69,24 +105,25 @@ class ProductionController extends Controller
     /**
      * Production Edit
      *
-     * @param Production $production
      * @Route("/edit/{id}", name="production_edit")
+     * @param Request $request
+     * @param Production $production
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editMaterial(Request $request, Production $production)
+    public function editAction(Request $request, Production $production)
     {
-        $form = $this->createForm(new ProductionType(), $production);
-        $form->remove('productModel');
-        
+        $form = $this->createForm(new ProductionType(), $production, ['isFull' => false]);
+
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
+
                 $em = $this->getDoctrine()->getManager();
 
                 $em->flush();
                 $this->get('session')->getFlashBag()->add(
                     'success',
-                    'Material edited !'
+                    'Production edited !'
                 );
 
                 return $this->redirect(
@@ -99,7 +136,7 @@ class ProductionController extends Controller
 
         return $this->render('ValentinStockBundle:Production:edit.html.twig', array(
             'production' => $production,
-            'form'    => $form->createView()
+            'form'       => $form->createView()
         ));
     }
 
@@ -107,6 +144,7 @@ class ProductionController extends Controller
      * Production Delete
      *
      * @Route("/delete/{id}", name="production_delete")
+     * @param Request $request
      * @param Production $production
      * @return \Symfony\Component\HttpFoundation\Response
      */
