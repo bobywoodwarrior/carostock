@@ -39,7 +39,7 @@ class MaterialKindController extends Controller
      *
      * @Route("/new", name="material_kind_new")
      */
-    public function newMaterialKind(Request $request)
+    public function newAction(Request $request)
     {
         $kind = new MaterialKind();
 
@@ -75,7 +75,7 @@ class MaterialKindController extends Controller
      * @Route("/edit/{id}", name="material_kind_edit")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editMaterialKind(Request $request, MaterialKind $kind)
+    public function editAction(Request $request, MaterialKind $kind)
     {
         $form = $this->createForm(new MaterialKindType(), $kind);
 
@@ -111,7 +111,7 @@ class MaterialKindController extends Controller
      * @param MaterialKind $kind
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteMaterialKind(Request $request, MaterialKind $kind)
+    public function deleteAction(Request $request, MaterialKind $kind)
     {
         if ($request->getMethod() === 'POST'){
             $em = $this->getDoctrine()->getManager();

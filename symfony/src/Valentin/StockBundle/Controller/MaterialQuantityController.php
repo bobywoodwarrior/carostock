@@ -39,7 +39,7 @@ class MaterialQuantityController extends Controller
      *
      * @Route("/new", name="material_quantity_new")
      */
-    public function newMaterialQuantity(Request $request)
+    public function newAction(Request $request)
     {
         $quantity = new MaterialQuantity();
 
@@ -75,7 +75,7 @@ class MaterialQuantityController extends Controller
      * @Route("/edit/{id}", name="material_quantity_edit")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editMaterialQuantity(Request $request, MaterialQuantity $quantity)
+    public function editAction(Request $request, MaterialQuantity $quantity)
     {
         $form = $this->createForm(new MaterialQuantityType(), $quantity);
 
@@ -111,7 +111,7 @@ class MaterialQuantityController extends Controller
      * @param MaterialQuantity $quantity
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteMaterialQuantity(Request $request, MaterialQuantity $quantity)
+    public function deleteAction(Request $request, MaterialQuantity $quantity)
     {
         if ($request->getMethod() === 'POST'){
             $em = $this->getDoctrine()->getManager();

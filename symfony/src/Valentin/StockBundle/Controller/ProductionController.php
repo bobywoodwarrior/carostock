@@ -41,7 +41,7 @@ class ProductionController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function newProduction(Request $request)
+    public function newAction(Request $request)
     {
         $production = new Production();
         $form = $this->createForm(new ProductionType(), $production);
@@ -148,7 +148,7 @@ class ProductionController extends Controller
      * @param Production $production
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function deleteProduct(Request $request, Production $production)
+    public function deleteAction(Request $request, Production $production)
     {
         if ($request->getMethod() === 'POST'){
             $em = $this->getDoctrine()->getManager();
