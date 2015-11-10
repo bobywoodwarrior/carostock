@@ -38,13 +38,6 @@ class Production
     protected $season;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="reference", type="string", length=255)
-     */
-    protected $reference;
-
-    /**
      * @var integer
      *
      * @ORM\Column(name="price_whole", type="integer")
@@ -189,30 +182,6 @@ class Production
     public function setSeason($season)
     {
         $this->season = $season;
-
-        return $this;
-    }
-
-    /**
-     * Get Reference
-     *
-     * @return string
-     */
-    public function getReference()
-    {
-        return $this->reference;
-    }
-
-    /**
-     * Set reference
-     *
-     * @param string $reference
-     *
-     * @return Product
-     */
-    public function setReference($reference)
-    {
-        $this->reference = $reference;
 
         return $this;
     }

@@ -41,7 +41,7 @@ class MaterialQuantity
     /**
      * @var integer
      *
-     * @ORM\Column(name="quantity", type="integer")
+     * @ORM\Column(name="quantity", type="integer", options={"unsigned"=true, "default" = 0})
      */
     protected $quantity;
 

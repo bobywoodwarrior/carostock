@@ -21,7 +21,7 @@
                 {% for production in productions %}
                     <tr>
                         <td>{{ production.id }}</td>
-                        <td>{{ production.reference }}</td>
+                        <td>{{ production.productModel.reference }}</td>
                         <td>{{ production.productModel.name }}</td>
                         <td>{{ production.name }}</td>
                         <td>{{ production.season }}</td>
@@ -65,7 +65,7 @@
                 {% for production in productions %}
                     <tr>
                         <td>{{ production.id }}</td>
-                        <td><input type="text" value="{{ production.reference }}" class="form-control" placeholder="Référence" min=0></td>
+                        <td><input type="text" value="{{ production.productModel.reference }}" class="form-control" placeholder="Référence" min=0></td>
                         <td><input type="text" value="{{ production.name }}" class="form-control" placeholder="Nom"></td>
                         <td><input type="text" value="{{ production.season }}" class="form-control" placeholder="Saison"></td>
                         <td><input type="number" value="{{ production.priceWhole }}" class="form-control bfh-number" min=0></td>

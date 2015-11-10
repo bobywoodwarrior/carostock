@@ -16,7 +16,6 @@ class ProductionType extends AbstractType
     {
 
         $builder
-            ->add('reference','text')
             ->add('name','text')
             ->add('priceWhole','text')
             ->add('season', 'choice', array(
