@@ -37,6 +37,13 @@ class MaterialKind
     protected $unit;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="unitprice", type="decimal")
+     */
+    protected $unitprice;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -114,5 +121,21 @@ class MaterialKind
         $this->unit = $unit;
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUnitprice()
+    {
+        return $this->unitprice;
+    }
+
+    /**
+     * @param int $unitprice
+     */
+    public function setUnitprice($unitprice)
+    {
+        $this->unitprice = $unitprice;
     }
 }

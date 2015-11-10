@@ -8,6 +8,7 @@
         <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Unit Price</th>
             <th>Unit</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -19,6 +20,7 @@
                 <td>{{ kind.id }}</td>
                 <td>{{ kind.name }}</td>
                 <td>{{ kind.unit }}</td>
+                <td>{{ kind.unitprice }} €</td>
                 <td>
                     <a href="{{ path('material_kind_edit', {'id':kind.id}) }}">
                         <i class="glyphicon glyphicon-edit"></i>
