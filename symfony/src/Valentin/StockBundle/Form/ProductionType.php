@@ -18,13 +18,12 @@ class ProductionType extends AbstractType
         $builder
             ->add('name','text')
             ->add('priceWhole','text')
-            ->add('season', 'choice', array(
-                'choices' => array(
-                    'FW 15/16' => 'FW 15/16',
-                    'SS 16' => 'SS 16'
-                ),
-                'multiple' => false,
-            ))
+            ->add('season','entity', [
+                'class'     => 'Valentin\StockBundle\Entity\Season',
+                'property'  => 'name',
+                'multiple'  => false,
+                'expanded'  => false
+            ])
             ->add('createdAt','date',[
                 'label' => 'Made at'
             ])

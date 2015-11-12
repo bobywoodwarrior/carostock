@@ -1,0 +1,36 @@
+{% extends "ValentinStockBundle:Default:_layout.html.twig" %}
+
+{% block main %}
+<div class="container">
+    <h2>Season</h2>
+    <table id="product-table" class="table table-striped table-hover table-responsive">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for season in seasons %}
+            <tr>
+                <td>{{ season.id }}</td>
+                <td>{{ season.name }}</td>
+                <td>
+                    <a href="{{ path('season_edit', {'id':season.id}) }}">
+                        <i class="glyphicon glyphicon-edit"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="{{ path('season_delete', {'id':season.id}) }}">
+                        <i class="glyphicon glyphicon-remove" style="color: red;"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+<a href="{{ path('season_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add season</a>
+{% endblock %}
