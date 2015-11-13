@@ -31,6 +31,11 @@ class Season
     protected $name;
 
     /**
+     * @ORM\OneToMany(targetEntity="Production", mappedBy="season")
+     */
+    protected $productions;
+
+    /**
      * @return int
      */
     public function getId()
@@ -60,5 +65,21 @@ class Season
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProductions()
+    {
+        return $this->productions;
+    }
+
+    /**
+     * @param mixed $productions
+     */
+    public function setProductions($productions)
+    {
+        $this->productions = $productions;
     }
 }

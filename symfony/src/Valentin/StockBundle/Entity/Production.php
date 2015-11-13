@@ -5,6 +5,7 @@ namespace Valentin\StockBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
+
 /**
  * Product
  *
@@ -33,7 +34,8 @@ class Production
     /**
      * @var string
      *
-     * @ORM\Column(name="season", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\Season", inversedBy="productions")
+     * @ORM\JoinColumn(name="season_id", referencedColumnName="id")
      */
     protected $season;
 

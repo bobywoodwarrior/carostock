@@ -39,7 +39,7 @@ class Material
      *
      * @ORM\Column(name="quantity_used", type="integer", options={"unsigned"=true, "default" = 0}))
      */
-    protected $quantityUsed;
+    protected $quantityUsed = 0;
 
     /**
      * @var string

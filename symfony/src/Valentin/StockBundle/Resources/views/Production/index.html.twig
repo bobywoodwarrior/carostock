@@ -24,7 +24,7 @@
                         <td>{{ production.productModel.reference }}</td>
                         <td>{{ production.productModel.name }}</td>
                         <td>{{ production.name }}</td>
-                        <td>{{ production.season }}</td>
+                        <td>{{ production.season.name }}</td>
                         <td>{{ production.priceWhole }} €</td>
                         <td>{{ production.priceWhole }}€</td>
                         <td>
@@ -67,7 +67,7 @@
                         <td>{{ production.id }}</td>
                         <td><input type="text" value="{{ production.productModel.reference }}" class="form-control" placeholder="Référence" min=0></td>
                         <td><input type="text" value="{{ production.name }}" class="form-control" placeholder="Nom"></td>
-                        <td><input type="text" value="{{ production.season }}" class="form-control" placeholder="Saison"></td>
+                        <td><input type="text" value="{{ production.season.name }}" class="form-control" placeholder="Saison"></td>
                         <td><input type="number" value="{{ production.priceWhole }}" class="form-control bfh-number" min=0></td>
                         <td>{{ production.priceWhole }}</td>
                         <td>
