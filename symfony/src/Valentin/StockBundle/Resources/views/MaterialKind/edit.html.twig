@@ -1,6 +1,16 @@
 {% extends "ValentinStockBundle:Default:_layout.html.twig" %}
 
 {% block main %}
-    <h1>Edit Material Type</h1>
-    {% include('ValentinStockBundle:MaterialKind:_form.html.twig') %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('homepage') }}">Home</a></li>
+        <li><a href="{{ path('material_kind_index') }}">Material Types</a></li>
+        <li class="active"><a href="{{ app.request.uri }}">Edit</a></li>
+    </ol>
+    <div class="well header-page">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Edit Material Type</h2>
+            </div>
+        </div>
+    </div>    {% include('ValentinStockBundle:MaterialKind:_form.html.twig') %}
 {% endblock %}

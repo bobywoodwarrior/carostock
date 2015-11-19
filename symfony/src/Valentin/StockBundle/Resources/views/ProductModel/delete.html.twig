@@ -1,10 +1,23 @@
 {% extends "ValentinStockBundle:Default:_layout.html.twig" %}
 
 {% block main %}
-    <h1>Are you sure you want to delete "{{ model.name }}" ?</h1>
-    <hr>
-    <form method="POST">
-        <button class="btn btn-danger" type="submit" style="float: right;">Oui</button>
-    </form>
-    <a href="{{ path('product_model_index') }}" class="btn btn-default">Non</a>
+    <ol class="breadcrumb">
+        <li><a href="{{ path('homepage') }}">Home</a></li>
+        <li><a href="{{ path('product_model_index') }}">Product Models</a></li>
+        <li class="active"><a href="{{ path('product_model_new') }}">New</a></li>
+    </ol>
+    <div class="well header-page">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Are you sure to delete model "{{ model.name }}" ?</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="well">
+        <form method="post">
+            <button class="btn btn-danger" type="submit" style="float: right;">Yes</button>
+        </form>
+        <a href="{{ path('product_model_index') }}" class="btn btn-default">No</a>
+    </div>
 {% endblock %}

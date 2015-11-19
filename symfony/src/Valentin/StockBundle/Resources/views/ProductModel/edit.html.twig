@@ -1,6 +1,16 @@
 {% extends "ValentinStockBundle:Default:_layout.html.twig" %}
 
 {% block main %}
-    <h1>Edit Product Model</h1>
-    {% include('ValentinStockBundle:ProductModel:_form.html.twig') %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('homepage') }}">Home</a></li>
+        <li><a href="{{ path('product_model_index') }}">Production Models</a></li>
+        <li class="active"><a href="{{ app.request.uri }}">Edit</a></li>
+    </ol>
+    <div class="well header-page">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Edit Product Model</h2>
+            </div>
+        </div>
+    </div>    {% include('ValentinStockBundle:ProductModel:_form.html.twig') %}
 {% endblock %}
