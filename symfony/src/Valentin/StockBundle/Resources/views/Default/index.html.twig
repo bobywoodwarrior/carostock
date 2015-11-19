@@ -1,5 +1,17 @@
 {% extends "ValentinStockBundle:Default:_layout.html.twig" %}
 
 {% block main %}
-    <h1>Accueil</h1>
+
+    <div class="container">
+    <ol class="breadcrumb">
+        <li><a href="{{ path('homepage') }}">Home</a></li>
+    </ol>
+    <div class="well header-page">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Home</h2>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
