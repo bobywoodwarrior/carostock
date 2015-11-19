@@ -1,46 +1,15 @@
 html{
-    display: table;
-    margin: auto;
+
 }
 
 body{
-    display: table-cell;
-    width: 60%;
+    padding-top: 80px;
 }
 
-.table td{
-    text-align: center;
+.header-page h2{
+    font-size: 20px;
+    font-weight: 500;
 }
-
-.table th{
-    text-align: center;
-}
-
-
-
-
-
-
-
-.content{
-    margin-top: 40px;
-}
-
-h1{
-    text-align: center;
-    color: #81cbf0;
-}
-
-.table-hover > tbody > tr:hover > td,
-.table-hover > tbody > tr:hover > th{
-    background-color: #81cbf0;
-    color: #ffffff;
-}
-
-th {
-    text-align: center;
-}
-
-td {
+table td, table th{
     text-align: center;
 }

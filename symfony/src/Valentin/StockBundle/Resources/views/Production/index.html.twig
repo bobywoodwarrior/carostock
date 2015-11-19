@@ -1,8 +1,27 @@
 {% extends "ValentinStockBundle:Default:_layout.html.twig" %}
 
 {% block main %}
-    <div class="container">
-        <h2>Production</h2>
+
+    <ol class="breadcrumb">
+        <li><a href="{{ path('homepage') }}">Home</a></li>
+        <li class="active"><a href="{{ path('production_index') }}">Productions</a></li>
+    </ol>
+    <div class="well header-page">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>Productions</h2>
+            </div>
+            <div class="col-md-4">
+                <span class="pull-right">
+                    <a href="{{ path('production_new') }}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i> New production</a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+    {% if productions %}
+
         <table id="product-table" class="table table-striped table-hover table-responsive">
             <thead>
                 <tr>
@@ -41,55 +60,11 @@
                 {% endfor %}
             </tbody>
         </table>
-    </div>
 
-    <hr>
-
-    <a href="{{ path('production_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add production</a>
-
-    {#
-    <div>
-        <div class="col-md-12">
-            <table class="table table-striped table-hover table-responsive">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Référence</th>
-                        <th>Nom</th>
-                        <th>Saison</th>
-                        <th>Prix HT/€</th>
-                        <th>Total HT/€</th>
-                        <th>Supprimer</th>
-                    </tr>
-                </thead>
-                {% for production in productions %}
-                    <tr>
-                        <td>{{ production.id }}</td>
-                        <td><input type="text" value="{{ production.productModel.reference }}" class="form-control" placeholder="Référence" min=0></td>
-                        <td><input type="text" value="{{ production.name }}" class="form-control" placeholder="Nom"></td>
-                        <td><input type="text" value="{{ production.season.name }}" class="form-control" placeholder="Saison"></td>
-                        <td><input type="number" value="{{ production.priceWhole }}" class="form-control bfh-number" min=0></td>
-                        <td>{{ production.priceWhole }}</td>
-                        <td>
-                            <a href="{{ path('production_delete', {'id':production.id}) }}">
-                                <i class="glyphicon glyphicon-remove" style="color: red;"></i>
-                            </a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                <tr class="success">
-                    <th class="success">TOTAL</th>
-                    <td class="success"></td>
-                    <td class="success"></td>
-                    <td class="success"></td>
-                    <td class="success">€</td>
-                    <td class="success">article(s)</td>
-                    <td class="success">€</td>
-                    <td class="success"></td>
-                </tr>
-            </table>
-            <a href="{{ path('production_new') }}" class="btn btn-default"><i class="glyphicon glyphicon-plus"></i> Add production</a>
+    {% else %}
+        <div class="alert alert-warning">
+            <i class="glyphicon glyphicon-info-sign"></i>
+            No productions recorded yet.
         </div>
-    </div>
-    #}
+    {% endif %}
 {% endblock %}
