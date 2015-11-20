@@ -53,32 +53,29 @@ class ProductionService {
         return ($models > 0) ? true : false;
     }
 
+    /**
+     *
+     *
+     *
+     * @return bool
+     * @throws EntityNotFoundException
+     */
     public function savedAndDicreasedMaterials()
     {
         if($this->production === null) {
             throw new EntityNotFoundException('Production not loaded');
         }
 
+        // Get related ProductModel
+        $model = $this->production->getProductModel();
+
         // Calculate
-        $available = $this->isAvailableTotalQuantity(
-            $this->production->getProductModel(),
+        $isEnough = $this->isEnoughMaterialsForModel(
+            $model,
             $this->production->getTotalSizes()
         );
 
-        $isPossible = true;
-
-        foreach ($model->getMaterials() as $mp) {
-
-            $materialNeeded = $mp->getQuantity() * $total;
-
-            if($mp->getMaterial()->isAvailableQuantity($materialNeeded) === false) {
-                $isPossible = false;
-
-                break;
-            }
-        }
-
-        if ($isPossible === true){
+        if ($isEnough === true){
 
             foreach ($model->getMaterials() as $mp) {
 
@@ -91,9 +88,18 @@ class ProductionService {
             $this->em->flush();
         }
 
-        return $isPossible;
+        return $isEnough;
     }
 
+    /**
+     * Check if there is enough material
+     * for a model given
+     *
+     * @param ProductModel $productModel
+     * @param              $total
+     *
+     * @return bool
+     */
     public function isEnoughMaterialsForModel(ProductModel $productModel, $total)
     {
         $isAvailable = true;
