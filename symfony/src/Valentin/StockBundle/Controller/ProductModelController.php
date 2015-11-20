@@ -4,6 +4,7 @@ namespace Valentin\StockBundle\Controller;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Valentin\StockBundle\Entity\MaterialQuantity;
 use Valentin\StockBundle\Entity\ProductModel;
