@@ -156,4 +156,28 @@ class ProductModelController extends Controller
         ));
     }
 
+    /**
+     * Model check enough materials ajax
+     *
+     * @Route("/ajaxCheckMaterials", name="ajax_model_enough_material")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function ajaxCheckMaterialsAction(Request $request)
+    {
+        // Todo
+        // check model exist/ return false sinon
+
+        $modelId     = $request->query->get('modelId');
+        $totalSizes  = $request->query->get('totalSizes');
+
+        $model = $this->getDoctrine()
+            ->getRepository('ValentinStockBundle:ProductModel')
+            ->find($modelId);
+
+        $isPossible = $this->get('stock.production')->isEnoughMaterialsForModel($model, $totalSizes);
+
+        return $isPossible;
+    }
+
 }
