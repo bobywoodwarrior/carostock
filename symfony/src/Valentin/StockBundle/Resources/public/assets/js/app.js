@@ -5,6 +5,10 @@ var $newLinkLi          = $('<li></li>').append($addMaterialLink);
 
 $( document ).ready(function() {
 
+    /*
+    **** COLLECTION ADD/REMOVE ****
+    */
+
     $collectionHolder = $('ul.materials');
 
     $collectionHolder.find('li.well').each(function() {

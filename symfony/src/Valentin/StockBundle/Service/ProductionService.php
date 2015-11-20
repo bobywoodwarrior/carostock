@@ -68,11 +68,12 @@ class ProductionService {
 
         // Get related ProductModel
         $model = $this->production->getProductModel();
+        $total = $this->production->getTotalSizes();
 
         // Calculate
         $isEnough = $this->isEnoughMaterialsForModel(
             $model,
-            $this->production->getTotalSizes()
+            $total
         );
 
         if ($isEnough === true){
