@@ -177,7 +177,13 @@ class ProductModelController extends Controller
 
         $isPossible = $this->get('stock.production')->isEnoughMaterialsForModel($model, $totalSizes);
 
-        return $isPossible;
+        $response = new Response();
+        $response->setContent(json_encode(array(
+            'status' => $isPossible,
+        )));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 
 }
