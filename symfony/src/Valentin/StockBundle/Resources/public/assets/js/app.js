@@ -5,9 +5,9 @@ var $newLinkLi          = $('<li></li>').append($addMaterialLink);
 
 $( document ).ready(function() {
 
-    /*
-    **** COLLECTION ADD/REMOVE ****
-    */
+    /******************************
+        COLLECTION ADD/REMOVE
+    *******************************/
 
     $collectionHolder = $('ul.materials');
 
@@ -54,6 +54,50 @@ $( document ).ready(function() {
 
             // remove the li
             $materialFormLi.remove();
+        });
+    }
+
+    /***********************************
+        AJAX CHECK MATERIALS STOCK
+     ***********************************/
+    $('#form_production .product_model').change(function(){
+        ajaxMaterials();
+    });
+
+    $('#form_production .sizes input').keyup(function(){
+        ajaxMaterials();
+    });
+
+    var ajaxMaterials = function() {
+        var modelId     = $('#form_production .product_model').val();
+        var sizes       = $('.sizes input');
+        var totalSizes  = 0;
+
+        $.each(sizes, function( index, value ) {
+            totalSizes += Number($(value).val());
+        });
+
+        $('.result_ajax .loading').show();
+        $('.result_ajax .alert').hide();
+        $('#saveProduction').prop('disabled', true);
+
+        $.ajax({
+            url: site_url + 'productModel/ajaxCheckMaterials',
+            data: {
+                modelId     : modelId,
+                totalSizes  : totalSizes
+            },
+            success: function(response){
+
+                $('.result_ajax .loading').hide();
+
+                if (response.status == true) {
+                    $('.reponse_ok').show();
+                    $('#saveProduction').prop('disabled', false);
+                } else {
+                    $('.reponse_ko').show();
+                }
+            }
         });
     }
 
