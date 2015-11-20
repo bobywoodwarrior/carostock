@@ -43,9 +43,9 @@ class ProductionController extends Controller
      */
     public function newAction(Request $request)
     {
-        $productionService = $this->get('stock.production')->isNewPossible();
+        $productionService = $this->get('stock.production');
 
-        if (!$productionService) {
+        if (!$productionService->isNewPossible()) {
             $modelPath = $this->generateUrl('product_model_new');
             $this->get('session')->getFlashBag()->add(
                 'danger',
@@ -58,51 +58,32 @@ class ProductionController extends Controller
             );
         }
 
+        // New entity
         $production = new Production();
+
         $form = $this->createForm(new ProductionType(), $production);
+
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
             if ($form->isValid()) {
 
-                // Todo : dicrease materials
-                $total = $production->getTotalSizes();
-                $model = $production->getProductModel();
-                $isPossible = true;
+                // Set our new production to the service
+                $productionService->setProduction($production);
 
-                foreach ($model->getMaterials() as $mp) {
+                if ($productionService->savedAndDicreasedMaterials()) {
 
-                    $materialNeeded = $mp->getQuantity() * $total;
+                    $this->get('session')->getFlashBag()->add(
+                        'success',
+                        'Production added !'
+                    );
 
-                    if($mp->getMaterial()->isAvailableQuantity($materialNeeded) === false) {
-                        $isPossible = false;
-
-                        $this->get('session')->getFlashBag()->add(
-                            'danger',
-                            'Material needed are insuffisant in stock'
-                        );
-
-                        break;
-                    }
+                } else {
+                    $this->get('session')->getFlashBag()->add(
+                        'danger',
+                        'Material needed are insuffisant in stock'
+                    );
                 }
 
-                if ($isPossible === true){
-
-                    foreach ($model->getMaterials() as $mp) {
-
-                        $materialNeeded = $mp->getQuantity() * $total;
-
-                        $mp->getMaterial()->increaseQuantityUsed($materialNeeded);
-                    }
-
-                }
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($production);
-                $em->flush();
-                $this->get('session')->getFlashBag()->add(
-                    'success',
-                    'Production added !'
-                );
                 return $this->redirect(
                     $this->generateUrl(
                         'production_index'
@@ -186,5 +167,22 @@ class ProductionController extends Controller
         return $this->render('ValentinStockBundle:Production:delete.html.twig', array(
             'production' => $production
         ));
+    }
+
+    public function ajaxCheckMaterialsAction(Request $request)
+    {
+        // Todo
+        // check model exist/ return false sinon
+
+        $modelId     = $request->query->get('modelId');
+        $totalSizes  = $request->query->get('totalSizes');
+
+        $model = $this->getDoctrine()
+            ->getRepository('ValentinStockBundle:ProductModel')
+            ->find($modelId);
+
+        $isPossible = $this->get('stock.production')->isEnoughMaterialsForModel($model, $totalSizes);
+
+        return $isPossible;
     }
 }
