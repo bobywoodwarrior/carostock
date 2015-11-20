@@ -94,10 +94,11 @@ class ProductionService {
         return $isPossible;
     }
 
-    public function isEnoughMaterialsForModel(ProductModel $productModel,int $total)
+    public function isEnoughMaterialsForModel(ProductModel $productModel, $total)
     {
         $isAvailable = true;
-        $materials = $productModel->getMaterials();
+        $total       = (int) $total;
+        $materials   = $productModel->getMaterials();
 
         foreach ($materials as $mp) {
 
