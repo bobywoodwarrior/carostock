@@ -4,7 +4,7 @@ namespace Valentin\StockBundle\Controller;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\BrowserKit\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Valentin\StockBundle\Entity\MaterialQuantity;
 use Valentin\StockBundle\Entity\ProductModel;
@@ -178,11 +178,10 @@ class ProductModelController extends Controller
 
         $isPossible = $this->get('stock.production')->isEnoughMaterialsForModel($model, $totalSizes);
 
-        $response = new Response();
-        $response->setContent(json_encode(array(
-            'status' => $isPossible,
-        )));
-        $response->headers->set('Content-Type', 'application/json');
+        $response = new JsonResponse();
+        $response->setData(array(
+            'status' => $isPossible
+        ));
 
         return $response;
     }
