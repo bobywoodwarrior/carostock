@@ -68,6 +68,10 @@ $( document ).ready(function() {
         ajaxMaterials();
     });
 
+    $('#form_production .sizes input').change(function(){
+        ajaxMaterials();
+    });
+
     var ajaxMaterials = function() {
         var modelId     = $('#form_production .product_model').val();
         var sizes       = $('.sizes input');
