@@ -43,6 +43,21 @@ class ProductionController extends Controller
      */
     public function newAction(Request $request)
     {
+        $productionService = $this->get('stock.production')->isNewPossible();
+
+        if (!$productionService) {
+            $modelPath = $this->generateUrl('product_model_new');
+            $this->get('session')->getFlashBag()->add(
+                'danger',
+                'Impossible to add a new production, no models founds, <a href="'.$modelPath.'">create one before</a>'
+            );
+            return $this->redirect(
+                $this->generateUrl(
+                    'production_index'
+                )
+            );
+        }
+
         $production = new Production();
         $form = $this->createForm(new ProductionType(), $production);
         if ($request->isMethod('POST')) {

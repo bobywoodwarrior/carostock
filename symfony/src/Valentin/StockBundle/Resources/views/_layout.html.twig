@@ -78,7 +78,7 @@
                 {% for message in messages %}
                     <div class="alert alert-dismissible alert-{{ type }}">
                         <button type="button" class="close" data-dismiss="alert">×</button>
-                        {{ message }}
+                        {{ message|raw }}
                     </div>
                 {% endfor %}
             {% endfor %}
@@ -90,7 +90,6 @@
     {% javascripts '@ValentinStockBundle/Resources/public/assets/js/jquery-2.1.4.min.js'
                     '@ValentinStockBundle/Resources/public/assets/js/bootstrap3.3.5.min.js'
                     '@ValentinStockBundle/Resources/public/assets/js/*'
-                    '@ValentinStockBundle/Resources/public/assets/js/app.js'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}

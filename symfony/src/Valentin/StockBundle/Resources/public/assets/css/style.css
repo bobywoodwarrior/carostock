@@ -13,3 +13,9 @@ body{
 table td, table th{
     text-align: center;
 }
+
+/* Alerts custom */
+.alert a{
+    text-decoration: underline;
+    font-weight: bold;
+}

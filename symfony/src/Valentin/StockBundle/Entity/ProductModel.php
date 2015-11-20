@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * ProductModel
  *
  * @ORM\Table(name="product_model")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Valentin\StockBundle\Entity\Repository\ProductModelRepository")
  */
 class ProductModel
 {

@@ -17,7 +17,6 @@ class MaterialKindType extends AbstractType
         $builder
             ->add('name','text')
             ->add('unit','text')
-            ->add('unitprice','number')
         ;
     }
 
