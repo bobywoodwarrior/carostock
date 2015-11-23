@@ -19,6 +19,7 @@
                     </div>
                 </div>
             </div>
+        {% if materials %}
         <table id="product-table" class="table table-striped table-hover table-responsive">
             <thead>
                 <tr>
@@ -61,5 +62,13 @@
             {% endfor %}
             </tbody>
         </table>
+
+            {% else %}
+                <div class="alert alert-warning">
+                    <i class="glyphicon glyphicon-info-sign"></i>
+                    No materials recorded yet.
+                </div>
+            {% endif %}
+
     </div>
 {% endblock %}
