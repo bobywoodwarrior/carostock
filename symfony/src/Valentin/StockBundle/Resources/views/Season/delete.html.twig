@@ -4,7 +4,7 @@
     <ol class="breadcrumb">
         <li><a href="{{ path('homepage') }}">Home</a></li>
         <li><a href="{{ path('season_index') }}">Seasons</a></li>
-        <li class="active"><a href="{{ path('season_new') }}">New</a></li>
+        <li class="active"><a href="{{ path('season_delete',{'id':season.id}) }}">Delete</a></li>
     </ol>
     <div class="well header-page">
         <div class="row">
