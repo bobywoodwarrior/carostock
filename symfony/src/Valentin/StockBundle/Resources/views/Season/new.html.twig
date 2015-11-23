@@ -1,6 +1,17 @@
 {% extends "@ValentinStock/_layout.html.twig" %}
 
 {% block main %}
-    <h1>New Season</h1>
+    <ol class="breadcrumb">
+        <li><a href="{{ path('homepage') }}">Home</a></li>
+        <li><a href="{{ path('season_index') }}">Seasons</a></li>
+        <li class="active"><a href="{{ path('season_new')}}">New</a></li>
+    </ol>
+    <div class="well header-page">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>New Season</h2>
+            </div>
+        </div>
+    </div>
     {% include('ValentinStockBundle:Season:_form.html.twig') %}
 {% endblock %}

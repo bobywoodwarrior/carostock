@@ -1,6 +1,16 @@
 {% extends "@ValentinStock/_layout.html.twig" %}
 
 {% block main %}
-    <h1>New Material</h1>
-    {% include('ValentinStockBundle:Material:_form.html.twig') %}
+    <ol class="breadcrumb">
+        <li><a href="{{ path('homepage') }}">Home</a></li>
+        <li><a href="{{ path('material_index') }}">Materials</a></li>
+        <li class="active"><a href="{{ path('material_new') }}">New</a></li>
+    </ol>
+    <div class="well header-page">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>New Material</h2>
+            </div>
+        </div>
+    </div>    {% include('ValentinStockBundle:Material:_form.html.twig') %}
 {% endblock %}
