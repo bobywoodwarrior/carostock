@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Material (raw material - matière premiere)
  *
  * @ORM\Table(name="material")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Valentin\StockBundle\Entity\Repository\MaterialRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Material

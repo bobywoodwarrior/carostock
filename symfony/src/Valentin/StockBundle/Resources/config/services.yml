@@ -2,3 +2,7 @@ services:
     stock.production:
         class: Valentin\StockBundle\Service\ProductionService
         arguments: ["@doctrine.orm.default_entity_manager"]
+
+    stock.productmodel:
+        class: Valentin\StockBundle\Service\ProductModelService
+        arguments: ["@doctrine.orm.default_entity_manager"]

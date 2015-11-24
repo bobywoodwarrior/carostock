@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Valentin\StockBundle\Entity\MaterialQuantity;
 use Valentin\StockBundle\Entity\ProductModel;
 use Valentin\StockBundle\Form\ProductModelType;
 
@@ -44,6 +43,21 @@ class ProductModelController extends Controller
      */
     public function newAction(Request $request)
     {
+        $productModelService = $this->get('stock.productmodel');
+
+        if (!$productModelService->isNewPossible()) {
+            $modelPath = $this->generateUrl('material_new');
+            $this->get('session')->getFlashBag()->add(
+                'danger',
+                'Impossible to add a new product model, no materials founds, <a href="'.$modelPath.'">create one before</a>'
+            );
+            return $this->redirect(
+                $this->generateUrl(
+                    'product_model_index'
+                )
+            );
+        }
+
         $model = new ProductModel();
 
         $form = $this->createForm(new ProductModelType(), $model);
