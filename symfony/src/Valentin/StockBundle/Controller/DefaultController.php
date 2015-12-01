@@ -4,6 +4,7 @@ namespace Valentin\StockBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -15,5 +16,13 @@ class DefaultController extends Controller
     public function indexAction()
     {
         return $this->render('ValentinStockBundle:Default:index.html.twig');
+    }
+
+    /**
+     * @Route("/admin", name="admin_login")
+     */
+    public function adminAction()
+    {
+        return new Response('<html><body>Admin page!</body></html>');
     }
 }

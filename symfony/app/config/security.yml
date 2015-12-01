@@ -1,13 +1,38 @@
 security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    vinz: { password: test, roles: ['ROLE_ADMIN']}
+                    valentin: { password: lol, roles: ['ROLE_ADMIN']}
 
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
+            pattern: ^/(_(profiler|wdt|error)|less|images|js)/
             security: false
 
         main:
-            anonymous: ~
+            pattern: ^/
+            anonymous: true
+            provider: in_memory
+            form_login:
+                login_path: login
+                check_path: loginCheck
+            logout:
+                path: /logout
+                target: /ovinz
+            remember_me:
+                key:      "%secret%"
+                lifetime: 31536000 # 365 jours en secondes
+                path:     /
+                domain:   ~ # Prend la valeur par défaut du domaine courant depuis $_SERVER
+
+    access_control:
+            - { path: ^/admin, roles: ROLE_ADMIN }
