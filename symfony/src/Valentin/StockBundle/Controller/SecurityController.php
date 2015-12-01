@@ -9,7 +9,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 class SecurityController extends Controller
 {
     /**
-     * @Route("/login", name="login_route")
+     * Login
+     * @Route("/login", name="login")
+     *
+     * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function loginAction(Request $request)
     {
@@ -38,5 +43,6 @@ class SecurityController extends Controller
     {
         // this controller will not be executed,
         // as the route is handled by the Security system
+        return null;
     }
 }
