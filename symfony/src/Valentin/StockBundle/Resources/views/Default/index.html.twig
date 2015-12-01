@@ -15,4 +15,9 @@
         </div>
     </div>
 
+        {% else %}
+            <div class="row">
+                You are not connected yet, please <a href="{{ path('login') }}">login</a> you before.
+            </div>
+        {% endif %}
 {% endblock %}
