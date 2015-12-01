@@ -14,7 +14,7 @@ use Valentin\StockBundle\Form\MaterialQuantityType;
  * Time: 17:46
  */
 /**
- * @Route("/material_quantity")
+ * @Route("/admin/material_quantity")
  */
 class MaterialQuantityController extends Controller
 {

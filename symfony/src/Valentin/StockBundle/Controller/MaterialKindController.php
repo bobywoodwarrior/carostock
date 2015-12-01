@@ -14,7 +14,7 @@ use Valentin\StockBundle\Form\MaterialKindType;
  * Time: 17:46
  */
 /**
- * @Route("/material_kind")
+ * @Route("/admin/material_kind")
  */
 class MaterialKindController extends Controller
 {

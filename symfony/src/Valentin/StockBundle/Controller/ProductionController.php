@@ -13,7 +13,7 @@ use Valentin\StockBundle\Form\ProductionType;
  * Time: 17:46
  */
 /**
- * @Route("/production")
+ * @Route("/admin/production")
  */
 class ProductionController extends Controller
 {

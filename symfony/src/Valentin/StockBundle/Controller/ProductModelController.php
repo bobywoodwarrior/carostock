@@ -16,7 +16,7 @@ use Valentin\StockBundle\Form\ProductModelType;
  * Time: 17:46
  */
 /**
- * @Route("/productModel")
+ * @Route("/admin/productModel")
  */
 class ProductModelController extends Controller
 {

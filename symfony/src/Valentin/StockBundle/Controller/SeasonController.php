@@ -8,7 +8,7 @@ use Valentin\StockBundle\Entity\Season;
 use Valentin\StockBundle\Form\SeasonType;
 
 /**
- * @Route("/season")
+ * @Route("/admin/season")
  */
 class SeasonController extends Controller
 {

@@ -23,6 +23,10 @@ class DefaultController extends Controller
      */
     public function adminAction()
     {
-        return new Response('<html><body>Admin page!</body></html>');
+        return $this->redirect(
+            $this->generateUrl(
+                'production_index'
+            )
+        );
     }
 }
