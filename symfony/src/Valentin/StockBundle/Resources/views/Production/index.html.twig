@@ -2,6 +2,7 @@
 
 {% block main %}
 
+{% if app.user %}
     <ol class="breadcrumb">
         <li><a href="{{ path('homepage') }}">Home</a></li>
         <li class="active"><a href="{{ path('production_index') }}">Productions</a></li>
@@ -67,4 +68,9 @@
             No productions recorded yet.
         </div>
     {% endif %}
+{% else %}
+<div class="row">
+    You are not connected yet, please <a href="{{ path('login') }}">login</a> you before.
+</div>
+{% endif %}
 {% endblock %}
