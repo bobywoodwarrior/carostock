@@ -27,13 +27,6 @@ class Production
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
-    protected $name;
-
-    /**
-     * @var string
-     *
      * @ORM\ManyToOne(targetEntity="Valentin\StockBundle\Entity\Season", inversedBy="productions")
      * @ORM\JoinColumn(name="season_id", referencedColumnName="id")
      */
@@ -136,30 +129,6 @@ class Production
     public function setId($id)
     {
         $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Get Name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Product
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
 
         return $this;
     }

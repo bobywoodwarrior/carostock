@@ -16,7 +16,6 @@ class ProductionType extends AbstractType
     {
 
         $builder
-            ->add('name','text')
             ->add('priceWhole','text')
             ->add('season','entity', [
                 'class'     => 'Valentin\StockBundle\Entity\Season',
