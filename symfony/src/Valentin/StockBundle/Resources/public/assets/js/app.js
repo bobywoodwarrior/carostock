@@ -86,7 +86,7 @@ $( document ).ready(function() {
         $('#saveProduction').prop('disabled', true);
 
         $.ajax({
-            url: site_url + 'productModel/ajaxCheckMaterials',
+            url: site_url + 'admin/productModel/ajaxCheckMaterials',
             data: {
                 modelId     : modelId,
                 totalSizes  : totalSizes
