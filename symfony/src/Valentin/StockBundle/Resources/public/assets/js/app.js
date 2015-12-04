@@ -6,6 +6,33 @@ var $newLinkLi          = $('<li></li>').append($addMaterialLink);
 $( document ).ready(function() {
 
     /******************************
+     GLOBAL SEARCH AUTOCOMPLETE
+     *******************************/
+    $('#globalsearch').autocomplete({
+        triggerSelectOnValidInput: true,
+        noCache:true,
+        showNoSuggestionNotice: true,
+        serviceUrl: site_url + 'admin/search',
+        params: {
+            entity: $('select[name="entity"]').find('option:selected').val()
+        },
+        onSelect: function (suggestion) {
+            //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+        }
+    });
+
+    $(document).on("change", 'select[name="entity"]', function(e) {
+        $('h4.search em').text($(this).find('option:selected').text());
+        $('#globalsearch').autocomplete('setOptions', {
+            params: {
+                entity: $(this).find('option:selected').val()
+            }
+        });
+        $('#globalsearch').autocomplete().onValueChange();
+    });
+
+
+    /******************************
         COLLECTION ADD/REMOVE
     *******************************/
 

@@ -29,7 +29,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="{{ path('homepage') }}">CAROSTOCK</a>
+                        <a class="navbar-brand" href="{{ path('admin_homepage') }}">CAROSTOCK</a>
                     </div>
                     <div class="collapse navbar-collapse" id="navbar-collapse">
                         <ul class="nav navbar-nav">
@@ -97,6 +97,7 @@
 
     {% javascripts '@ValentinStockBundle/Resources/public/assets/js/jquery-2.1.4.min.js'
                     '@ValentinStockBundle/Resources/public/assets/js/bootstrap3.3.5.min.js'
+                    '@ValentinStockBundle/Resources/public/assets/js/jquery.autocomplete.min.js'
                     '@ValentinStockBundle/Resources/public/assets/js/*'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>

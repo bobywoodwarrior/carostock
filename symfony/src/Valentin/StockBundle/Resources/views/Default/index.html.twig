@@ -3,14 +3,33 @@
 {% block main %}
 
     <div class="container">
-    <ol class="breadcrumb">
-        <li><a href="{{ path('homepage') }}">Home</a></li>
-    </ol>
-    <div class="well header-page">
-        <div class="row">
-            <div class="col-md-8">
-                <h2>Home</h2>
+        <ol class="breadcrumb">
+            <li><a href="{{ path('homepage') }}">Home</a></li>
+        </ol>
+        <div class="well header-page">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>Home</h2>
+                </div>
             </div>
+        </div>
+
+        <div class="well">
+            <h4 class="search"><i class="glyphicon glyphicon-search"></i> Search in <em>Productions</em></h4>
+
+            <div class="row">
+                <div class="col-md-8">
+                    <input type="text" id="globalsearch" name="globalsearch" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <select name="entity" class="form-control">
+                        <option value="production">Productions</option>
+                        <option value="productModel">Product Models</option>
+                        <option value="material">Materials</option>
+                    </select>
+                </div>
+            </div>
+
         </div>
     </div>
 {% endblock %}
