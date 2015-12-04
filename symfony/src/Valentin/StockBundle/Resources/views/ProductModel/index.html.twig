@@ -2,7 +2,6 @@
 
 {% block main %}
 
-    {% if app.user %}
 <div class="container">
     <ol class="breadcrumb">
         <li><a href="{{ path('homepage') }}">Home</a></li>
@@ -61,10 +60,4 @@
         {% endif %}
 
 </div>
-
-    {% else %}
-        <div class="row">
-            You are not connected yet, please <a href="{{ path('login') }}">login</a> you before.
-        </div>
-    {% endif %}
 {% endblock %}
