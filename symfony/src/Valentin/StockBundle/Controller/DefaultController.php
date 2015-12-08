@@ -43,9 +43,21 @@ class DefaultController extends Controller
         $entity  = $request->get('entity');
 
         switch ($entity) {
+            /* **********PRODUCTION********** */
             case 'production':
-                // todo
+                $resultsQuery = $this->getDoctrine()
+                    ->getManager()
+                    ->getRepository('ValentinStockBundle:Production')
+                    ->searchLikeKeyword($keyword);
+
+                foreach ($resultsQuery as $item) {
+                    $result['suggestions'][] = [
+                        'value' => '['.$item['reference'].']'. ' ' .$item['name'],
+                        'data'  => $item['name']
+                    ];
+                }
                 break;
+            /* **********PRODUCT MODEL********** */
             case 'productModel':
                 $resultsQuery = $this->getDoctrine()
                     ->getManager()
@@ -54,7 +66,21 @@ class DefaultController extends Controller
 
                 foreach ($resultsQuery as $item) {
                     $result['suggestions'][] = [
-                        'value' => 'Name : '.$item['name'] . ' | Ref : '. $item['reference'],
+                        'value' => '['.$item['reference'].']'. ' ' .$item['name'],
+                        'data'  => $item['name']
+                    ];
+                }
+                break;
+            /* **********MATERIAL********** */
+            case 'material':
+                $resultsQuery = $this->getDoctrine()
+                    ->getManager()
+                    ->getRepository('ValentinStockBundle:Material')
+                    ->searchLikeKeyword($keyword);
+
+                foreach ($resultsQuery as $item) {
+                    $result['suggestions'][] = [
+                        'value' => '['.$item['reference'].']'. ' ' .$item['name']. ' ' .'('.$item['color'].')'. ' : ' .$item['quantityUsed'].'/'.$item['quantity'],
                         'data'  => $item['name']
                     ];
                 }

@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Product
  *
  * @ORM\Table(name="production")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="Valentin\StockBundle\Entity\Repository\ProductionRepository")
  * @ORM\HasLifecycleCallbacks()
  */
 class Production

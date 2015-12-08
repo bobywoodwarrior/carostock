@@ -23,4 +23,26 @@ class MaterialRepository extends EntityRepository
             ->getQuery()
             ->getSingleScalarResult();
     }
+
+    /**
+     * Search by name or ref %like%
+     *
+     * @param $keyword
+     * @return mixed
+     */
+    public function searchLikeKeyword($keyword)
+    {
+        $keyword = strtolower($keyword);
+        $query = $this->createQueryBuilder('p');
+
+        $query->select('p.name, p.reference, p.color, p.quantity, p.quantityUsed')
+            ->where('p.name LIKE :keyword')
+            ->orWhere('p.reference LIKE :keyword')
+            ->orWhere('p.color LIKE :keyword')
+            ->setParameter('keyword', '%'.$keyword.'%')
+            ->orderBy('p.name','ASC')
+            ->setMaxResults(10);
+
+        return $query->getQuery()->getResult();
+    }
 }
