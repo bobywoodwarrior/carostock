@@ -24,12 +24,12 @@ class ProductionRepository extends EntityRepository
         $keyword = strtolower($keyword);
         $query = $this->createQueryBuilder('p');
 
-        $query->select('p.productModel.name, p.productModel.reference')
+        $query->select('productModel.name, productModel.reference')
             ->leftJoin('p.productModel','productModel')
-            ->where('p.productModel.name LIKE :keyword')
-            ->orWhere('p.productModel.reference LIKE :keyword')
+            ->where('productModel.name LIKE :keyword')
+            ->orWhere('productModel.reference LIKE :keyword')
             ->setParameter('keyword', '%'.$keyword.'%')
-            ->orderBy('p.productModel.name','ASC')
+            ->orderBy('productModel.name','ASC')
             ->setMaxResults(10);
 
         return $query->getQuery()->getResult();
