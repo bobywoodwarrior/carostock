@@ -53,7 +53,12 @@ class DefaultController extends Controller
                 foreach ($resultsQuery as $item) {
                     $result['suggestions'][] = [
                         'value' => '['.$item['reference'].']'. ' ' .$item['name'],
-                        'data'  => $item['name']
+                        //'data'  => $item['name']
+                        'data' => $this->generateUrl(
+                            'production_edit',
+                            ['id' => $item['id']],
+                            true
+                        )
                     ];
                 }
                 break;
@@ -67,7 +72,12 @@ class DefaultController extends Controller
                 foreach ($resultsQuery as $item) {
                     $result['suggestions'][] = [
                         'value' => '['.$item['reference'].']'. ' ' .$item['name'],
-                        'data'  => $item['name']
+                        //'data'  => $item['name']
+                        'data' => $this->generateUrl(
+                            'product_model_edit',
+                            ['id' => $item['id']],
+                            true
+                        )
                     ];
                 }
                 break;
@@ -81,7 +91,12 @@ class DefaultController extends Controller
                 foreach ($resultsQuery as $item) {
                     $result['suggestions'][] = [
                         'value' => '['.$item['reference'].']'. ' ' .$item['name']. ' ' .'('.$item['color'].')'. ' : ' .$item['quantityUsed'].'/'.$item['quantity'],
-                        'data'  => $item['name']
+                        //'data'  => $item['name']
+                        'data' => $this->generateUrl(
+                            'material_edit',
+                            ['id' => $item['id']],
+                            true
+                        )
                     ];
                 }
                 break;

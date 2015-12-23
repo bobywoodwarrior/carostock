@@ -35,7 +35,7 @@ class MaterialRepository extends EntityRepository
         $keyword = strtolower($keyword);
         $query = $this->createQueryBuilder('p');
 
-        $query->select('p.name, p.reference, p.color, p.quantity, p.quantityUsed')
+        $query->select('p.id, p.name, p.reference, p.color, p.quantity, p.quantityUsed')
             ->where('p.name LIKE :keyword')
             ->orWhere('p.reference LIKE :keyword')
             ->orWhere('p.color LIKE :keyword')

@@ -24,7 +24,7 @@ class ProductionRepository extends EntityRepository
         $keyword = strtolower($keyword);
         $query = $this->createQueryBuilder('p');
 
-        $query->select('productModel.name, productModel.reference')
+        $query->select('p.id, productModel.name, productModel.reference')
             ->leftJoin('p.productModel','productModel')
             ->where('productModel.name LIKE :keyword')
             ->orWhere('productModel.reference LIKE :keyword')

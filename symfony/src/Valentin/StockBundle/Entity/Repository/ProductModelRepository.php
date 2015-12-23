@@ -35,7 +35,7 @@ class ProductModelRepository extends EntityRepository
         $keyword = strtolower($keyword);
         $query = $this->createQueryBuilder('p');
 
-        $query->select('p.name, p.reference')
+        $query->select('p.id, p.name, p.reference')
             ->where('p.name LIKE :keyword')
             ->orWhere('p.reference LIKE :keyword')
             ->setParameter('keyword', '%'.$keyword.'%')

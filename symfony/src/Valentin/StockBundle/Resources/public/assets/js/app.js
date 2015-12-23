@@ -17,7 +17,8 @@ $( document ).ready(function() {
             entity: $('select[name="entity"]').find('option:selected').val()
         },
         onSelect: function (suggestion) {
-            //alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+            window.location.href = suggestion.data;
+            return;
         }
     });
 
